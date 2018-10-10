@@ -15,7 +15,7 @@ namespace Datos
         private const string puerto = "3306";
         private const string usuario = "root";
         private const string password = "";
-        private const string database = "ceuk";
+        private const string database = "bovinos";
 
 
         //Cadena de conexion
