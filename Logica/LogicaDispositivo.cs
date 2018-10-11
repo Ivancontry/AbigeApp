@@ -11,9 +11,8 @@ namespace Logica
     public class LogicaDispositivo
     {
         DatosDispositivo datosDispositivo = new DatosDispositivo();
-        public void registraPosicionActual(string[] posicion) {
-
-
+        public int registraPosicionActual(string[] posicion) {
+            return datosDispositivo.registrarPosicionActual(posicion);
         }
     }
 }

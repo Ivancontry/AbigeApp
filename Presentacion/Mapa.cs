@@ -80,13 +80,17 @@ namespace Presentacion
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
+            int respuesta;
             string cadena = serialPort1.ReadExisting();
             cadena = cadena.TrimStart('[');
             cadena=cadena.TrimEnd(']');
-            string[] posicion = cadena.Split(';');
-            logicaDispositivo.registraPosicionActual(posicion);
+            string[] posicion = cadena.Split(',');
 
-            MessageBox.Show(cadena);
+            respuesta = logicaDispositivo.registraPosicionActual(posicion);
+            if (respuesta == -1) {
+                MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+          
 
         }
     }
