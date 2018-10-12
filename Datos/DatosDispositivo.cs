@@ -25,8 +25,7 @@ namespace Datos
                     cmd.Parameters.Add(new MySqlParameter("xlongitud", Double.Parse(posicion[2])));
                     cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", "Dentro"));
                     cmd.Parameters.Add(new MySqlParameter("xidDispositivo", posicion[0]));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", posicion[4]));
-
+                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", posicion[3]));
                     return cmd.ExecuteNonQuery();
 
                 }

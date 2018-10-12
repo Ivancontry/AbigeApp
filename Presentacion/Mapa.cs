@@ -85,7 +85,8 @@ namespace Presentacion
             cadena = cadena.TrimStart('[');
             cadena=cadena.TrimEnd(']');
             string[] posicion = cadena.Split(',');
-
+           
+            
             respuesta = logicaDispositivo.registraPosicionActual(posicion);
             if (respuesta == -1) {
                 MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
