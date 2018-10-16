@@ -12,17 +12,21 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using Logica;
+using Entidades;
+
 
 namespace Presentacion
 {
     public partial class Mapa : Form
     {
         LogicaDispositivo logicaDispositivo = new LogicaDispositivo();
-
+        int contadorDeEventos=0;
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
+        long promedio = 0;
         double latitud = 10.450335;
         double longitud = -73.260797;
+        string mostrarMesaje;
         public Mapa()
         {
             InitializeComponent();
@@ -73,26 +77,44 @@ namespace Presentacion
 
         private void conectarPuerto() {
             serialPort1.Close();
-            serialPort1.PortName = "COM13";
+            serialPort1.PortName = "COM11";
             serialPort1.Open();
             MessageBox.Show("Conectado con el puerto COM13");
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
+            TimeSpan stop;
+            TimeSpan start = new TimeSpan(DateTime.Now.Ticks);
+            //------------------------------------------------------
             int respuesta;
+            Posicion posicion;
             string cadena = serialPort1.ReadExisting();
             cadena = cadena.TrimStart('[');
             cadena=cadena.TrimEnd(']');
             string[] posicion = cadena.Split(',');
-           
-            
+
             respuesta = logicaDispositivo.registraPosicionActual(posicion);
             if (respuesta == -1) {
                 MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-          
+            
+            contadorDeEventos++;
+            //------------------------------------------------------
+            stop = new TimeSpan(DateTime.Now.Ticks);
+            mostrarMesaje += " "+ stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
+  
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(mostrarMesaje);
+            mostrarMesaje = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show((promedio / 10).ToString());
         }
     }
 }
