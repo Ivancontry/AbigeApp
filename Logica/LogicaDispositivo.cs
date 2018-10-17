@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Logica
         public int registraPosicionActual(Posicion posicion) {            
             return datosDispositivo.registrarPosicionActual(posicion);
         }
-       
+        public DataTable listadoPosicionDispositivo() {
+            return datosDispositivo.listadoPosicionDispositivo();
+        }
     }
 }

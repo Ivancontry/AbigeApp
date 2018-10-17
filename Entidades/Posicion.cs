@@ -33,7 +33,8 @@ namespace Entidades
             }
             //luego se agrupa el vector para representarlo en coordenada
             //Convertido de grados minutos y segundos a decimal
-            return coordenadaSeparadaADouble[0] + (coordenadaSeparadaADouble[1] * 60 + coordenadaSeparadaADouble[2]) / 3600;
+            
+            return coordenadaSeparadaADouble[0] + (coordenadaSeparadaADouble[1] / 60) + (coordenadaSeparadaADouble[2]) / 3600;
         }
 
        

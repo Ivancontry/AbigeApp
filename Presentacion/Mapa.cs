@@ -92,7 +92,7 @@ namespace Presentacion
             string cadena = serialPort1.ReadExisting();
             cadena = cadena.TrimStart('[');
             cadena=cadena.TrimEnd(']');
-            string[] posicion = cadena.Split(',');
+            string[] Datos = cadena.Split(',');
 
             respuesta = logicaDispositivo.registraPosicionActual(posicion);
             if (respuesta == -1) {
