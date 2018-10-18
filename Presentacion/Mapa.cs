@@ -61,22 +61,21 @@ namespace Presentacion
 
         
         public void cargarListaMarcadores() {
-            gMapControl1.Overlays.Clear();
-            cargarMapa();
-            cargarPoligono();
             listaMarcadores = logicaDispositivo.listadoPosicionDispositivo();
             foreach (DataRow dispositivo in listaMarcadores.Rows)
             {
                 //Agregar un marcador
-                markerOverlay = new GMapOverlay("Marcador");
+                markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());
+                MessageBox.Show("" + markerOverlay.Id);
                 marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.red);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
-
+           
                 //Agregamos un mensaje a los marcadores
                 marker.ToolTipMode = MarkerTooltipMode.Always;
-                marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2}", dispositivo["Iddispositivo"].ToString(), double.Parse(dispositivo["latitud"].ToString()), double.Parse(dispositivo["longitud"].ToString()));
+                marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", dispositivo["Iddispositivo"].ToString(), double.Parse(dispositivo["latitud"].ToString()), double.Parse(dispositivo["longitud"].ToString()));
+
                 gMapControl1.Overlays.Add(markerOverlay);
-                
+                               
             }
             //gMapControl1.Zoom = gMapControl1.Zoom + 1;
             //gMapControl1.Zoom = gMapControl1.Zoom - 1;
@@ -101,7 +100,24 @@ namespace Presentacion
             gMapControl1.Overlays.Add(polyOverlay);
                       
         }
+        private void insertarMarcador(Posicion posicion) {
 
+            MessageBox.Show("" + posicion.idDispositivo);
+            if (gMapControl1.Overlays.Contains(gMapControl1.Overlays.ElementAt(int.Parse(posicion.idDispositivo))))
+            {
+                gMapControl1.Overlays.RemoveAt(int.Parse(posicion.idDispositivo));
+            }
+            markerOverlay = new GMapOverlay("" + posicion.idDispositivo);
+            MessageBox.Show("" + markerOverlay.Id);
+            marker = new GMarkerGoogle(new PointLatLng(posicion.latitud, posicion.longitud), GMarkerGoogleType.red);
+            markerOverlay.Markers.Add(marker); //Agregamos el mapa
+
+            //Agregamos un mensaje a los marcadores
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
+            //Agregar un marcador
+            gMapControl1.Overlays.Add(markerOverlay);
+        }
 
         private void conectarPuerto() {
             serialPort1.Close();
@@ -122,7 +138,7 @@ namespace Presentacion
             cadena=cadena.TrimEnd(']');
             string[] datos = cadena.Split(',');
             posicion = new Posicion(datos[0],datos[1],datos[2],datos[3]);
-         
+            insertarMarcador(posicion);
             respuesta = logicaDispositivo.registraPosicionActual(posicion);
             if (respuesta == -1) {
                 MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -132,7 +148,6 @@ namespace Presentacion
             //------------------------------------------------------
             stop = new TimeSpan(DateTime.Now.Ticks);
             mostrarMesaje += " "+ stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
-            cargarListaMarcadores();
         }
 
         private void button1_Click(object sender, EventArgs e)
