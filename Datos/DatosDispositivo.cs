@@ -23,11 +23,11 @@ namespace Datos
                     cmd = new MySqlCommand("registrarPosicionActual");
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xlatitud", Double.Parse(posicion[1])));
-                    cmd.Parameters.Add(new MySqlParameter("xlongitud", Double.Parse(posicion[2])));
+                    cmd.Parameters.Add(new MySqlParameter("xlatitud", posicion.latitud));
+                    cmd.Parameters.Add(new MySqlParameter("xlongitud", posicion.longitud));
                     cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", "Dentro"));
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", posicion[0]));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", posicion[4]));
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", posicion.idDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", posicion.estadoBateria));
 
                     return cmd.ExecuteNonQuery();
 
@@ -49,5 +49,41 @@ namespace Datos
                 desConectar();
             }
         }
+
+        public DataTable listadoPosicionDispositivo()
+        {
+            try
+            {
+                if (conectar())
+                {
+                    cmd = new MySqlCommand("mostrarPosicionDispositivo");
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = connection;
+                    if (cmd.ExecuteNonQuery() >= 0)
+                    {
+                        return llenarDataTable(cmd);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+            finally
+            {
+                desConectar();
+            }
+        }
+
     }
 }

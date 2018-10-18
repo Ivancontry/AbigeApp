@@ -14,12 +14,12 @@ using Entidades;
 
 namespace Presentacion
 {
-    public partial class RegistrarEmpleado : Form
+    public partial class RegistrarUsuario : Form
     {
         LogicaCliente logicaCliente = new LogicaCliente();
         Clientes clientes = new Clientes();
         ContextMenuStrip blankContextMenu = new ContextMenuStrip();
-        public RegistrarEmpleado()
+        public RegistrarUsuario()
         {
             InitializeComponent();
         }

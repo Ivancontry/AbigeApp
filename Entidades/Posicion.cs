@@ -18,7 +18,7 @@ namespace Entidades
         {
             this.idDispositivo = idDispositivo;
             this.latitud = convertirCoordenada(latitud);
-            this.longitud = convertirCoordenada(longitud);
+            this.longitud =-1*(convertirCoordenada(longitud));
             this.estadoDispositivo = "Dentro";
             this.estadoBateria = estadoBateria;
         }
