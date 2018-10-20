@@ -65,8 +65,7 @@ namespace Presentacion
             foreach (DataRow dispositivo in listaMarcadores.Rows)
             {
                 //Agregar un marcador
-                markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());
-                MessageBox.Show("id prueba" + markerOverlay.Id);
+                markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());                
                 marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.red);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
            
@@ -104,17 +103,19 @@ namespace Presentacion
         }
         private void insertarMarcador(Posicion posicion) {
          
+           
+            
             foreach (var item in gMapControl1.Overlays.ToList())
             {
                 if (item.Id == posicion.idDispositivo)
                 {
+                    //gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
                     gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
-
-                }               
+                }                                   
                 
             }
 
-            markerOverlay = new GMapOverlay("" + posicion.idDispositivo);
+             markerOverlay = new GMapOverlay("" + posicion.idDispositivo);
             marker = new GMarkerGoogle(new PointLatLng(posicion.latitud, posicion.longitud), GMarkerGoogleType.red);
             markerOverlay.Markers.Add(marker); //Agregamos el mapa
             //Agregamos un mensaje a los marcadores
@@ -122,14 +123,13 @@ namespace Presentacion
             marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
             gMapControl1.Overlays.Add(markerOverlay);
-            
+
         }
 
         private void conectarPuerto() {
             serialPort1.Close();
-            serialPort1.PortName = "COM3";
-            serialPort1.Open();
-            MessageBox.Show("Conectado con el puerto COM13");
+            serialPort1.PortName = "COM10";
+            serialPort1.Open();           
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
@@ -138,24 +138,32 @@ namespace Presentacion
             TimeSpan start = new TimeSpan(DateTime.Now.Ticks);
             //------------------------------------------------------
             int respuesta;
+            object datosIn = new object();
+            datosIn = serialPort1.ReadLine();
             Posicion posicion;
-            string cadena = serialPort1.ReadExisting();
-            cadena = cadena.TrimStart('{');
-            cadena = cadena.TrimEnd('}');
-            string[] datos = cadena.Split(',');
-            posicion = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
-                datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12],int.Parse(datos[13]));
-            insertarMarcador(posicion);
-            respuesta = logicaDispositivo.registraPosicionActual(posicion);
-            if (respuesta == -1) {
-                MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            string cadena = datosIn.ToString();
+
+                if (!cadena.Trim().Equals(""))
+                {
+                    cadena = cadena.TrimStart('{');
+                    cadena = cadena.TrimEnd();
+                    cadena = cadena.TrimEnd('}');                    
+                    string[] datos = cadena.Split(',');
+                    posicion = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
+                        datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
+                    insertarMarcador(posicion);
+                    respuesta = logicaDispositivo.registraPosicionActual(posicion);
+                    if (respuesta == -1) {
+                        MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    
+                    contadorDeEventos++;
+                    //------------------------------------------------------
+                    stop = new TimeSpan(DateTime.Now.Ticks);
+                    mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
+                }
             }
-            
-            contadorDeEventos++;
-            //------------------------------------------------------
-            stop = new TimeSpan(DateTime.Now.Ticks);
-            mostrarMesaje += " "+ stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
-        }
+                    
 
         private void button1_Click(object sender, EventArgs e)
         {
