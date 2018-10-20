@@ -28,10 +28,12 @@ namespace Entidades
         public double convertirCoordenada(string coordenada)
         {
             //primero se separa la coordenada en un vector y se convierte a double
-            string[] coordenadaSeparada = coordenada.Split(',');   
-            
-            double coordenadaCalculada = Double.Parse( coordenadaSeparada[0]) + (Double.Parse(coordenadaSeparada[1]) / 60)
-                + (Double.Parse(coordenadaSeparada[2].Replace(".", ",")) /3600);
+            string[] coordenadaSeparada = coordenada.Split(',');
+            Random random = new Random();
+            double paraminuto = random.NextDouble() ;
+            double parasegundo = random.NextDouble()/100;
+            double coordenadaCalculada = Double.Parse( coordenadaSeparada[0]) + (Double.Parse(coordenadaSeparada[1]) / 60+paraminuto)
+                + ((Double.Parse(coordenadaSeparada[2].Replace(".", ",")) /3600)+parasegundo);
             if (coordenadaSeparada[3].Equals("N")|| coordenadaSeparada[3].Equals("E"))
             {
                 return coordenadaCalculada;

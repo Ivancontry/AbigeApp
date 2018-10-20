@@ -128,7 +128,7 @@ namespace Presentacion
 
         private void conectarPuerto() {
             serialPort1.Close();
-            serialPort1.PortName = "COM10";
+            serialPort1.PortName = "COM3";
             serialPort1.Open();           
         }
 
