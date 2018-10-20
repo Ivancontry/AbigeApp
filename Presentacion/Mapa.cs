@@ -127,7 +127,7 @@ namespace Presentacion
 
         private void conectarPuerto() {
             serialPort1.Close();
-            serialPort1.PortName = "COM13";
+            serialPort1.PortName = "COM3";
             serialPort1.Open();
             MessageBox.Show("Conectado con el puerto COM13");
         }
@@ -140,10 +140,11 @@ namespace Presentacion
             int respuesta;
             Posicion posicion;
             string cadena = serialPort1.ReadExisting();
-            cadena = cadena.TrimStart('[');
-            cadena=cadena.TrimEnd(']');
+            cadena = cadena.TrimStart('{');
+            cadena = cadena.TrimEnd('}');
             string[] datos = cadena.Split(',');
-            posicion = new Posicion(datos[0],datos[1],datos[2],datos[3]);
+            posicion = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
+                datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12],int.Parse(datos[13]));
             insertarMarcador(posicion);
             respuesta = logicaDispositivo.registraPosicionActual(posicion);
             if (respuesta == -1) {
