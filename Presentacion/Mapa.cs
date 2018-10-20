@@ -66,7 +66,7 @@ namespace Presentacion
             {
                 //Agregar un marcador
                 markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());
-                MessageBox.Show("" + markerOverlay.Id);
+                MessageBox.Show("id prueba" + markerOverlay.Id);
                 marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.red);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
            
@@ -75,7 +75,9 @@ namespace Presentacion
                 marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", dispositivo["Iddispositivo"].ToString(), double.Parse(dispositivo["latitud"].ToString()), double.Parse(dispositivo["longitud"].ToString()));
 
                 gMapControl1.Overlays.Add(markerOverlay);
-                               
+               
+
+
             }
             //gMapControl1.Zoom = gMapControl1.Zoom + 1;
             //gMapControl1.Zoom = gMapControl1.Zoom - 1;
@@ -101,22 +103,26 @@ namespace Presentacion
                       
         }
         private void insertarMarcador(Posicion posicion) {
-
-            MessageBox.Show("" + posicion.idDispositivo);
-            if (gMapControl1.Overlays.Contains(gMapControl1.Overlays.ElementAt(int.Parse(posicion.idDispositivo))))
+         
+            foreach (var item in gMapControl1.Overlays.ToList())
             {
-                gMapControl1.Overlays.RemoveAt(int.Parse(posicion.idDispositivo));
+                if (item.Id == posicion.idDispositivo)
+                {
+                    gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
+
+                }               
+                
             }
+
             markerOverlay = new GMapOverlay("" + posicion.idDispositivo);
-            MessageBox.Show("" + markerOverlay.Id);
             marker = new GMarkerGoogle(new PointLatLng(posicion.latitud, posicion.longitud), GMarkerGoogleType.red);
             markerOverlay.Markers.Add(marker); //Agregamos el mapa
-
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
             marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
             gMapControl1.Overlays.Add(markerOverlay);
+            
         }
 
         private void conectarPuerto() {
