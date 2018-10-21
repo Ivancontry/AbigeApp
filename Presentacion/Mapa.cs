@@ -20,15 +20,15 @@ namespace Presentacion
     public partial class Mapa : Form
     {
         GMapPolygon polygon;
-        LogicaDispositivo logicaDispositivo = new LogicaDispositivo();
+        ServiciosDispositivo logicaDispositivo = new ServiciosDispositivo();
         int contadorDeEventos = 0;
         GMarkerGoogle marker;
         GMapOverlay markerOverlay;
         PointLatLng latLng;
-        long promedio = 0;
-        double latitud = 10.450335;
-        double longitud = -73.260797;
-        string mostrarMesaje;
+        double promedio = 0;
+        double latitudCentral = 10.4402915855;//estas dos coordenadas son para centrar el mapa
+        double longitudCentral = -73.2516118633;
+        string mostrarMesaje;//Esto es para ver la media de tiempo en que se demora el proceso  para cada evento en el mapa
         DataTable listaMarcadores = new DataTable();
         public Mapa()
         {
@@ -38,23 +38,24 @@ namespace Presentacion
 
         private void Mapa_Load(object sender, EventArgs e)
         {
-            conectarPuerto();
             gMapControl1.IgnoreMarkerOnMouseWheel = true;
             cargarMapa();
             cargarPoligono();
             cargarListaMarcadores();
+            conectarPuerto();
             gMapControl1.Zoom = gMapControl1.Zoom + 1;
             gMapControl1.Zoom = gMapControl1.Zoom - 1;
             
             gMapControl1.Refresh();
             timer1.Enabled = true;
+            timer2.Enabled = true;
         }
         public void cargarMapa() {
            
             gMapControl1.DragButton = MouseButtons.Left;
             gMapControl1.CanDragMap = true;
             gMapControl1.MapProvider = GoogleMapProvider.Instance;
-            gMapControl1.Position = new PointLatLng(latitud, longitud);
+            gMapControl1.Position = new PointLatLng(latitudCentral, longitudCentral);
             gMapControl1.MinZoom = 0;
             gMapControl1.MaxZoom = 24;
             gMapControl1.Zoom = 20;
@@ -89,10 +90,10 @@ namespace Presentacion
         public void cargarPoligono() {
             GMapOverlay polyOverlay = new GMapOverlay("polygons");
             List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(10.4402915855, -73.2516118633));
-            points.Add(new PointLatLng(10.440450, -73.251522));
-            points.Add(new PointLatLng(10.440046, -73.251507));
-            points.Add(new PointLatLng(10.440045, -73.251808));
+            points.Add(new PointLatLng(10.441329, -73.251367));
+            points.Add(new PointLatLng(10.441382, -73.252724));
+            points.Add(new PointLatLng(10.438916, -73.252872));
+            points.Add(new PointLatLng(10.440022, -73.251501));
             
 
             polygon = new GMapPolygon(points, "mypolygon");
@@ -102,8 +103,13 @@ namespace Presentacion
             polyOverlay.Polygons.Add(polygon);
             //*******************            
         }
-        private void insertarMarcador(Posicion posicion) {
-            foreach (var item in gMapControl1.Overlays.ToList())
+        private void insertarMarcador(Dispositivos dispositivo) {
+            List<GMapOverlay> lista = new List<GMapOverlay>();
+            lista = gMapControl1.Overlays.ToList();
+            gMapControl1.Overlays.RemoveAt(lista.FindIndex(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
+            
+            //******************************************************
+            /*foreach (var item in gMapControl1.Overlays.ToList())
             {
                 if (item.Id == posicion.idDispositivo)
                 {
@@ -112,15 +118,15 @@ namespace Presentacion
                 }                                   
                 
             }
-
-             markerOverlay = new GMapOverlay("" + posicion.idDispositivo);
-            marker = new GMarkerGoogle(new PointLatLng(posicion.latitud, posicion.longitud), GMarkerGoogleType.red);
+            */
+            markerOverlay = new GMapOverlay("" + dispositivo.idDispositivo);
+            marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
             markerOverlay.Markers.Add(marker); //Agregamos el mapa
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
             //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
-            marker.ToolTipText = string.Format("{0}", posicion.idDispositivo);
+            marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
             gMapControl1.Overlays.Add(markerOverlay);
             
         }
@@ -136,10 +142,10 @@ namespace Presentacion
             TimeSpan stop;
             TimeSpan start = new TimeSpan(DateTime.Now.Ticks);
             //------------------------------------------------------
-            int respuesta;
+            int confirmacionBaseDeDatos;//1 o -1
             object datosIn = new object();
             datosIn = serialPort1.ReadLine();
-            Posicion posicion;
+            Dispositivos dispositivo;
             string cadena = datosIn.ToString();
 
             if (!cadena.Trim().Equals(""))
@@ -148,25 +154,26 @@ namespace Presentacion
                 cadena = cadena.TrimEnd();
                 cadena = cadena.TrimEnd('}');                    
                 string[] datos = cadena.Split(',');
-                posicion = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
+                dispositivo = new Dispositivos(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
                     datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
-                insertarMarcador(posicion);
-                latLng = new PointLatLng(posicion.latitud, posicion.longitud);
+                insertarMarcador(dispositivo);
+                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
                 if(polygon.IsInside(latLng)){
-                    posicion.estadoDispositivo = "Dentro";
+                    dispositivo.estadoDispositivo = "Dentro";
                 }
                 else
                 {
-                    posicion.estadoDispositivo = "Fuera";
+                    dispositivo.estadoDispositivo = "Fuera";
                 }
-                respuesta = logicaDispositivo.registraPosicionActual(posicion);
-                if (respuesta == -1) {
+                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
+                if (confirmacionBaseDeDatos == -1) {
                     MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }               
                 contadorDeEventos++;
                 //------------------------------------------------------
                 stop = new TimeSpan(DateTime.Now.Ticks);
-                mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";                
+                mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
+                promedio += stop.Subtract(start).TotalMilliseconds;
             }
         }
                     
@@ -179,16 +186,24 @@ namespace Presentacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((promedio / 10).ToString());
+            MessageBox.Show((promedio / contadorDeEventos).ToString() +"---"+ contadorDeEventos.ToString());
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            gMapControl1.Zoom = gMapControl1.Zoom + 1;
+
+            gMapControl1.Zoom = gMapControl1.Zoom - 1;
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            //gMapControl1.Zoom = 17.5;
 
         }
     }

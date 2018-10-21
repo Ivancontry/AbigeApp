@@ -29,7 +29,6 @@ namespace Datos
         {
             try
             {
-
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
                 return true;
@@ -55,12 +54,6 @@ namespace Datos
 
             }
         }
-        public DataTable llenarDataTable(MySqlCommand cmd)
-        {
-            DataTable dataTable = new DataTable();
-            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(cmd);
-            mySqlDataAdapter.Fill(dataTable);
-            return dataTable;
-        }
+
     }
 }

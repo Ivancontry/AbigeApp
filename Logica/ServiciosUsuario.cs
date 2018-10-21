@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class LogicaCliente
+    public class ServiciosUsuario
     {
 
     }

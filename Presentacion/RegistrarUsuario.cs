@@ -16,8 +16,8 @@ namespace Presentacion
 {
     public partial class RegistrarUsuario : Form
     {
-        LogicaCliente logicaCliente = new LogicaCliente();
-        Clientes clientes = new Clientes();
+        ServiciosUsuario logicaCliente = new ServiciosUsuario();
+        Usuarios clientes = new Usuarios();
         ContextMenuStrip blankContextMenu = new ContextMenuStrip();
         public RegistrarUsuario()
         {

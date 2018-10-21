@@ -9,10 +9,10 @@ using Entidades;
 namespace Logica
 {
     
-    public class LogicaDispositivo
+    public class ServiciosDispositivo
     {
-        DatosDispositivo datosDispositivo = new DatosDispositivo();
-        public int registraPosicionActual(Posicion posicion) {            
+        RepositorioDispositivos datosDispositivo = new RepositorioDispositivos();
+        public int registraPosicionActual(Dispositivos posicion) {            
             return datosDispositivo.registrarPosicionActual(posicion);
         }
         public DataTable listadoPosicionDispositivo() {
