@@ -19,17 +19,25 @@ namespace Datos
             {
                 if (conectar())
                 {
-                    
-                    cmd = new MySqlCommand("registrarPosicionActual");
+                    MySqlTransaction transaction = connection.BeginTransaction();
+                    cmd = new MySqlCommand("registrarPosicionActual",connection,transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
                     cmd.Parameters.Add(new MySqlParameter("xlatitud", posicion.latitud));
                     cmd.Parameters.Add(new MySqlParameter("xlongitud", posicion.longitud));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", "Dentro"));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", posicion.estadoDispositivo));
                     cmd.Parameters.Add(new MySqlParameter("xidDispositivo", posicion.idDispositivo));
                     cmd.Parameters.Add(new MySqlParameter("xestadoBateria", posicion.estadoBateria));
 
-                    return cmd.ExecuteNonQuery();
+                    if (cmd.ExecuteNonQuery() >= 0)
+                    {
+                        transaction.Commit();
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
 
                 }
                 else

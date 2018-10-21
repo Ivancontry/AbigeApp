@@ -20,8 +20,7 @@ namespace Entidades
         {
             this.idDispositivo = idDispositivo;
             this.latitud = convertirCoordenada(latitud);
-            this.longitud =convertirCoordenada(longitud);
-            this.estadoDispositivo = "Dentro";
+            this.longitud =convertirCoordenada(longitud);            
             this.estadoBateria = estadoBateria;
             this.novedadDispositivo = novedadDispositivo;
         }
@@ -30,8 +29,8 @@ namespace Entidades
             //primero se separa la coordenada en un vector y se convierte a double
             string[] coordenadaSeparada = coordenada.Split(',');
             Random random = new Random();
-            double paraminuto = random.NextDouble() ;
-            double parasegundo = random.NextDouble()/100;
+            double paraminuto = random.NextDouble()/10000 ;
+            double parasegundo = random.NextDouble()/100000;
             double coordenadaCalculada = Double.Parse( coordenadaSeparada[0]) + (Double.Parse(coordenadaSeparada[1]) / 60+paraminuto)
                 + ((Double.Parse(coordenadaSeparada[2].Replace(".", ",")) /3600)+parasegundo);
             if (coordenadaSeparada[3].Equals("N")|| coordenadaSeparada[3].Equals("E"))
