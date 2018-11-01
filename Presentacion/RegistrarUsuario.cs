@@ -11,12 +11,11 @@ using Logica;
 using Entidades;
 
 
-
 namespace Presentacion
 {
     public partial class RegistrarUsuario : Form
     {
-        ServiciosUsuario logicaCliente = new ServiciosUsuario();
+        ServiciosUsuario serviciosUsuario = new ServiciosUsuario();        
         Usuarios clientes = new Usuarios();
         ContextMenuStrip blankContextMenu = new ContextMenuStrip();
         public RegistrarUsuario()
@@ -83,6 +82,10 @@ namespace Presentacion
         private void txtTelefono_KeyDown(object sender, KeyEventArgs e)
         {
             noPegar(e);
+        }
+        public cargarMenu(string rol)
+        {
+
         }
     }
 }

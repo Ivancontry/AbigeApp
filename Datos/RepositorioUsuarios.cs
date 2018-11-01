@@ -9,7 +9,7 @@ using Entidades;
 
 namespace Datos
 {
-    class RepositorioUsuarios : Utilidades
+    public class RepositorioUsuarios : Utilidades
     {
         public String registrarOActualizarCliente(Usuarios usuario)
         {
@@ -56,6 +56,19 @@ namespace Datos
             {
                 desConectar();
             }
+        }
+        public DataTable cargarMenu(string rol)
+        {
+            DataTable menus =  cargarRegistros("cargarMenu");
+            DataTable menuRol = new DataTable();
+            foreach (DataRow item in menus.Rows)
+            {
+                if (item["rol"].ToString().Equals(rol))
+                {
+                    menuRol.Rows.Add(item);
+                }
+            }
+            return menuRol;
         }
     }
 }
