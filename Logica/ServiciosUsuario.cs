@@ -23,6 +23,7 @@ namespace Logica
         }
         private Usuarios mapearUsuario(DataRow row)
         {
+
             Usuarios usuarios = new Usuarios();
             usuarios.identificacion = row["IDENTIFICACION"].ToString();
             usuarios.nombres = row["NOMBRES"].ToString();
