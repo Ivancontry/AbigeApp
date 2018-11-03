@@ -16,7 +16,11 @@ namespace Presentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new RegistrarDispositivo());          
+=======
+            Application.Run(new frmGestionUsuarios());          
+>>>>>>> ramaDuvan
         }   
     }
 }

@@ -118,7 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+<<<<<<< HEAD
   <data name="Sin título" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sin título.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+=======
+  <data name="icons8_Search_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\icons8_Search_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_Create_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\icons8_Create_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_Broom_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\icons8_Broom_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_Edit_Property_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\icons8_Edit_Property_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+>>>>>>> ramaDuvan
   </data>
 </root>

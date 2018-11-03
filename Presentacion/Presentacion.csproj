@@ -35,7 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
+<<<<<<< HEAD
       <HintPath>D:\Bunifu_UI_v1.5.3.dll</HintPath>
+=======
+      <HintPath>E:\Duvan\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+>>>>>>> ramaDuvan
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
@@ -44,8 +48,11 @@
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+<<<<<<< HEAD
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+=======
+>>>>>>> ramaDuvan
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -82,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="RegistrarDispositivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,10 +103,13 @@
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrarUsuario.cs">
+=======
+    <Compile Include="frmGestionUsuarios.cs">
+>>>>>>> ramaDuvan
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarUsuario.Designer.cs">
-      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    <Compile Include="frmGestionUsuarios.Designer.cs">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +133,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="RegistrarDispositivo.resx">
       <DependentUpon>RegistrarDispositivo.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,13 +142,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="frmGestionUsuarios.resx">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+>>>>>>> ramaDuvan
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\Sin título.png" />
+=======
+    <None Include="Resource\icons8_Search_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\icons8_Create_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\icons8_Broom_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\icons8_Edit_Property_32.png" />
+>>>>>>> ramaDuvan
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
