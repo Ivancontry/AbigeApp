@@ -11,7 +11,7 @@ namespace Datos
 {
     public class RepositorioUsuarios : Utilidades
     {
-        public String registrarOActualizarCliente(Usuarios usuario)
+        public String registrarOActualizarUsuario(Usuarios usuario)
         {
             try
             {
@@ -19,19 +19,19 @@ namespace Datos
                 {
                     MySqlTransaction transaction = connection.BeginTransaction();
 
-                    cmd = new MySqlCommand("registrarOActualizarCliente", connection, transaction);
+                    cmd = new MySqlCommand("registrarOActulizarUsuario", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new MySqlParameter("xidentificacion", usuario.identificacion));
-                    cmd.Parameters.Add(new MySqlParameter("xnombres", usuario.nombres));
-                    cmd.Parameters.Add(new MySqlParameter("xprimerApellido", usuario.primerApellido));
-                    cmd.Parameters.Add(new MySqlParameter("xsegundoApellido", usuario.segundoApellido));
-                    cmd.Parameters.Add(new MySqlParameter("xrol", usuario.rol));
-                    cmd.Parameters.Add(new MySqlParameter("xemail", usuario.email));
-                    cmd.Parameters.Add(new MySqlParameter("xtelefono", usuario.telefono));
-                    cmd.Parameters.Add(new MySqlParameter("xdireccion", usuario.direccion));
-                    cmd.Parameters.Add(new MySqlParameter("xestado", usuario.estado));
-                    cmd.Parameters.Add(new MySqlParameter("ximagen", usuario.imagen));
-                    cmd.Parameters.Add(new MySqlParameter("xclave", usuario.clave));                    
+                    cmd.Parameters.Add(new MySqlParameter("XIDENTIFICACION", usuario.identificacion));
+                    cmd.Parameters.Add(new MySqlParameter("XNOMBRES", usuario.nombres));
+                    cmd.Parameters.Add(new MySqlParameter("XPRIMER_APELLIDO", usuario.primerApellido));
+                    cmd.Parameters.Add(new MySqlParameter("XSEGUNDO_APELLIDO", usuario.segundoApellido));
+                    cmd.Parameters.Add(new MySqlParameter("XROL", usuario.rol));
+                    cmd.Parameters.Add(new MySqlParameter("XID_FINCA", usuario.idfinca));
+                    cmd.Parameters.Add(new MySqlParameter("XEMAIL", usuario.email));
+                    cmd.Parameters.Add(new MySqlParameter("XTELEFONO", usuario.telefono));
+                    cmd.Parameters.Add(new MySqlParameter("XDIRECCION", usuario.direccion));
+                    cmd.Parameters.Add(new MySqlParameter("XESTADO", usuario.estado));                    
+                    cmd.Parameters.Add(new MySqlParameter("XCLAVE", usuario.clave));                    
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
