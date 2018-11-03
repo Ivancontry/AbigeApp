@@ -63,11 +63,6 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-<<<<<<< HEAD
-        internal static System.Drawing.Bitmap Sin_título {
-            get {
-                object obj = ResourceManager.GetObject("Sin título", resourceCulture);
-=======
         internal static System.Drawing.Bitmap icons8_Broom_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Broom_32", resourceCulture);
@@ -101,7 +96,6 @@ namespace Presentacion.Properties {
         internal static System.Drawing.Bitmap icons8_Search_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Search_32", resourceCulture);
->>>>>>> ramaDuvan
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
