@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>E:\Duvan\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>D:\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
@@ -44,17 +44,23 @@
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapa.cs">
@@ -76,11 +82,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionUsuarios.cs">
+    <Compile Include="RegistrarDispositivo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionUsuarios.Designer.cs">
-      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    <Compile Include="RegistrarDispositivo.Designer.cs">
+      <DependentUpon>RegistrarDispositivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarMantenimiento.Designer.cs">
+      <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarUsuario.Designer.cs">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -104,24 +122,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionUsuarios.resx">
-      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarDispositivo.resx">
+      <DependentUpon>RegistrarDispositivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarMantenimiento.resx">
+      <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarUsuario.resx">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resource\icons8_Search_32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resource\icons8_Create_32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resource\icons8_Broom_32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resource\icons8_Edit_Property_32.png" />
+    <None Include="Resources\Sin título.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

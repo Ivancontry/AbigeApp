@@ -63,39 +63,9 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Broom_32 {
+        internal static System.Drawing.Bitmap Sin_título {
             get {
-                object obj = ResourceManager.GetObject("icons8_Broom_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_Create_32 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_Create_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_Edit_Property_32 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_Edit_Property_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_Search_32 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_Search_32", resourceCulture);
+                object obj = ResourceManager.GetObject("Sin título", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
