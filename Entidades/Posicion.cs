@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Dispositivos
+    public class Posicion
     {
         public string idDispositivo { get; set; }
         public double latitud { get; set; }
@@ -15,8 +15,8 @@ namespace Entidades
         public string estadoDispositivo { get; set; } //primeramente manual ya que no sabemos como validar que este adentro :V. Ahora si se sabe XD
         public string estadoBateria { get; set; }
         public int novedadDispositivo { get; set; }
-        public Dispositivos() { }
-        public Dispositivos(string idDispositivo,string latitud, string longitud,string altitud,string estadoBateria,int novedadDispositivo)
+        public Posicion() { }
+        public Posicion(string idDispositivo,string latitud, string longitud,string altitud,string estadoBateria,int novedadDispositivo)
         {
             this.idDispositivo = idDispositivo;
             this.latitud = convertirCoordenada(latitud);

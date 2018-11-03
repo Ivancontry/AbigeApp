@@ -84,5 +84,10 @@ namespace Presentacion
         {
             noPegar(e);
         }
+
+        private void txtIdentificacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
