@@ -103,7 +103,7 @@ namespace Presentacion
             polyOverlay.Polygons.Add(polygon);
             //*******************            
         }
-        private void insertarMarcador(Dispositivos dispositivo) {
+        private void insertarMarcador(Posicion dispositivo) {
             List<GMapOverlay> lista = new List<GMapOverlay>();
             lista = gMapControl1.Overlays.ToList();
             gMapControl1.Overlays.RemoveAt(lista.FindIndex(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
@@ -145,7 +145,7 @@ namespace Presentacion
             int confirmacionBaseDeDatos;//1 o -1
             object datosIn = new object();
             datosIn = serialPort1.ReadLine();
-            Dispositivos dispositivo;
+            Posicion dispositivo;
             string cadena = datosIn.ToString();
 
             if (!cadena.Trim().Equals(""))
@@ -154,7 +154,7 @@ namespace Presentacion
                 cadena = cadena.TrimEnd();
                 cadena = cadena.TrimEnd('}');                    
                 string[] datos = cadena.Split(',');
-                dispositivo = new Dispositivos(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
+                dispositivo = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
                     datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
                 insertarMarcador(dispositivo);
                 latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);

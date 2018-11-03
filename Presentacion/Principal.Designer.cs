@@ -83,7 +83,6 @@
             // 
             this.menuVertical.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.menuVertical.Controls.Add(this.panelBtnOpciones);
-            this.menuVertical.Controls.Add(this.panelDispositivo);
             this.menuVertical.Controls.Add(this.btnOpciones);
             this.menuVertical.Controls.Add(this.panel1);
             this.menuVertical.Controls.Add(this.btnGestionDispositivo);
@@ -98,7 +97,7 @@
             // panelBtnOpciones
             // 
             this.panelBtnOpciones.BackColor = System.Drawing.Color.Lime;
-            this.panelBtnOpciones.Location = new System.Drawing.Point(12, 202);
+            this.panelBtnOpciones.Location = new System.Drawing.Point(12, 164);
             this.panelBtnOpciones.Name = "panelBtnOpciones";
             this.panelBtnOpciones.Size = new System.Drawing.Size(5, 30);
             this.panelBtnOpciones.TabIndex = 4;
@@ -107,7 +106,7 @@
             // 
             this.panelDispositivo.Controls.Add(this.panel12);
             this.panelDispositivo.Controls.Add(this.button10);
-            this.panelDispositivo.Location = new System.Drawing.Point(12, 164);
+            this.panelDispositivo.Location = new System.Drawing.Point(121, 138);
             this.panelDispositivo.Name = "panelDispositivo";
             this.panelDispositivo.Size = new System.Drawing.Size(213, 38);
             this.panelDispositivo.TabIndex = 1;
@@ -138,7 +137,7 @@
             this.btnOpciones.FlatAppearance.BorderSize = 0;
             this.btnOpciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.btnOpciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpciones.Location = new System.Drawing.Point(15, 202);
+            this.btnOpciones.Location = new System.Drawing.Point(15, 164);
             this.btnOpciones.Name = "btnOpciones";
             this.btnOpciones.Size = new System.Drawing.Size(205, 30);
             this.btnOpciones.TabIndex = 3;
@@ -179,6 +178,7 @@
             // 
             this.menuContenedor.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.menuContenedor.Controls.Add(this.panelOpciones);
+            this.menuContenedor.Controls.Add(this.panelDispositivo);
             this.menuContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuContenedor.Location = new System.Drawing.Point(220, 38);
             this.menuContenedor.Name = "menuContenedor";
@@ -195,7 +195,7 @@
             this.panelOpciones.Controls.Add(this.button4);
             this.panelOpciones.Controls.Add(this.panel4);
             this.panelOpciones.Controls.Add(this.button3);
-            this.panelOpciones.Location = new System.Drawing.Point(137, 223);
+            this.panelOpciones.Location = new System.Drawing.Point(135, 223);
             this.panelOpciones.Name = "panelOpciones";
             this.panelOpciones.Size = new System.Drawing.Size(213, 146);
             this.panelOpciones.TabIndex = 0;
