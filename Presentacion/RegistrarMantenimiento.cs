@@ -193,6 +193,7 @@ namespace Presentacion
         {
             if (txtCodigoDispositivo.Text == "")
             {
+                //d
                 txtCodigoDispositivo.Text = "Codigo del Dispositivo";
             }
         }
