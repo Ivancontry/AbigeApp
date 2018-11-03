@@ -149,6 +149,7 @@
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(100, 20);
             this.txtIdentificacion.TabIndex = 12;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
             this.txtIdentificacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdentificacion_KeyDown);
             this.txtIdentificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdentificacion_KeyPress);
             // 
@@ -255,7 +256,7 @@
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
-            // RegistrarEmpleado
+            // RegistrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -263,7 +264,7 @@
             this.ClientSize = new System.Drawing.Size(694, 367);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "RegistrarEmpleado";
+            this.Name = "RegistrarUsuario";
             this.Text = "RegistrarEmpleado";
             this.Load += new System.EventHandler(this.RegistrarEmpleado_Load);
             this.groupBox1.ResumeLayout(false);
