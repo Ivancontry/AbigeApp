@@ -94,7 +94,7 @@
     <Compile Include="RegistrarMantenimiento.Designer.cs">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarUsuario.cs">
+    
     <Compile Include="frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,8 +129,7 @@
     <EmbeddedResource Include="RegistrarMantenimiento.resx">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrarUsuario.resx">
-      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    
     <EmbeddedResource Include="frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
