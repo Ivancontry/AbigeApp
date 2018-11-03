@@ -223,7 +223,7 @@ namespace Presentacion
                 dispositivo.estado = cbxEstado.Text;
                 dispositivo.fecha = fecha.Value;
                 dispositivo.bateria = float.Parse(txtBateria.Text);
-                logicaDispositivo.actualizarDispositivo(dispositivo);
+                logicaDispositivo.actulizarDispositivo(dispositivo);
 
             }
         }

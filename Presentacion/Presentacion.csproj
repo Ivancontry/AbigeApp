@@ -35,7 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
+<<<<<<<<< Temporary merge branch 1
+      <HintPath>D:\Bunifu_UI_v1.5.3.dll</HintPath>
+=========
       <HintPath>E:\Duvan\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+>>>>>>>>> Temporary merge branch 2
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
@@ -44,8 +48,11 @@
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+<<<<<<<<< Temporary merge branch 1
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+=========
+>>>>>>>>> Temporary merge branch 2
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -82,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<<<< Temporary merge branch 1
     <Compile Include="RegistrarDispositivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,8 +102,10 @@
     <Compile Include="RegistrarMantenimiento.Designer.cs">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </Compile>
-    
+    <Compile Include="RegistrarUsuario.cs">
+=========
     <Compile Include="frmGestionUsuarios.cs">
+>>>>>>>>> Temporary merge branch 2
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmGestionUsuarios.Designer.cs">
@@ -123,21 +133,28 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+<<<<<<<<< Temporary merge branch 1
     <EmbeddedResource Include="RegistrarDispositivo.resx">
       <DependentUpon>RegistrarDispositivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarMantenimiento.resx">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    
+    <EmbeddedResource Include="RegistrarUsuario.resx">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+=========
     <EmbeddedResource Include="frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+>>>>>>>>> Temporary merge branch 2
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<<<< Temporary merge branch 1
+    <None Include="Resources\Sin título.png" />
+=========
     <None Include="Resource\icons8_Search_32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\icons8_Edit_Property_32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Sin título.png" />
+>>>>>>>>> Temporary merge branch 2
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
