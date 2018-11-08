@@ -51,6 +51,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultarMantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarMantenimientos.Designer.cs">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +119,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConsultarMantenimientos.resx">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapa.resx">
       <DependentUpon>Mapa.cs</DependentUpon>
     </EmbeddedResource>

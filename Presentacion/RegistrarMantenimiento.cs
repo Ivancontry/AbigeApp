@@ -96,15 +96,24 @@ namespace Presentacion
                     fecha.Enabled = false;
                     txtDescripcion.Text = mantenimientos.Rows[0]["descripcion"].ToString();
                     cbxEstadoMantenimiento.SelectedIndex = int.Parse(mantenimientos.Rows[0]["estadoMantenimiento"].ToString());
+                   
                     if (cbxEstadoMantenimiento.SelectedIndex == 2 && int.Parse(mantenimientos.Rows[0]["estadoDispositivo"].ToString()) == 1)
                     {
                         cbxEstadoDispositivo.SelectedIndex = 0;
                     }
-                    else {
-                        cbxEstadoDispositivo.SelectedIndex = 1;
-                    }                      
+                    else
+                    {
+                        if (cbxEstadoMantenimiento.SelectedIndex == 2 && int.Parse(mantenimientos.Rows[0]["estadoDispositivo"].ToString()) == 2)
+                        {
+                            cbxEstadoDispositivo.SelectedIndex = 1;
+                        }
+                        else {
+                            cbxEstadoDispositivo.SelectedIndex = int.Parse(mantenimientos.Rows[0]["estadoDispositivo"].ToString());
+                        }
                         
-                        DateTime data;
+                    }
+
+                    DateTime data;
                         data= DateTime.ParseExact(mantenimientos.Rows[0]["fecha"].ToString().Substring(0,10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         fecha.Value = data;
                   
@@ -127,7 +136,25 @@ namespace Presentacion
             }
            
         }
+        public char convertirEstadoDispositivo(char estMantenimiento, int estDispositivo) {
+            if (estMantenimiento.Equals('2') && estDispositivo == 0)
+            {
+                return '1';
+            }
+            else
+            {
 
+                if (estMantenimiento.Equals('2') && estDispositivo == 1)
+                {
+                    return '2';
+                }
+                else
+                {
+                    return '0';
+                }
+            }
+
+        }
         private void bnfRegistrar_Click(object sender, EventArgs e)
         {
             if (validarIdDispositivo() == 1 && validarDescripcion()==1  ) {
@@ -135,11 +162,13 @@ namespace Presentacion
                 mantenimientos.descripcion = txtDescripcion.Text;
                 mantenimientos.fecha = fecha.Value.Date;
                 mantenimientos.estadoMantenimiento =char.Parse(cbxEstadoMantenimiento.SelectedIndex.ToString());
-                mantenimientos.estadoDispositivo = char.Parse(cbxEstadoDispositivo.SelectedIndex.ToString());
-
+                mantenimientos.estadoDispositivo = convertirEstadoDispositivo(mantenimientos.estadoMantenimiento, cbxEstadoDispositivo.SelectedIndex);
+               
+                MessageBox.Show(mantenimientos.estadoDispositivo.ToString());
                 if (logicaMantenimientos.registraMantenimiento(mantenimientos) == 1)
                 {
                     MessageBox.Show("Operacion Existosa");
+                    estadoCamposInicial();
                 }
                 else {
                     MessageBox.Show("Error en la Operacion");
@@ -160,17 +189,8 @@ namespace Presentacion
                 mantenimientos.descripcion = txtDescripcion.Text;
                 mantenimientos.fecha = DateTime.Now;
                 mantenimientos.estadoMantenimiento = char.Parse(cbxEstadoMantenimiento.SelectedIndex.ToString());
-
-                if (mantenimientos.estadoMantenimiento.Equals('2') && cbxEstadoDispositivo.SelectedIndex == 0)
-                {
-                    mantenimientos.estadoDispositivo = '1';
-                }
-                else
-                {
-                    mantenimientos.estadoDispositivo = '2';
-                }
-                
-
+                mantenimientos.estadoDispositivo = convertirEstadoDispositivo(mantenimientos.estadoMantenimiento, cbxEstadoDispositivo.SelectedIndex);
+            
                 if (logicaMantenimientos.actualizarMantenimiento(mantenimientos) == 1)
                 {
                     MessageBox.Show("Operacion Existosa");

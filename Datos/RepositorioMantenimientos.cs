@@ -25,7 +25,7 @@ namespace Datos
                     cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.fecha));
                     cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.descripcion));
                     cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.estadoMantenimiento));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoMantenimiento));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoDispositivo));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
@@ -174,6 +174,9 @@ namespace Datos
             }
         }
 
-       
+        public DataTable mostrarMantenimientos()
+        {
+            return cargarRegistros("mostrarMantenimientos");
+        }
     }
 }

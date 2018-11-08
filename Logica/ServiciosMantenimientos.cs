@@ -20,7 +20,9 @@ namespace Logica
         {
             return datosMantenimientos.actualizarMantenimientos(mantenientos);
         }
-
+        public DataTable mostrarMantenimientos() {
+            return datosMantenimientos.mostrarMantenimientos();
+        }
         public DataTable buscarDispositvoMantenientos(string idDispositivo) {
             return datosMantenimientos.buscarDispoitivoMantenimiento(idDispositivo);
         }
