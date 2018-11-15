@@ -196,7 +196,10 @@ namespace Datos
             }
         }
 
-
+        public DataTable cargarPerimetros()
+        {
+            return cargarRegistros("cargarPerimetros");
+        }
 
 
     }

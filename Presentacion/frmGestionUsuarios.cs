@@ -80,8 +80,12 @@ namespace Presentacion
                 txtNombre.Text = usuario.nombres;
                 txtPrimerApellido.Text = usuario.primerApellido;
                 txtSegundoApellido.Text = usuario.segundoApellido;
-                txtTelefono.Text = usuario.telefono;                
-                
+                txtTelefono.Text = usuario.telefono;
+                txtRepetirPassword.Text = usuario.clave;
+
+                txtContraseña.isPassword = true;
+                txtRepetirPassword.isPassword = true;
+
                 if (usuario.estado == 'A')
                 {
                     ckbEstado.Checked = true;
@@ -96,6 +100,9 @@ namespace Presentacion
         }
         private void limpiarCampos(GroupBox groupBox)
         {
+            errorContraseñas.Clear();
+            errorProvider1.Clear();
+            txtIdentificacion.Text = "";
             foreach (Control c in groupBox.Controls)
             {
                 if (c is Bunifu.Framework.UI.BunifuMaterialTextbox)
@@ -191,6 +198,11 @@ namespace Presentacion
                     return;
                 }
             }
+            if (txtContraseña.Text != txtRepetirPassword.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             String mensaje = serviciosUsuario.GuardarUsuarios(usuario);
 
             if (mensaje == "exito")
@@ -214,6 +226,15 @@ namespace Presentacion
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             registrarOActualizarEmpleado();
+        }
+
+        private void txtContraseña_Leave(object sender, EventArgs e)
+        {
+            errorContraseñas.Clear();
+            if (txtContraseña.Text != txtRepetirPassword.Text)
+            {
+                errorContraseñas.SetError(txtRepetirPassword,"Las contraseñas no coinciden");
+            }
         }
     }
 }
