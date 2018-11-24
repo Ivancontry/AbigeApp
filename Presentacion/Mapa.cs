@@ -47,12 +47,7 @@ namespace Presentacion
             cargarMapa();
             cargarPerimetros();
             cargarListaMarcadores();
-            //conectarPuerto();
-            gmFinca.Zoom = gmFinca.Zoom + 1;
-            gmFinca.Zoom = gmFinca.Zoom - 1;
-            
-            gmFinca.Refresh();
-            timer1.Enabled = true;
+            conectarPuerto();
             
         }
         public void cargarMapa() {
@@ -96,7 +91,7 @@ namespace Presentacion
         {
             DataTable listaPerimetros = new DataTable();
             listaPerimetros = logicaDispositivo.cargarPerimetros();
-
+            poligonos.Clear();
             foreach (DataRow perimetro in listaPerimetros.Rows)
             {
                 cargarPerimetrosCoordenadas(perimetro["idperimetro"].ToString());                
@@ -116,15 +111,15 @@ namespace Presentacion
             polygon = new GMapPolygon(points, "Poligono " + perimetro);
             polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
             polygon.Stroke = new Pen(Color.Red, 1);
-            gmFinca.Overlays.Add(markerOverlay);
             markerOverlay.Polygons.Add(polygon);
+            gmFinca.Overlays.Add(markerOverlay);
             poligonos.Add(polygon);
         }
 
         private void insertarMarcador(Posicion dispositivo) {
             List<GMapOverlay> lista = new List<GMapOverlay>();
             lista = gmFinca.Overlays.ToList();
-            gmFinca.Overlays.RemoveAt(lista.FindIndex(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
+            gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
             
             //******************************************************
             /*foreach (var item in gMapControl1.Overlays.ToList())
@@ -165,7 +160,13 @@ namespace Presentacion
             datosIn = serialPort1.ReadLine();
             Posicion dispositivo;
             string cadena = datosIn.ToString();
-
+            if (gmFinca.InvokeRequired)
+            {
+                gmFinca.Invoke(new MethodInvoker(delegate
+                {
+                    gmFinca.Zoom += 0.08;
+                }));
+            }
             if (!cadena.Trim().Equals(""))
             {
                 cadena = cadena.TrimStart('{');
@@ -174,9 +175,12 @@ namespace Presentacion
                 string[] datos = cadena.Split(',');
                 dispositivo = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
                     datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
+
+                
                 insertarMarcador(dispositivo);
                 latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
-                if(polygon.IsInside(latLng)){
+                if(poligonos.Find(x => x.IsInside(latLng))!= null)
+                {
                     dispositivo.estadoDispositivo = "Dentro";
                 }
                 else
@@ -187,63 +191,30 @@ namespace Presentacion
                 if (confirmacionBaseDeDatos == -1) {
                     MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }               
-                contadorDeEventos++;
+                contadorDeEventos++;                
                 //------------------------------------------------------
                 stop = new TimeSpan(DateTime.Now.Ticks);
                 mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
                 promedio += stop.Subtract(start).TotalMilliseconds;
+                
             }
+            if (gmFinca.InvokeRequired)
+            {
+                gmFinca.Invoke(new MethodInvoker(delegate
+                {
+                    gmFinca.Zoom-=0.08;
+                    gmFinca.Refresh();
+                }));
+            }
+            
+            //MessageBox.Show(mostrarMesaje);
         }
                     
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(mostrarMesaje);
-            mostrarMesaje = "";
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show((promedio / contadorDeEventos).ToString() +"---"+ contadorDeEventos.ToString());
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            gmFinca.Zoom = gmFinca.Zoom + 1;
-
-            gmFinca.Zoom = gmFinca.Zoom - 1;
-        }
-
-        private void gMapControl1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            //gMapControl1.Zoom = 17.5;
-
-        }
-
-        private void gmFinca_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
-        {
-            MessageBox.Show("Entro");
-            poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));
-            item.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));
-        }
-
-        private void gmFinca_OnPolygonEnter(GMapPolygon item)
-        {
-            MessageBox.Show("Entro2");
-            poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));
-            item.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));
-        }
-
+        
         private void gmFinca_MouseClick(object sender, MouseEventArgs e)
         {
-            gmFinca.Zoom = gmFinca.Zoom + 2;
-            
-            
+           /*
             if (sender is GMapControl)
             {
                 var tmp = sender as GMapControl;//Se crea una ariable temporal para un gmapcontrol                
@@ -263,22 +234,8 @@ namespace Presentacion
                     btnDispositivos.Text = "Dispositivos\n" + 0;
                 }
             }            
-            gmFinca.Zoom = gmFinca.Zoom - 2;
+           */
         }
 
-        private void gmFinca_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void gmFinca_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void gmFinca_OnRouteClick(GMapRoute item, MouseEventArgs e)
-        {
-
-        }
     }
 }
