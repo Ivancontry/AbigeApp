@@ -45,6 +45,7 @@ namespace Presentacion
             bnfRegistrar.Enabled = false;
             cbxPerimetro.SelectedIndex = 0;
             cbxEstado.SelectedIndex = 0;
+            txtCodigoDispositivo.Text = "";
             txtCodigoAnimal.Text = "";
             txtBateria.Text = "";
             fecha.Value = DateTime.Now;
@@ -152,7 +153,7 @@ namespace Presentacion
             }
         }
 
-        private void bnfRegsitrar_Click(object sender, EventArgs e)
+        private void bnfBuscar_Click(object sender, EventArgs e)
         {
             DataTable dispositivo = new DataTable();
             dispositivo = logicaDispositivo.buscarDispositvo(txtCodigoDispositivo.Text);
@@ -162,6 +163,14 @@ namespace Presentacion
                 {
                     bnfRegistrar.Enabled = false;
                     bnfActualizar.Enabled = true;
+                    txtCodigoAnimal.Text= dispositivo.Rows[0]["idanimal"].ToString();
+                    cbxPerimetro.SelectedIndex = cbxPerimetro.FindString(dispositivo.Rows[0]["idperimetro"].ToString());
+                    cbxEstado.SelectedIndex = cbxEstado.FindString(dispositivo.Rows[0]["estado"].ToString());
+                    txtBateria.Text = dispositivo.Rows[0]["bateria"].ToString();
+                    DateTime data;
+                    data = DateTime.ParseExact(dispositivo.Rows[0]["fecha"].ToString().Substring(0, 10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    fecha.Value = data;
+
                     MessageBox.Show("Dispositivo Encontrado");
                     txtCodigoDispositivo.Enabled = false;
                 }
@@ -208,7 +217,14 @@ namespace Presentacion
                 dispositivo.estado = cbxEstado.Text;
                 dispositivo.fecha = fecha.Value;
                 dispositivo.bateria = float.Parse(txtBateria.Text);
-                logicaDispositivo.registrarDispositivo(dispositivo);
+                if (logicaDispositivo.registrarDispositivo(dispositivo) == 1)
+                {
+                    MessageBox.Show("Operacion Exitosa");
+                    cargarCampos();
+                }
+                else {
+                    MessageBox.Show("Error al realizar en registro");
+                }
 
             }
         }
@@ -223,7 +239,15 @@ namespace Presentacion
                 dispositivo.estado = cbxEstado.Text;
                 dispositivo.fecha = fecha.Value;
                 dispositivo.bateria = float.Parse(txtBateria.Text);
-                logicaDispositivo.actulizarDispositivo(dispositivo);
+
+                if (logicaDispositivo.actulizarDispositivo(dispositivo)==1)
+                {
+                    MessageBox.Show("Operacion Exitosa");
+                    cargarCampos();
+                }
+                else {
+                    MessageBox.Show("Error al realizar en registro");
+                }
 
             }
         }

@@ -48,7 +48,7 @@
             this.epEstado = new System.Windows.Forms.ErrorProvider(this.components);
             this.epBateria = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbxPerimetro = new System.Windows.Forms.ComboBox();
-            this.bnfRegsitrar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bnfBuscar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -270,7 +270,7 @@
             // 
             // bnfRegistrar
             // 
-            this.bnfRegistrar.Activecolor = System.Drawing.Color.White;
+            this.bnfRegistrar.Activecolor = System.Drawing.Color.SeaGreen;
             this.bnfRegistrar.BackColor = System.Drawing.Color.White;
             this.bnfRegistrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bnfRegistrar.BorderRadius = 0;
@@ -335,40 +335,39 @@
             this.cbxPerimetro.TabIndex = 22;
             this.cbxPerimetro.SelectedIndexChanged += new System.EventHandler(this.cbxPerimetro_SelectedIndexChanged);
             // 
-            // bnfRegsitrar
+            // bnfBuscar
             // 
-            this.bnfRegsitrar.Activecolor = System.Drawing.Color.White;
-            this.bnfRegsitrar.BackColor = System.Drawing.Color.White;
-            this.bnfRegsitrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bnfRegsitrar.BorderRadius = 0;
-            this.bnfRegsitrar.ButtonText = "Buscar";
-            this.bnfRegsitrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bnfRegsitrar.DisabledColor = System.Drawing.Color.Gray;
-            this.bnfRegsitrar.Iconcolor = System.Drawing.Color.Transparent;
-            this.bnfRegsitrar.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfRegsitrar.Iconimage")));
-            this.bnfRegsitrar.Iconimage_right = null;
-            this.bnfRegsitrar.Iconimage_right_Selected = null;
-            this.bnfRegsitrar.Iconimage_Selected = null;
-            this.bnfRegsitrar.IconMarginLeft = 0;
-            this.bnfRegsitrar.IconMarginRight = 0;
-            this.bnfRegsitrar.IconRightVisible = true;
-            this.bnfRegsitrar.IconRightZoom = 0D;
-            this.bnfRegsitrar.IconVisible = true;
-            this.bnfRegsitrar.IconZoom = 60D;
-            this.bnfRegsitrar.IsTab = false;
-            this.bnfRegsitrar.Location = new System.Drawing.Point(284, 25);
-            this.bnfRegsitrar.Name = "bnfRegsitrar";
-            this.bnfRegsitrar.Normalcolor = System.Drawing.Color.White;
-            this.bnfRegsitrar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
-            this.bnfRegsitrar.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bnfRegsitrar.selected = false;
-            this.bnfRegsitrar.Size = new System.Drawing.Size(122, 33);
-            this.bnfRegsitrar.TabIndex = 23;
-            this.bnfRegsitrar.Text = "Buscar";
-            this.bnfRegsitrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bnfRegsitrar.Textcolor = System.Drawing.Color.Black;
-            this.bnfRegsitrar.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnfRegsitrar.Click += new System.EventHandler(this.bnfRegsitrar_Click);
+            this.bnfBuscar.Activecolor = System.Drawing.Color.White;
+            this.bnfBuscar.BackColor = System.Drawing.Color.White;
+            this.bnfBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bnfBuscar.BorderRadius = 0;
+            this.bnfBuscar.ButtonText = "Buscar";
+            this.bnfBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bnfBuscar.DisabledColor = System.Drawing.Color.Gray;
+            this.bnfBuscar.Iconcolor = System.Drawing.Color.Transparent;
+            this.bnfBuscar.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfBuscar.Iconimage")));
+            this.bnfBuscar.Iconimage_right = null;
+            this.bnfBuscar.Iconimage_right_Selected = null;
+            this.bnfBuscar.Iconimage_Selected = null;
+            this.bnfBuscar.IconMarginLeft = 0;
+            this.bnfBuscar.IconMarginRight = 0;
+            this.bnfBuscar.IconRightVisible = true;
+            this.bnfBuscar.IconRightZoom = 0D;
+            this.bnfBuscar.IconVisible = true;
+            this.bnfBuscar.IconZoom = 60D;
+            this.bnfBuscar.IsTab = false;
+            this.bnfBuscar.Location = new System.Drawing.Point(284, 25);
+            this.bnfBuscar.Name = "bnfBuscar";
+            this.bnfBuscar.Normalcolor = System.Drawing.Color.White;
+            this.bnfBuscar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
+            this.bnfBuscar.OnHoverTextColor = System.Drawing.Color.Black;
+            this.bnfBuscar.selected = false;
+            this.bnfBuscar.Size = new System.Drawing.Size(122, 33);
+            this.bnfBuscar.TabIndex = 23;
+            this.bnfBuscar.Text = "Buscar";
+            this.bnfBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bnfBuscar.Textcolor = System.Drawing.Color.Black;
+            this.bnfBuscar.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // cbxEstado
             // 
@@ -410,7 +409,7 @@
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.bunifuCustomLabel5);
             this.Controls.Add(this.cbxEstado);
-            this.Controls.Add(this.bnfRegsitrar);
+            this.Controls.Add(this.bnfBuscar);
             this.Controls.Add(this.cbxPerimetro);
             this.Controls.Add(this.grbBotones);
             this.Controls.Add(this.bunifuCustomLabel4);
@@ -455,10 +454,10 @@
         private System.Windows.Forms.ComboBox cbxPerimetro;
         private Bunifu.Framework.UI.BunifuFlatButton bnfLimpiar;
         private Bunifu.Framework.UI.BunifuFlatButton bnfActualizar;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfRegistrar;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfRegsitrar;
+        private Bunifu.Framework.UI.BunifuFlatButton bnfBuscar;
         private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.DateTimePicker fecha;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private Bunifu.Framework.UI.BunifuFlatButton bnfRegistrar;
     }
 }
