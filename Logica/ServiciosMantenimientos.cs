@@ -30,5 +30,13 @@ namespace Logica
         {
             return datosMantenimientos.buscarDispoitivo(idDispositivo);
         }
+        public DataTable topMantenimientos(int limite, DateTime fecha1, DateTime fecha2) {
+            return datosMantenimientos.topMantenimientos(limite, fecha1, fecha2);
+                 
+        }
+        public DataTable buscarHistorialDispositvoMantenimiento(string idDispositivo)
+        {
+            return datosMantenimientos.buscarHistorialDispositvoMantenimiento(idDispositivo);
+        }
     }
 }

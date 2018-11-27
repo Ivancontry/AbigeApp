@@ -85,8 +85,9 @@ namespace Presentacion
         private void bnfBuscar_Click(object sender, EventArgs e)
         {
             DataTable mantenimientos = new DataTable();
-            mantenimientos = logicaMantenimientos.buscarDispositvoMantenientos(txtCodigoDispositivo.Text);
+          
             if (validarIdDispositivo() == 1) {
+                mantenimientos = logicaMantenimientos.buscarDispositvoMantenientos(txtCodigoDispositivo.Text);
                 if (mantenimientos.Rows.Count > 0)
                 {
 
@@ -118,8 +119,9 @@ namespace Presentacion
                         fecha.Value = data;
                   
                       
-                 }
-                 else {
+                }
+                else
+                {
                     if (logicaMantenimientos.buscarDispositvo(txtCodigoDispositivo.Text).Rows.Count > 0)
                     {
                         bnfRegistrar.Enabled = true;
@@ -132,7 +134,7 @@ namespace Presentacion
                         epIdDispositivo.SetError(txtCodigoDispositivo, "Digite un Dispositivo que este registrado en el inventario");
                     }
                        
-                 }
+                }
             }
            
         }
@@ -225,6 +227,36 @@ namespace Presentacion
             {
                 txtCodigoDispositivo.Text = "";
             }
+        }
+
+        private void cbxEstadoDispositivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fecha_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigoDispositivo_OnValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
