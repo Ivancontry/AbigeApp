@@ -114,6 +114,13 @@ namespace Presentacion
             markerOverlay.Polygons.Add(polygon);
             gmFinca.Overlays.Add(markerOverlay);
             poligonos.Add(polygon);
+            
+        }
+        private void refrescarPoligonos()
+        {
+            markerOverlay.Polygons.Clear();
+            poligonos.ForEach(x => gmFinca.Overlays.Remove(x.Overlay));
+            poligonos.ForEach(x => markerOverlay.Polygons.Add(x));            
         }
 
         private void insertarMarcador(Posicion dispositivo) {
@@ -121,17 +128,6 @@ namespace Presentacion
             lista = gmFinca.Overlays.ToList();
             gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
             
-            //******************************************************
-            /*foreach (var item in gMapControl1.Overlays.ToList())
-            {
-                if (item.Id == posicion.idDispositivo)
-                {
-                    //gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
-                    gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
-                }                                   
-                
-            }
-            */
             markerOverlay = new GMapOverlay("" + dispositivo.idDispositivo);
             marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
@@ -140,8 +136,7 @@ namespace Presentacion
             //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
             marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
-            gmFinca.Overlays.Add(markerOverlay);
-            
+            gmFinca.Overlays.Add(markerOverlay);            
         }
 
         private void conectarPuerto() {
@@ -171,15 +166,15 @@ namespace Presentacion
             {
                 cadena = cadena.TrimStart('{');
                 cadena = cadena.TrimEnd();
-                cadena = cadena.TrimEnd('}');                    
+                cadena = cadena.TrimEnd('}');
                 string[] datos = cadena.Split(',');
                 dispositivo = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
                     datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
 
-                
+
                 insertarMarcador(dispositivo);
                 latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
-                if(poligonos.Find(x => x.IsInside(latLng))!= null)
+                if (poligonos.Find(x => x.IsInside(latLng)) != null)
                 {
                     dispositivo.estadoDispositivo = "Dentro";
                 }
@@ -189,9 +184,10 @@ namespace Presentacion
                 }
                 confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
                 if (confirmacionBaseDeDatos == -1) {
-                    MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }               
-                contadorDeEventos++;                
+                    MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                contadorDeEventos++;
+                serialPort1.WriteLine("hola");
                 //------------------------------------------------------
                 stop = new TimeSpan(DateTime.Now.Ticks);
                 mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
@@ -204,6 +200,7 @@ namespace Presentacion
                 {
                     gmFinca.Zoom-=0.08;
                     gmFinca.Refresh();
+                    refrescarPoligonos();
                 }));
             }
             
@@ -214,7 +211,7 @@ namespace Presentacion
         
         private void gmFinca_MouseClick(object sender, MouseEventArgs e)
         {
-           /*
+          
             if (sender is GMapControl)
             {
                 var tmp = sender as GMapControl;//Se crea una ariable temporal para un gmapcontrol                
@@ -234,7 +231,7 @@ namespace Presentacion
                     btnDispositivos.Text = "Dispositivos\n" + 0;
                 }
             }            
-           */
+           
         }
 
     }

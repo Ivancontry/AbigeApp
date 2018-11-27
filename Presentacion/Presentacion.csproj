@@ -63,6 +63,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConsultarNovedades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarNovedades.Designer.cs">
+      <DependentUpon>frmConsultarNovedades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,7 +100,6 @@
     <Compile Include="RegistrarMantenimiento.Designer.cs">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </Compile>
-    
     <Compile Include="frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +118,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmConsultarNovedades.resx">
+      <DependentUpon>frmConsultarNovedades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapa.resx">
       <DependentUpon>Mapa.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,7 +137,6 @@
     <EmbeddedResource Include="RegistrarMantenimiento.resx">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
