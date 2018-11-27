@@ -25,7 +25,7 @@ namespace Datos
                     cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.fecha));
                     cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.descripcion));
                     cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.estadoMantenimiento));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoMantenimiento));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoDispositivo));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
@@ -136,6 +136,45 @@ namespace Datos
             }
         }
 
+        public DataTable topMantenimientos(int limite, DateTime fecha1, DateTime fecha2)
+        {
+            try
+            {
+                if (conectar())
+                {
+                    MySqlTransaction transaction = connection.BeginTransaction();
+                    cmd = new MySqlCommand("topMantenimientos", connection, transaction);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("limite", limite));
+                    cmd.Parameters.Add(new MySqlParameter("fecha1", fecha1));
+                    cmd.Parameters.Add(new MySqlParameter("fecha2", fecha2));
+                    string c = cmd.ExecuteNonQuery().ToString();
+                    if (cmd.ExecuteNonQuery() >= 0)
+                    {
+                        return llenarDataTable(cmd);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+            finally
+            {
+                desConectar();
+            }
+        }
+
 
         public DataTable buscarDispoitivo(String idDispositivo)
         {
@@ -173,7 +212,47 @@ namespace Datos
                 desConectar();
             }
         }
+        public DataTable buscarHistorialDispositvoMantenimiento(String idDispositivo)
+        {
+            try
+            {
+                if (conectar())
+                {
+                    MySqlTransaction transaction = connection.BeginTransaction();
+                    cmd = new MySqlCommand("buscarHistorialDispositvoMantenimiento", connection, transaction);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", idDispositivo));
+                    string c = cmd.ExecuteNonQuery().ToString();
+                    if (cmd.ExecuteNonQuery() >= 0)
+                    {
+                        return llenarDataTable(cmd);
+                    }
+                    else
+                    {
+                        return null;
+                    }
 
-       
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+            finally
+            {
+                desConectar();
+            }
+        }
+
+
+        public DataTable mostrarMantenimientos()
+        {
+            return cargarRegistros("mostrarMantenimientos");
+        }
     }
 }

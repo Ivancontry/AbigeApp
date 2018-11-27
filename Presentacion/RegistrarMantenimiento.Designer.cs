@@ -71,6 +71,7 @@
             this.txtCodigoDispositivo.TabIndex = 6;
             this.txtCodigoDispositivo.Text = "Codigo del Dispositivo";
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoDispositivo.OnValueChanged += new System.EventHandler(this.txtCodigoDispositivo_OnValueChanged);
             this.txtCodigoDispositivo.Enter += new System.EventHandler(this.txtCodigoDispositivo_Enter);
             this.txtCodigoDispositivo.Leave += new System.EventHandler(this.txtCodigoDispositivo_Leave);
             // 
@@ -240,6 +241,7 @@
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtDescripcion.Size = new System.Drawing.Size(330, 189);
             this.txtDescripcion.TabIndex = 12;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // bunifuCustomLabel1
             // 
@@ -279,6 +281,7 @@
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(179, 20);
             this.bunifuCustomLabel3.TabIndex = 20;
             this.bunifuCustomLabel3.Text = "Estado Mantenimiento";
+            this.bunifuCustomLabel3.Click += new System.EventHandler(this.bunifuCustomLabel3_Click);
             // 
             // bunifuCustomLabel4
             // 
@@ -289,6 +292,7 @@
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(150, 20);
             this.bunifuCustomLabel4.TabIndex = 22;
             this.bunifuCustomLabel4.Text = "Estado Dispositivo";
+            this.bunifuCustomLabel4.Click += new System.EventHandler(this.bunifuCustomLabel4_Click);
             // 
             // cbxEstadoMantenimiento
             // 
@@ -319,6 +323,7 @@
             this.cbxEstadoDispositivo.Name = "cbxEstadoDispositivo";
             this.cbxEstadoDispositivo.Size = new System.Drawing.Size(182, 21);
             this.cbxEstadoDispositivo.TabIndex = 24;
+            this.cbxEstadoDispositivo.SelectedIndexChanged += new System.EventHandler(this.cbxEstadoDispositivo_SelectedIndexChanged);
             // 
             // fecha
             // 
@@ -327,6 +332,7 @@
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(182, 22);
             this.fecha.TabIndex = 25;
+            this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
             // RegistrarMantenimiento
             // 

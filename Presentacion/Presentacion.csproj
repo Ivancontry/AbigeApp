@@ -51,6 +51,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultarDispositivoEnMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarDispositivoEnMantenimiento.Designer.cs">
+      <DependentUpon>ConsultarDispositivoEnMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarMantenimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarMantenimientos.Designer.cs">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,7 +107,6 @@
     <Compile Include="RegistrarMantenimiento.Designer.cs">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </Compile>
-    
     <Compile Include="frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConsultarDispositivoEnMantenimiento.resx">
+      <DependentUpon>ConsultarDispositivoEnMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMantenimientos.resx">
+      <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapa.resx">
       <DependentUpon>Mapa.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,7 +147,6 @@
     <EmbeddedResource Include="RegistrarMantenimiento.resx">
       <DependentUpon>RegistrarMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sin título.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Services_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dog House_26px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
