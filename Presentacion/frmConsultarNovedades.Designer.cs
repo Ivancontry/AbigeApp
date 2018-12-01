@@ -35,7 +35,7 @@
             // 
             this.gmFincaNovedades.Bearing = 0F;
             this.gmFincaNovedades.CanDragMap = true;
-            this.gmFincaNovedades.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gmFincaNovedades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gmFincaNovedades.EmptyTileColor = System.Drawing.Color.Navy;
             this.gmFincaNovedades.GrayScaleMode = false;
             this.gmFincaNovedades.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
@@ -54,7 +54,7 @@
             this.gmFincaNovedades.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmFincaNovedades.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmFincaNovedades.ShowTileGridLines = false;
-            this.gmFincaNovedades.Size = new System.Drawing.Size(800, 324);
+            this.gmFincaNovedades.Size = new System.Drawing.Size(800, 450);
             this.gmFincaNovedades.TabIndex = 0;
             this.gmFincaNovedades.Zoom = 0D;
             // 
@@ -64,6 +64,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gmFincaNovedades);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultarNovedades";
             this.Text = "frmConsultarNovedades";
             this.Load += new System.EventHandler(this.frmConsultarNovedades_Load);

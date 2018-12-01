@@ -38,6 +38,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtRepetirPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ckbEstado = new Bunifu.Framework.UI.BunifuCheckbox();
             this.txtSegundoApellido = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtTelefono = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -52,8 +54,6 @@
             this.btnRegistrar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnBuscarIdentificacion = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtRepetirPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label1 = new System.Windows.Forms.Label();
             this.errorContraseñas = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -169,12 +169,42 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(39, 87);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1101, 316);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
+            // 
+            // txtRepetirPassword
+            // 
+            this.txtRepetirPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRepetirPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRepetirPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRepetirPassword.HintForeColor = System.Drawing.Color.Empty;
+            this.txtRepetirPassword.HintText = "";
+            this.txtRepetirPassword.isPassword = true;
+            this.txtRepetirPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
+            this.txtRepetirPassword.LineIdleColor = System.Drawing.Color.Gray;
+            this.txtRepetirPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
+            this.txtRepetirPassword.LineThickness = 3;
+            this.txtRepetirPassword.Location = new System.Drawing.Point(772, 267);
+            this.txtRepetirPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtRepetirPassword.Name = "txtRepetirPassword";
+            this.txtRepetirPassword.Size = new System.Drawing.Size(300, 33);
+            this.txtRepetirPassword.TabIndex = 36;
+            this.txtRepetirPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(569, 280);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(172, 20);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Repetir Contraseña";
             // 
             // ckbEstado
             // 
@@ -184,7 +214,7 @@
             this.ckbEstado.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.ckbEstado.ForeColor = System.Drawing.Color.White;
             this.ckbEstado.Location = new System.Drawing.Point(772, 218);
-            this.ckbEstado.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.ckbEstado.Margin = new System.Windows.Forms.Padding(9);
             this.ckbEstado.Name = "ckbEstado";
             this.ckbEstado.Size = new System.Drawing.Size(20, 20);
             this.ckbEstado.TabIndex = 34;
@@ -369,7 +399,7 @@
             this.btnActualizar.IconZoom = 70D;
             this.btnActualizar.IsTab = false;
             this.btnActualizar.Location = new System.Drawing.Point(521, 442);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(5);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Normalcolor = System.Drawing.Color.White;
             this.btnActualizar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -405,7 +435,7 @@
             this.btnLimpiar.IconZoom = 70D;
             this.btnLimpiar.IsTab = false;
             this.btnLimpiar.Location = new System.Drawing.Point(717, 442);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(5);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.White;
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -441,7 +471,7 @@
             this.btnRegistrar.IconZoom = 70D;
             this.btnRegistrar.IsTab = false;
             this.btnRegistrar.Location = new System.Drawing.Point(328, 442);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(5);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Normalcolor = System.Drawing.Color.White;
             this.btnRegistrar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -477,7 +507,7 @@
             this.btnBuscarIdentificacion.IconZoom = 70D;
             this.btnBuscarIdentificacion.IsTab = false;
             this.btnBuscarIdentificacion.Location = new System.Drawing.Point(715, 21);
-            this.btnBuscarIdentificacion.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnBuscarIdentificacion.Margin = new System.Windows.Forms.Padding(5);
             this.btnBuscarIdentificacion.Name = "btnBuscarIdentificacion";
             this.btnBuscarIdentificacion.Normalcolor = System.Drawing.Color.White;
             this.btnBuscarIdentificacion.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -495,36 +525,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // txtRepetirPassword
-            // 
-            this.txtRepetirPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRepetirPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRepetirPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRepetirPassword.HintForeColor = System.Drawing.Color.Empty;
-            this.txtRepetirPassword.HintText = "";
-            this.txtRepetirPassword.isPassword = true;
-            this.txtRepetirPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
-            this.txtRepetirPassword.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtRepetirPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
-            this.txtRepetirPassword.LineThickness = 3;
-            this.txtRepetirPassword.Location = new System.Drawing.Point(772, 267);
-            this.txtRepetirPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.txtRepetirPassword.Name = "txtRepetirPassword";
-            this.txtRepetirPassword.Size = new System.Drawing.Size(300, 33);
-            this.txtRepetirPassword.TabIndex = 36;
-            this.txtRepetirPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(569, 280);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 20);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "Repetir Contraseña";
-            // 
             // errorContraseñas
             // 
             this.errorContraseñas.ContainerControl = this;
@@ -541,7 +541,8 @@
             this.Controls.Add(this.btnBuscarIdentificacion);
             this.Controls.Add(this.txtIdentificacion);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmGestionUsuarios";
             this.Text = "RegistrarEmpleado";
             this.Load += new System.EventHandler(this.RegistrarEmpleado_Load);

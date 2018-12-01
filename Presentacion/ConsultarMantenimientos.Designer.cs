@@ -89,6 +89,7 @@
             this.bnfFuncionando.IconZoom = 60D;
             this.bnfFuncionando.IsTab = false;
             this.bnfFuncionando.Location = new System.Drawing.Point(177, 42);
+            this.bnfFuncionando.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfFuncionando.Name = "bnfFuncionando";
             this.bnfFuncionando.Normalcolor = System.Drawing.Color.MediumSeaGreen;
             this.bnfFuncionando.OnHovercolor = System.Drawing.Color.Lime;
@@ -124,6 +125,7 @@
             this.bnfAveridadoTaller.IconZoom = 60D;
             this.bnfAveridadoTaller.IsTab = false;
             this.bnfAveridadoTaller.Location = new System.Drawing.Point(698, 40);
+            this.bnfAveridadoTaller.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfAveridadoTaller.Name = "bnfAveridadoTaller";
             this.bnfAveridadoTaller.Normalcolor = System.Drawing.Color.Gold;
             this.bnfAveridadoTaller.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -159,6 +161,7 @@
             this.bnfAveriadoFinca.IconZoom = 60D;
             this.bnfAveriadoFinca.IsTab = false;
             this.bnfAveriadoFinca.Location = new System.Drawing.Point(563, 42);
+            this.bnfAveriadoFinca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfAveriadoFinca.Name = "bnfAveriadoFinca";
             this.bnfAveriadoFinca.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.bnfAveriadoFinca.OnHovercolor = System.Drawing.Color.Yellow;
@@ -194,6 +197,7 @@
             this.bnfDañados.IconZoom = 60D;
             this.bnfDañados.IsTab = false;
             this.bnfDañados.Location = new System.Drawing.Point(398, 42);
+            this.bnfDañados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfDañados.Name = "bnfDañados";
             this.bnfDañados.Normalcolor = System.Drawing.Color.Red;
             this.bnfDañados.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -233,7 +237,7 @@
             this.labelGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGeneral.Location = new System.Drawing.Point(128, 42);
             this.labelGeneral.Name = "labelGeneral";
-            this.labelGeneral.Size = new System.Drawing.Size(26, 29);
+            this.labelGeneral.Size = new System.Drawing.Size(31, 33);
             this.labelGeneral.TabIndex = 35;
             this.labelGeneral.Text = "0";
             this.labelGeneral.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -260,6 +264,7 @@
             this.bnfGeneral.IconZoom = 60D;
             this.bnfGeneral.IsTab = false;
             this.bnfGeneral.Location = new System.Drawing.Point(23, 42);
+            this.bnfGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfGeneral.Name = "bnfGeneral";
             this.bnfGeneral.Normalcolor = System.Drawing.Color.White;
             this.bnfGeneral.OnHovercolor = System.Drawing.Color.DodgerBlue;
@@ -280,7 +285,7 @@
             this.labelDañado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDañado.Location = new System.Drawing.Point(502, 42);
             this.labelDañado.Name = "labelDañado";
-            this.labelDañado.Size = new System.Drawing.Size(26, 29);
+            this.labelDañado.Size = new System.Drawing.Size(31, 33);
             this.labelDañado.TabIndex = 33;
             this.labelDañado.Text = "0";
             this.labelDañado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -292,7 +297,7 @@
             this.labelAveriadoTaller.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAveriadoTaller.Location = new System.Drawing.Point(801, 40);
             this.labelAveriadoTaller.Name = "labelAveriadoTaller";
-            this.labelAveriadoTaller.Size = new System.Drawing.Size(26, 29);
+            this.labelAveriadoTaller.Size = new System.Drawing.Size(31, 33);
             this.labelAveriadoTaller.TabIndex = 32;
             this.labelAveriadoTaller.Text = "0";
             this.labelAveriadoTaller.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -304,7 +309,7 @@
             this.labelAveridadoFinca.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAveridadoFinca.Location = new System.Drawing.Point(647, 42);
             this.labelAveridadoFinca.Name = "labelAveridadoFinca";
-            this.labelAveridadoFinca.Size = new System.Drawing.Size(26, 29);
+            this.labelAveridadoFinca.Size = new System.Drawing.Size(31, 33);
             this.labelAveridadoFinca.TabIndex = 31;
             this.labelAveridadoFinca.Text = "0";
             this.labelAveridadoFinca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -316,7 +321,7 @@
             this.labelFuncionando.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFuncionando.Location = new System.Drawing.Point(335, 42);
             this.labelFuncionando.Name = "labelFuncionando";
-            this.labelFuncionando.Size = new System.Drawing.Size(26, 29);
+            this.labelFuncionando.Size = new System.Drawing.Size(31, 33);
             this.labelFuncionando.TabIndex = 30;
             this.labelFuncionando.Text = "0";
             this.labelFuncionando.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -327,7 +332,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(638, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(92, 20);
             this.label1.TabIndex = 28;
             this.label1.Text = "Averiados";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -410,7 +415,7 @@
             // 
             this.txtCantidadTop.Location = new System.Drawing.Point(134, 32);
             this.txtCantidadTop.Name = "txtCantidadTop";
-            this.txtCantidadTop.Size = new System.Drawing.Size(133, 20);
+            this.txtCantidadTop.Size = new System.Drawing.Size(133, 23);
             this.txtCantidadTop.TabIndex = 32;
             // 
             // label2
@@ -419,7 +424,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(131, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 13);
+            this.label2.Size = new System.Drawing.Size(179, 17);
             this.label2.TabIndex = 33;
             this.label2.Text = "Numero de Dispositivos";
             // 
@@ -428,7 +433,7 @@
             this.fecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fecha1.Location = new System.Drawing.Point(297, 32);
             this.fecha1.Name = "fecha1";
-            this.fecha1.Size = new System.Drawing.Size(125, 20);
+            this.fecha1.Size = new System.Drawing.Size(125, 23);
             this.fecha1.TabIndex = 36;
             // 
             // fecha2
@@ -436,7 +441,7 @@
             this.fecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fecha2.Location = new System.Drawing.Point(471, 32);
             this.fecha2.Name = "fecha2";
-            this.fecha2.Size = new System.Drawing.Size(125, 20);
+            this.fecha2.Size = new System.Drawing.Size(125, 23);
             this.fecha2.TabIndex = 37;
             // 
             // groupBox2
@@ -476,6 +481,7 @@
             this.bnfBuscar.IconZoom = 60D;
             this.bnfBuscar.IsTab = false;
             this.bnfBuscar.Location = new System.Drawing.Point(625, 19);
+            this.bnfBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bnfBuscar.Name = "bnfBuscar";
             this.bnfBuscar.Normalcolor = System.Drawing.Color.White;
             this.bnfBuscar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
@@ -495,7 +501,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(502, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 41;
             this.label6.Text = "Fecha 2";
             // 
@@ -505,13 +511,13 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(337, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 40;
             this.label4.Text = "Fecha 1";
             // 
             // ConsultarMantenimientos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 473);
             this.Controls.Add(this.groupBox2);
@@ -519,6 +525,7 @@
             this.Controls.Add(this.tablaGeneral);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultarMantenimientos";
             this.Text = "ConsultarMantenimientos";
             this.Load += new System.EventHandler(this.ConsultarMantenimientos_Load);

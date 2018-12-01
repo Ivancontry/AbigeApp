@@ -16,11 +16,11 @@ namespace Entidades
         public string estadoBateria { get; set; }
         public int novedadDispositivo { get; set; }
         public Posicion() { }
-        public Posicion(string idDispositivo,string latitud, string longitud,string altitud,string estadoBateria,int novedadDispositivo)
+        public Posicion(string idDispositivo,string latitud, string longitud,int novedadDispositivo, string estadoBateria)
         {
             this.idDispositivo = idDispositivo;
-            this.latitud = convertirCoordenada(latitud);
-            this.longitud =convertirCoordenada(longitud);            
+            this.latitud = Double.Parse(latitud.Replace(".", ","));
+            this.longitud = Double.Parse(longitud.Replace(".", ","));            
             this.estadoBateria = estadoBateria;
             this.novedadDispositivo = novedadDispositivo;
         }

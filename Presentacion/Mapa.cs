@@ -69,8 +69,8 @@ namespace Presentacion
             foreach (DataRow dispositivo in listaMarcadores.Rows)
             {
                 //Agregar un marcador
-                markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());                
-                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.red);
+                markerOverlay = new GMapOverlay(dispositivo["Iddispositivo"].ToString());                
+                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.blue);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
            
                 //Agregamos un mensaje a los marcadores
@@ -120,7 +120,7 @@ namespace Presentacion
         {
             markerOverlay.Polygons.Clear();
             poligonos.ForEach(x => gmFinca.Overlays.Remove(x.Overlay));
-            poligonos.ForEach(x => markerOverlay.Polygons.Add(x));            
+            poligonos.ForEach(x => markerOverlay.Polygons.Add(x));             
         }
 
         private void insertarMarcador(Posicion dispositivo) {
@@ -128,8 +128,22 @@ namespace Presentacion
             lista = gmFinca.Overlays.ToList();
             gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
             
-            markerOverlay = new GMapOverlay("" + dispositivo.idDispositivo);
-            marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
+            markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
+            if (dispositivo.novedadDispositivo == 1)
+            {
+                marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
+            }
+            else
+            {
+                if (dispositivo.novedadDispositivo == 2)
+                {
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.yellow_small);
+                }
+                else
+                {
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
+                }
+            }
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
@@ -160,6 +174,7 @@ namespace Presentacion
                 gmFinca.Invoke(new MethodInvoker(delegate
                 {
                     gmFinca.Zoom += 0.08;
+                    //refrescarPoligonos();
                 }));
             }
             if (!cadena.Trim().Equals(""))
@@ -168,11 +183,10 @@ namespace Presentacion
                 cadena = cadena.TrimEnd();
                 cadena = cadena.TrimEnd('}');
                 string[] datos = cadena.Split(',');
-                dispositivo = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
-                    datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
+                dispositivo = new Posicion(datos[0], datos[1] ,
+                    datos[2], int.Parse(datos[3]),datos[4]);
 
-
-                insertarMarcador(dispositivo);
+            
                 latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
                 if (poligonos.Find(x => x.IsInside(latLng)) != null)
                 {
@@ -181,6 +195,12 @@ namespace Presentacion
                 else
                 {
                     dispositivo.estadoDispositivo = "Fuera";
+                    //MessageBox.Show("Bomba");
+                }
+                insertarMarcador(dispositivo);
+                if (dispositivo.estadoDispositivo.Equals( "Fuera"))
+                {
+                    cambiarColorPaneles("Mapa");
                 }
                 confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
                 if (confirmacionBaseDeDatos == -1) {
@@ -200,15 +220,35 @@ namespace Presentacion
                 {
                     gmFinca.Zoom-=0.08;
                     gmFinca.Refresh();
-                    refrescarPoligonos();
+                    
                 }));
             }
             
             //MessageBox.Show(mostrarMesaje);
         }
-                    
 
-        
+        private void cambiarColorPaneles(string formName)
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == formName)
+                {
+                    foreach (Control item in f.Controls)
+                    {
+                        if (item is Bunifu.Framework.UI.BunifuGradientPanel)
+                        {
+                            Bunifu.Framework.UI.BunifuGradientPanel gradientPanel = item as Bunifu.Framework.UI.BunifuGradientPanel;
+                            gradientPanel.GradientBottomLeft = Color.Red;
+                            gradientPanel.GradientTopRight = Color.DarkRed;
+                            gradientPanel.GradientTopLeft = Color.DarkRed;
+                            gradientPanel.GradientBottomRight = Color.DarkRed;
+                        }
+                    }                    
+                }
+            }
+            
+        }
+
         private void gmFinca_MouseClick(object sender, MouseEventArgs e)
         {
           
@@ -216,19 +256,28 @@ namespace Presentacion
             {
                 var tmp = sender as GMapControl;//Se crea una ariable temporal para un gmapcontrol                
                 var poligono = poligonos.Find(x => x.IsInside(tmp.Position));//Se busca el poligono al que pertenece esa posicion
-
+                int novedadPorBateria = 0;
+                int dispositivosFuera = 0;
                 if (poligono != null)
                 {
                     int dispositivos = 0;
                     poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));//Se cambia el color a los demas poligono
                     poligono.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));//Se cambia el color al poligono seleccionado
                     dispositivos = marcadores.FindAll(x => poligono.IsInside(x.Position)).Count;
-                    btnDispositivos.Text = "Dispositivos\n" + dispositivos;
+                    novedadPorBateria = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.yellow_small).Count;
+                    dispositivosFuera = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.red).Count;
+                    btnDispositivos.Text = "Dispositivos en el Perimetro\n" + dispositivos;
+                    btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
+                    btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
                 }
                 else
                 {
                    poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));//Se cambia el color a los demas poligono
-                    btnDispositivos.Text = "Dispositivos\n" + 0;
+                    btnDispositivos.Text = "Dispositivos en el Perimetro\n" + 0;
+                    novedadPorBateria = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.yellow_small).Count;
+                    dispositivosFuera = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.red).Count;
+                    btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
+                    btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
                 }
             }            
            

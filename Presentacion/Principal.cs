@@ -17,10 +17,34 @@ namespace Presentacion
             InitializeComponent();
         }
         int cont = 0;
+        private void abrirformularioHija(Object frmhija)
+        {
+            if (this.panelcontenedor.Controls.Count >= 0)
+            {
+                if (this.panelcontenedor.Controls.Count > 0)
+                {
+                    this.panelcontenedor.Controls.RemoveAt(0);
+                }
+            }
+                // 
+                Form fro = frmhija as Form;
+                fro.TopLevel = false; //se dice que es un formulario secundario
+                //fro.Dock = DockStyle.Fill;
+                //que se acople a mi panelcontenedor
+                this.panelcontenedor.Controls.Add(fro);//lo agregamos al panel contenedor
+                this.panelcontenedor.Tag = fro;//se establece la instancia como contenedor de datos para panel contenedor
+                fro.Left = (this.panelcontenedor.Width - fro.Width) / 2;
+                fro.Top = (this.panelcontenedor.Height - fro.Height) / 3;
+                fro.Show();
 
+        }
         private void Principal_Load(object sender, EventArgs e)
         {
             panelGestionEmpleado();
+
+
+            
+            abrirformularioHija(new Mapa());
         }
         public void panelGestionEmpleado() {
             panelDispositivo.Visible = false;
@@ -130,7 +154,17 @@ namespace Presentacion
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
-           
+            if (panelLateral.Width == 347)
+            {
+                panelLateral.Width = 70;
+                
+            }
+            else
+            {
+                panelLateral.Width = 347;
+            }
+                
+            /*
             if (cont == 0)
             {
                 panelLateral.Size = new Size(47, 764);
@@ -148,7 +182,65 @@ namespace Presentacion
                 imagenUsuario.Location = new Point(935, 0);
                 cont = 0;
             }
-            
+            */
+        }
+
+        private void btnRegistrarDispositivos_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("RegistrarDispositivo"))
+            {
+                abrirformularioHija(new RegistrarDispositivo());
+            }
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuFlatButton9_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("RegistrarMantenimiento"))
+            {
+                abrirformularioHija(new RegistrarMantenimiento());
+            }
+        }
+
+        private void bunifuFlatButton8_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("ConsultarMantenimientos"))
+            {
+                abrirformularioHija(new ConsultarMantenimientos());
+            }
+        }
+
+        private void bunifuFlatButton7_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("ConsultarDispositivoEnMantenimiento"))
+            {
+                abrirformularioHija(new ConsultarDispositivoEnMantenimiento());
+            }
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("Mapa"))
+            {
+                abrirformularioHija(new Mapa());
+            }
+        }
+        private bool CheckForm(string formName)
+        {
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == formName)
+                {
+                    abrirformularioHija(f);
+                    return true;
+                }
+            }
+            return false;      
         }
     }
 }
