@@ -144,13 +144,15 @@ namespace Presentacion
                     marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
                 }
             }
+            
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
             //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
             marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
-            gmFinca.Overlays.Add(markerOverlay);            
+            gmFinca.Overlays.Add(markerOverlay);       
+            
         }
 
         private void conectarPuerto() {
@@ -166,7 +168,7 @@ namespace Presentacion
             //------------------------------------------------------
             int confirmacionBaseDeDatos;//1 o -1
             object datosIn = new object();
-            datosIn = serialPort1.ReadLine();
+            datosIn = serialPort1.ReadExisting();
             Posicion dispositivo;
             string cadena = datosIn.ToString();
             if (gmFinca.InvokeRequired)
@@ -200,7 +202,7 @@ namespace Presentacion
                 insertarMarcador(dispositivo);
                 if (dispositivo.estadoDispositivo.Equals( "Fuera"))
                 {
-                    cambiarColorPaneles("Mapa");
+                    cambiarColorPaneles("Principal");
                 }
                 confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
                 if (confirmacionBaseDeDatos == -1) {
@@ -213,15 +215,19 @@ namespace Presentacion
                 mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
                 promedio += stop.Subtract(start).TotalMilliseconds;
                 
-            }
-            if (gmFinca.InvokeRequired)
-            {
-                gmFinca.Invoke(new MethodInvoker(delegate
+                if (gmFinca.InvokeRequired)
                 {
-                    gmFinca.Zoom-=0.08;
-                    gmFinca.Refresh();
-                    
-                }));
+                    gmFinca.Invoke(new MethodInvoker(delegate
+                    {
+                        gmFinca.Zoom-=0.08;
+                        gmFinca.Refresh();
+                        txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
+                    "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
+                    "Estado: {4}\n" +
+                    "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
+                    , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
+                    }));
+                }
             }
             
             //MessageBox.Show(mostrarMesaje);
@@ -265,10 +271,13 @@ namespace Presentacion
                     poligono.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));//Se cambia el color al poligono seleccionado
                     dispositivos = marcadores.FindAll(x => poligono.IsInside(x.Position)).Count;
                     novedadPorBateria = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.yellow_small).Count;
-                    dispositivosFuera = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.red).Count;
+                    dispositivosFuera = marcadores.FindAll(x => !poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.red).Count;
                     btnDispositivos.Text = "Dispositivos en el Perimetro\n" + dispositivos;
+                    btnDispositivos.ForeColor = Color.White;
                     btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
+                    btnNovedadBateria.ForeColor = Color.White;
                     btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
+                    btnDispositivosFuera.ForeColor = Color.White;
                 }
                 else
                 {
@@ -278,10 +287,25 @@ namespace Presentacion
                     dispositivosFuera = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.red).Count;
                     btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
                     btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
+                    btnDispositivos.ForeColor = Color.White;
+                    btnNovedadBateria.ForeColor = Color.White;
+                    btnDispositivosFuera.ForeColor = Color.White;
                 }
             }            
            
         }
 
+        private void btnLimpiarLog_Click(object sender, EventArgs e)
+        {
+            txtLogDispositivos.Text = "";
+        }
+
+        private void txtLogDispositivos_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLogDispositivos.TextLength >=(txtLogDispositivos.MaxLength-50))
+            {
+                txtLogDispositivos.Text = "";
+            }
+        }
     }
 }

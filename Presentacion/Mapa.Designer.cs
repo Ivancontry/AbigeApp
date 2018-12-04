@@ -34,12 +34,20 @@
             this.btnDispositivosEnTotal = new System.Windows.Forms.Button();
             this.btnDispositivos = new System.Windows.Forms.Button();
             this.contenedorBotonesInferiores = new System.Windows.Forms.Panel();
-            this.contenedorBuscador = new System.Windows.Forms.Panel();
-            this.contenedorMapa = new System.Windows.Forms.Panel();
-            this.btnNovedadBateria = new System.Windows.Forms.Button();
             this.btnDispositivosFuera = new System.Windows.Forms.Button();
+            this.btnNovedadBateria = new System.Windows.Forms.Button();
+            this.contenedorBuscadorLog = new System.Windows.Forms.Panel();
+            this.contenedorMapa = new System.Windows.Forms.Panel();
+            this.btnBuscarDispositivo = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.contenedorBuscador = new System.Windows.Forms.Panel();
+            this.contenedorLog = new System.Windows.Forms.Panel();
+            this.txtLogDispositivos = new System.Windows.Forms.RichTextBox();
+            this.btnLimpiarLog = new Bunifu.Framework.UI.BunifuTileButton();
             this.contenedorBotonesInferiores.SuspendLayout();
+            this.contenedorBuscadorLog.SuspendLayout();
             this.contenedorMapa.SuspendLayout();
+            this.contenedorBuscador.SuspendLayout();
+            this.contenedorLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // gmFinca
@@ -116,23 +124,18 @@
             this.contenedorBotonesInferiores.Size = new System.Drawing.Size(1173, 99);
             this.contenedorBotonesInferiores.TabIndex = 4;
             // 
-            // contenedorBuscador
+            // btnDispositivosFuera
             // 
-            this.contenedorBuscador.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.contenedorBuscador.Dock = System.Windows.Forms.DockStyle.Right;
-            this.contenedorBuscador.Location = new System.Drawing.Point(1173, 0);
-            this.contenedorBuscador.Name = "contenedorBuscador";
-            this.contenedorBuscador.Size = new System.Drawing.Size(299, 946);
-            this.contenedorBuscador.TabIndex = 5;
-            // 
-            // contenedorMapa
-            // 
-            this.contenedorMapa.Controls.Add(this.gmFinca);
-            this.contenedorMapa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contenedorMapa.Location = new System.Drawing.Point(0, 0);
-            this.contenedorMapa.Name = "contenedorMapa";
-            this.contenedorMapa.Size = new System.Drawing.Size(1173, 847);
-            this.contenedorMapa.TabIndex = 6;
+            this.btnDispositivosFuera.BackColor = System.Drawing.Color.DarkRed;
+            this.btnDispositivosFuera.Enabled = false;
+            this.btnDispositivosFuera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivosFuera.Location = new System.Drawing.Point(778, 3);
+            this.btnDispositivosFuera.Name = "btnDispositivosFuera";
+            this.btnDispositivosFuera.Size = new System.Drawing.Size(183, 93);
+            this.btnDispositivosFuera.TabIndex = 5;
+            this.btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro";
+            this.btnDispositivosFuera.UseVisualStyleBackColor = false;
             // 
             // btnNovedadBateria
             // 
@@ -147,18 +150,97 @@
             this.btnNovedadBateria.Text = "Novedad por Bateria";
             this.btnNovedadBateria.UseVisualStyleBackColor = false;
             // 
-            // btnDispositivosFuera
+            // contenedorBuscadorLog
             // 
-            this.btnDispositivosFuera.BackColor = System.Drawing.Color.DarkRed;
-            this.btnDispositivosFuera.Enabled = false;
-            this.btnDispositivosFuera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.White;
-            this.btnDispositivosFuera.Location = new System.Drawing.Point(778, 3);
-            this.btnDispositivosFuera.Name = "btnDispositivosFuera";
-            this.btnDispositivosFuera.Size = new System.Drawing.Size(183, 93);
-            this.btnDispositivosFuera.TabIndex = 5;
-            this.btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro";
-            this.btnDispositivosFuera.UseVisualStyleBackColor = false;
+            this.contenedorBuscadorLog.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.contenedorBuscadorLog.Controls.Add(this.contenedorLog);
+            this.contenedorBuscadorLog.Controls.Add(this.contenedorBuscador);
+            this.contenedorBuscadorLog.Dock = System.Windows.Forms.DockStyle.Right;
+            this.contenedorBuscadorLog.Location = new System.Drawing.Point(1173, 0);
+            this.contenedorBuscadorLog.Name = "contenedorBuscadorLog";
+            this.contenedorBuscadorLog.Size = new System.Drawing.Size(299, 946);
+            this.contenedorBuscadorLog.TabIndex = 5;
+            // 
+            // contenedorMapa
+            // 
+            this.contenedorMapa.Controls.Add(this.gmFinca);
+            this.contenedorMapa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contenedorMapa.Location = new System.Drawing.Point(0, 0);
+            this.contenedorMapa.Name = "contenedorMapa";
+            this.contenedorMapa.Size = new System.Drawing.Size(1173, 847);
+            this.contenedorMapa.TabIndex = 6;
+            // 
+            // btnBuscarDispositivo
+            // 
+            this.btnBuscarDispositivo.BorderColorFocused = System.Drawing.Color.LimeGreen;
+            this.btnBuscarDispositivo.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnBuscarDispositivo.BorderColorMouseHover = System.Drawing.Color.LimeGreen;
+            this.btnBuscarDispositivo.BorderThickness = 3;
+            this.btnBuscarDispositivo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnBuscarDispositivo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBuscarDispositivo.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.btnBuscarDispositivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnBuscarDispositivo.isPassword = false;
+            this.btnBuscarDispositivo.Location = new System.Drawing.Point(0, 0);
+            this.btnBuscarDispositivo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarDispositivo.Name = "btnBuscarDispositivo";
+            this.btnBuscarDispositivo.Size = new System.Drawing.Size(299, 44);
+            this.btnBuscarDispositivo.TabIndex = 0;
+            this.btnBuscarDispositivo.Text = "bunifuMetroTextbox1";
+            this.btnBuscarDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // contenedorBuscador
+            // 
+            this.contenedorBuscador.Controls.Add(this.btnBuscarDispositivo);
+            this.contenedorBuscador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.contenedorBuscador.Location = new System.Drawing.Point(0, 0);
+            this.contenedorBuscador.Name = "contenedorBuscador";
+            this.contenedorBuscador.Size = new System.Drawing.Size(299, 340);
+            this.contenedorBuscador.TabIndex = 1;
+            // 
+            // contenedorLog
+            // 
+            this.contenedorLog.Controls.Add(this.txtLogDispositivos);
+            this.contenedorLog.Controls.Add(this.btnLimpiarLog);
+            this.contenedorLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contenedorLog.Location = new System.Drawing.Point(0, 340);
+            this.contenedorLog.Name = "contenedorLog";
+            this.contenedorLog.Size = new System.Drawing.Size(299, 606);
+            this.contenedorLog.TabIndex = 2;
+            // 
+            // txtLogDispositivos
+            // 
+            this.txtLogDispositivos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLogDispositivos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLogDispositivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogDispositivos.Location = new System.Drawing.Point(0, 0);
+            this.txtLogDispositivos.Name = "txtLogDispositivos";
+            this.txtLogDispositivos.Size = new System.Drawing.Size(299, 558);
+            this.txtLogDispositivos.TabIndex = 0;
+            this.txtLogDispositivos.Text = "";
+            this.txtLogDispositivos.TextChanged += new System.EventHandler(this.txtLogDispositivos_TextChanged);
+            // 
+            // btnLimpiarLog
+            // 
+            this.btnLimpiarLog.BackColor = System.Drawing.Color.Transparent;
+            this.btnLimpiarLog.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.btnLimpiarLog.color = System.Drawing.Color.SeaGreen;
+            this.btnLimpiarLog.colorActive = System.Drawing.Color.MediumSeaGreen;
+            this.btnLimpiarLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiarLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLimpiarLog.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.btnLimpiarLog.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpiarLog.Image = null;
+            this.btnLimpiarLog.ImagePosition = 20;
+            this.btnLimpiarLog.ImageZoom = 50;
+            this.btnLimpiarLog.LabelPosition = 41;
+            this.btnLimpiarLog.LabelText = "Limpiar Log";
+            this.btnLimpiarLog.Location = new System.Drawing.Point(0, 558);
+            this.btnLimpiarLog.Margin = new System.Windows.Forms.Padding(6);
+            this.btnLimpiarLog.Name = "btnLimpiarLog";
+            this.btnLimpiarLog.Size = new System.Drawing.Size(299, 48);
+            this.btnLimpiarLog.TabIndex = 1;
+            this.btnLimpiarLog.Click += new System.EventHandler(this.btnLimpiarLog_Click);
             // 
             // Mapa
             // 
@@ -167,7 +249,7 @@
             this.ClientSize = new System.Drawing.Size(1472, 946);
             this.Controls.Add(this.contenedorMapa);
             this.Controls.Add(this.contenedorBotonesInferiores);
-            this.Controls.Add(this.contenedorBuscador);
+            this.Controls.Add(this.contenedorBuscadorLog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Mapa";
@@ -175,8 +257,11 @@
             this.Text = "Mapa";
             this.Load += new System.EventHandler(this.Mapa_Load);
             this.contenedorBotonesInferiores.ResumeLayout(false);
+            this.contenedorBuscadorLog.ResumeLayout(false);
             this.contenedorMapa.ResumeLayout(false);
             this.contenedorMapa.PerformLayout();
+            this.contenedorBuscador.ResumeLayout(false);
+            this.contenedorLog.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,9 +274,14 @@
         private System.Windows.Forms.Button btnDispositivosEnTotal;
         private System.Windows.Forms.Button btnDispositivos;
         private System.Windows.Forms.Panel contenedorBotonesInferiores;
-        private System.Windows.Forms.Panel contenedorBuscador;
+        private System.Windows.Forms.Panel contenedorBuscadorLog;
         private System.Windows.Forms.Panel contenedorMapa;
         private System.Windows.Forms.Button btnDispositivosFuera;
         private System.Windows.Forms.Button btnNovedadBateria;
+        private Bunifu.Framework.UI.BunifuMetroTextbox btnBuscarDispositivo;
+        private System.Windows.Forms.Panel contenedorLog;
+        private System.Windows.Forms.Panel contenedorBuscador;
+        private System.Windows.Forms.RichTextBox txtLogDispositivos;
+        private Bunifu.Framework.UI.BunifuTileButton btnLimpiarLog;
     }
 }
