@@ -76,6 +76,12 @@
     <Compile Include="ConsultarMantenimientos.Designer.cs">
       <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarMantenimientos.resx">
       <DependentUpon>ConsultarMantenimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mapa.resx">
       <DependentUpon>Mapa.cs</DependentUpon>

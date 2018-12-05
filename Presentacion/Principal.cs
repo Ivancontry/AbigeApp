@@ -150,5 +150,25 @@ namespace Presentacion
             }
             
         }
+
+        private void panelLateral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuGradientPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelSuperior_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
