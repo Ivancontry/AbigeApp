@@ -15,6 +15,7 @@ namespace Entidades
         public string estadoDispositivo { get; set; } //primeramente manual ya que no sabemos como validar que este adentro :V. Ahora si se sabe XD
         public string estadoBateria { get; set; }
         public int novedadDispositivo { get; set; }
+        public string idPerimetro { get; set; }
         public Posicion() { }
         public Posicion(string idDispositivo,string latitud, string longitud,int novedadDispositivo, string estadoBateria)
         {

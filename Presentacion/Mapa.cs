@@ -13,7 +13,8 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using Logica;
 using Entidades;
-
+using System.Media;
+using WMPLib;
 
 namespace Presentacion
 {
@@ -22,6 +23,7 @@ namespace Presentacion
         GMapPolygon polygon;
         List<GMapPolygon> poligonos = new List<GMapPolygon>();
         ServiciosDispositivo logicaDispositivo = new ServiciosDispositivo();
+        List<Posicion> dispositivos = new List<Posicion>();
         int contadorDeEventos = 0;
         GMarkerGoogle marker;
         List<GMarkerGoogle> marcadores = new List<GMarkerGoogle>();
@@ -33,12 +35,23 @@ namespace Presentacion
         string mostrarMesaje;//Esto es para ver la media de tiempo en que se demora el proceso  para cada evento en el mapa
         DataTable listaMarcadores = new DataTable();
         int dispositivosTotalEnFinca = 0;
+        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
+        string rutaCancion = Application.StartupPath + "\\soundEmergency.mp3";
+        SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\duvan\source\repos\AbigeApp\Presentacion\soundEmergency.wav");
+        
         public Mapa()
         {
             InitializeComponent();
             
         }
-
+        void activarAlarma()
+        {
+            mediaPlayer.URL = rutaCancion;
+            mediaPlayer.settings.setMode("loop", true);
+            mediaPlayer.controls.play();
+            
+            //simpleSound.Play();            
+        }
 
         private void Mapa_Load(object sender, EventArgs e)
         {
@@ -144,15 +157,23 @@ namespace Presentacion
                     marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
                 }
             }
-            
+            if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)
+            {
+                dispositivos.Add(dispositivo);
+            }
+            else
+            {
+                Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
+                dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
+                dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
+            }
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
             //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
             marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
-            gmFinca.Overlays.Add(markerOverlay);       
-            
+            gmFinca.Overlays.Add(markerOverlay);            
         }
 
         private void conectarPuerto() {
@@ -197,13 +218,10 @@ namespace Presentacion
                 else
                 {
                     dispositivo.estadoDispositivo = "Fuera";
-                    //MessageBox.Show("Bomba");
+                    activarAlarma();
                 }
-                insertarMarcador(dispositivo);
-                if (dispositivo.estadoDispositivo.Equals( "Fuera"))
-                {
-                    cambiarColorPaneles("Principal");
-                }
+                insertarMarcador(dispositivo);                
+                cambiarColorPaneles("Principal");                
                 confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
                 if (confirmacionBaseDeDatos == -1) {
                     MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -226,6 +244,8 @@ namespace Presentacion
                     "Estado: {4}\n" +
                     "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
                     , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
+                        
+                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;
                     }));
                 }
             }
@@ -235,6 +255,12 @@ namespace Presentacion
 
         private void cambiarColorPaneles(string formName)
         {
+            bool band = true;
+            if (dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count == 0)
+            {
+                band = false;
+                mediaPlayer.controls.stop();
+            }            
             foreach (Form f in Application.OpenForms)
             {
                 if (f.Name == formName)
@@ -244,10 +270,17 @@ namespace Presentacion
                         if (item is Bunifu.Framework.UI.BunifuGradientPanel)
                         {
                             Bunifu.Framework.UI.BunifuGradientPanel gradientPanel = item as Bunifu.Framework.UI.BunifuGradientPanel;
-                            gradientPanel.GradientBottomLeft = Color.Red;
-                            gradientPanel.GradientTopRight = Color.DarkRed;
-                            gradientPanel.GradientTopLeft = Color.DarkRed;
-                            gradientPanel.GradientBottomRight = Color.DarkRed;
+                            if (band)
+                            {
+                                gradientPanel.GradientBottomLeft = Color.Red;
+                                gradientPanel.GradientTopRight = Color.DarkRed;
+                                gradientPanel.GradientTopLeft = Color.DarkRed;
+                                gradientPanel.GradientBottomRight = Color.DarkRed;
+                            }
+                            else
+                            {
+                                gradientPanel.Refresh();
+                            }
                         }
                     }                    
                 }
@@ -263,7 +296,7 @@ namespace Presentacion
                 var tmp = sender as GMapControl;//Se crea una ariable temporal para un gmapcontrol                
                 var poligono = poligonos.Find(x => x.IsInside(tmp.Position));//Se busca el poligono al que pertenece esa posicion
                 int novedadPorBateria = 0;
-                int dispositivosFuera = 0;
+                
                 if (poligono != null)
                 {
                     int dispositivos = 0;
@@ -271,12 +304,12 @@ namespace Presentacion
                     poligono.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));//Se cambia el color al poligono seleccionado
                     dispositivos = marcadores.FindAll(x => poligono.IsInside(x.Position)).Count;
                     novedadPorBateria = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.yellow_small).Count;
-                    dispositivosFuera = marcadores.FindAll(x => !poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.red).Count;
+                    
                     btnDispositivos.Text = "Dispositivos en el Perimetro\n" + dispositivos;
                     btnDispositivos.ForeColor = Color.White;
                     btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
                     btnNovedadBateria.ForeColor = Color.White;
-                    btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
+                    
                     btnDispositivosFuera.ForeColor = Color.White;
                 }
                 else
@@ -284,13 +317,14 @@ namespace Presentacion
                    poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));//Se cambia el color a los demas poligono
                     btnDispositivos.Text = "Dispositivos en el Perimetro\n" + 0;
                     novedadPorBateria = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.yellow_small).Count;
-                    dispositivosFuera = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.red).Count;
+                    
                     btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
-                    btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivosFuera;
+                    
                     btnDispositivos.ForeColor = Color.White;
                     btnNovedadBateria.ForeColor = Color.White;
                     btnDispositivosFuera.ForeColor = Color.White;
                 }
+                
             }            
            
         }

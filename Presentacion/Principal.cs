@@ -25,18 +25,18 @@ namespace Presentacion
                 {
                     this.panelcontenedor.Controls.RemoveAt(0);
                 }
-            }
                 // 
                 Form fro = frmhija as Form;
                 fro.TopLevel = false; //se dice que es un formulario secundario
-                //fro.Dock = DockStyle.Fill;
                 //que se acople a mi panelcontenedor
                 this.panelcontenedor.Controls.Add(fro);//lo agregamos al panel contenedor
                 this.panelcontenedor.Tag = fro;//se establece la instancia como contenedor de datos para panel contenedor
-                fro.Left = (this.panelcontenedor.Width - fro.Width) / 2;
-                fro.Top = (this.panelcontenedor.Height - fro.Height) / 3;
+                //fro.Left = (this.panelcontenedor.Width - fro.Width) / 2;
+                //fro.Top = (this.panelcontenedor.Height - fro.Height) / 3;
+                fro.Dock = DockStyle.Fill;
                 fro.Show();
 
+            }
         }
         private void Principal_Load(object sender, EventArgs e)
         {
@@ -154,14 +154,14 @@ namespace Presentacion
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
-            if (panelLateral.Width == 347)
+            if (panelLateral.Width == 325)
             {
                 panelLateral.Width = 70;
                 
             }
             else
             {
-                panelLateral.Width = 347;
+                panelLateral.Width = 325;
             }
                 
             /*

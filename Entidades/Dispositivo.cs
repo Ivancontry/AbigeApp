@@ -14,6 +14,5 @@ namespace Entidades
         public string idAnimal { get; set; }
         public float bateria { get; set; }
         public DateTime fecha { get; set; }
-
     }
 }
