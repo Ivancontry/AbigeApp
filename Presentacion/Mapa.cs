@@ -279,7 +279,10 @@ namespace Presentacion
                             }
                             else
                             {
-                                gradientPanel.Refresh();
+                                gradientPanel.GradientBottomLeft = Color.LimeGreen;
+                                gradientPanel.GradientTopRight = Color.SkyBlue;
+                                gradientPanel.GradientTopLeft = Color.Green;
+                                gradientPanel.GradientBottomRight = Color.Black;
                             }
                         }
                     }                    
