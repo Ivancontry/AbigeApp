@@ -34,8 +34,8 @@
             this.btnDispositivosEnTotal = new System.Windows.Forms.Button();
             this.btnDispositivos = new System.Windows.Forms.Button();
             this.contenedorBotonesInferiores = new System.Windows.Forms.Panel();
-            this.btnDispositivosFuera = new System.Windows.Forms.Button();
             this.btnNovedadBateria = new System.Windows.Forms.Button();
+            this.btnDispositivosFuera = new System.Windows.Forms.Button();
             this.contenedorBuscadorLog = new System.Windows.Forms.Panel();
             this.contenedorLog = new System.Windows.Forms.Panel();
             this.txtLogDispositivos = new System.Windows.Forms.RichTextBox();
@@ -75,7 +75,7 @@
             this.gmFinca.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmFinca.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmFinca.ShowTileGridLines = false;
-            this.gmFinca.Size = new System.Drawing.Size(880, 694);
+            this.gmFinca.Size = new System.Drawing.Size(880, 693);
             this.gmFinca.TabIndex = 0;
             this.gmFinca.Zoom = 0D;
             this.gmFinca.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmFinca_MouseClick);
@@ -92,7 +92,7 @@
             this.btnDispositivosEnTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDispositivosEnTotal.ForeColor = System.Drawing.Color.White;
             this.btnDispositivosEnTotal.Location = new System.Drawing.Point(625, 4);
-            this.btnDispositivosEnTotal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDispositivosEnTotal.Margin = new System.Windows.Forms.Padding(2);
             this.btnDispositivosEnTotal.Name = "btnDispositivosEnTotal";
             this.btnDispositivosEnTotal.Size = new System.Drawing.Size(137, 89);
             this.btnDispositivosEnTotal.TabIndex = 2;
@@ -107,7 +107,7 @@
             this.btnDispositivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDispositivos.ForeColor = System.Drawing.Color.White;
             this.btnDispositivos.Location = new System.Drawing.Point(287, 0);
-            this.btnDispositivos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDispositivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnDispositivos.Name = "btnDispositivos";
             this.btnDispositivos.Size = new System.Drawing.Size(137, 89);
             this.btnDispositivos.TabIndex = 3;
@@ -123,26 +123,11 @@
             this.contenedorBotonesInferiores.Controls.Add(this.btnDispositivosEnTotal);
             this.contenedorBotonesInferiores.Controls.Add(this.btnDispositivosFuera);
             this.contenedorBotonesInferiores.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.contenedorBotonesInferiores.Location = new System.Drawing.Point(0, 694);
-            this.contenedorBotonesInferiores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contenedorBotonesInferiores.Location = new System.Drawing.Point(0, 693);
+            this.contenedorBotonesInferiores.Margin = new System.Windows.Forms.Padding(2);
             this.contenedorBotonesInferiores.Name = "contenedorBotonesInferiores";
             this.contenedorBotonesInferiores.Size = new System.Drawing.Size(880, 95);
             this.contenedorBotonesInferiores.TabIndex = 4;
-            // 
-            // btnDispositivosFuera
-            // 
-            this.btnDispositivosFuera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnDispositivosFuera.BackColor = System.Drawing.Color.DarkRed;
-            this.btnDispositivosFuera.Enabled = false;
-            this.btnDispositivosFuera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.White;
-            this.btnDispositivosFuera.Location = new System.Drawing.Point(118, 0);
-            this.btnDispositivosFuera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnDispositivosFuera.Name = "btnDispositivosFuera";
-            this.btnDispositivosFuera.Size = new System.Drawing.Size(137, 89);
-            this.btnDispositivosFuera.TabIndex = 5;
-            this.btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro";
-            this.btnDispositivosFuera.UseVisualStyleBackColor = false;
             // 
             // btnNovedadBateria
             // 
@@ -152,12 +137,27 @@
             this.btnNovedadBateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovedadBateria.ForeColor = System.Drawing.Color.White;
             this.btnNovedadBateria.Location = new System.Drawing.Point(456, 2);
-            this.btnNovedadBateria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNovedadBateria.Margin = new System.Windows.Forms.Padding(2);
             this.btnNovedadBateria.Name = "btnNovedadBateria";
             this.btnNovedadBateria.Size = new System.Drawing.Size(137, 89);
             this.btnNovedadBateria.TabIndex = 4;
             this.btnNovedadBateria.Text = "Novedad por Bateria";
             this.btnNovedadBateria.UseVisualStyleBackColor = false;
+            // 
+            // btnDispositivosFuera
+            // 
+            this.btnDispositivosFuera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnDispositivosFuera.BackColor = System.Drawing.Color.DarkRed;
+            this.btnDispositivosFuera.Enabled = false;
+            this.btnDispositivosFuera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivosFuera.Location = new System.Drawing.Point(118, 0);
+            this.btnDispositivosFuera.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDispositivosFuera.Name = "btnDispositivosFuera";
+            this.btnDispositivosFuera.Size = new System.Drawing.Size(137, 89);
+            this.btnDispositivosFuera.TabIndex = 5;
+            this.btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro";
+            this.btnDispositivosFuera.UseVisualStyleBackColor = false;
             // 
             // contenedorBuscadorLog
             // 
@@ -166,9 +166,9 @@
             this.contenedorBuscadorLog.Controls.Add(this.contenedorBuscador);
             this.contenedorBuscadorLog.Dock = System.Windows.Forms.DockStyle.Right;
             this.contenedorBuscadorLog.Location = new System.Drawing.Point(880, 0);
-            this.contenedorBuscadorLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contenedorBuscadorLog.Margin = new System.Windows.Forms.Padding(2);
             this.contenedorBuscadorLog.Name = "contenedorBuscadorLog";
-            this.contenedorBuscadorLog.Size = new System.Drawing.Size(224, 789);
+            this.contenedorBuscadorLog.Size = new System.Drawing.Size(224, 788);
             this.contenedorBuscadorLog.TabIndex = 5;
             // 
             // contenedorLog
@@ -177,9 +177,9 @@
             this.contenedorLog.Controls.Add(this.btnLimpiarLog);
             this.contenedorLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contenedorLog.Location = new System.Drawing.Point(0, 276);
-            this.contenedorLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contenedorLog.Margin = new System.Windows.Forms.Padding(2);
             this.contenedorLog.Name = "contenedorLog";
-            this.contenedorLog.Size = new System.Drawing.Size(224, 513);
+            this.contenedorLog.Size = new System.Drawing.Size(224, 512);
             this.contenedorLog.TabIndex = 2;
             // 
             // txtLogDispositivos
@@ -188,10 +188,10 @@
             this.txtLogDispositivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLogDispositivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogDispositivos.Location = new System.Drawing.Point(0, 0);
-            this.txtLogDispositivos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLogDispositivos.Margin = new System.Windows.Forms.Padding(2);
             this.txtLogDispositivos.Name = "txtLogDispositivos";
             this.txtLogDispositivos.ReadOnly = true;
-            this.txtLogDispositivos.Size = new System.Drawing.Size(224, 473);
+            this.txtLogDispositivos.Size = new System.Drawing.Size(224, 472);
             this.txtLogDispositivos.TabIndex = 0;
             this.txtLogDispositivos.Text = "";
             this.txtLogDispositivos.TextChanged += new System.EventHandler(this.txtLogDispositivos_TextChanged);
@@ -211,7 +211,7 @@
             this.btnLimpiarLog.ImageZoom = 50;
             this.btnLimpiarLog.LabelPosition = 41;
             this.btnLimpiarLog.LabelText = "Limpiar Log";
-            this.btnLimpiarLog.Location = new System.Drawing.Point(0, 473);
+            this.btnLimpiarLog.Location = new System.Drawing.Point(0, 472);
             this.btnLimpiarLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpiarLog.Name = "btnLimpiarLog";
             this.btnLimpiarLog.Size = new System.Drawing.Size(224, 40);
@@ -223,7 +223,7 @@
             this.contenedorBuscador.Controls.Add(this.btnBuscarDispositivo);
             this.contenedorBuscador.Dock = System.Windows.Forms.DockStyle.Top;
             this.contenedorBuscador.Location = new System.Drawing.Point(0, 0);
-            this.contenedorBuscador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contenedorBuscador.Margin = new System.Windows.Forms.Padding(2);
             this.contenedorBuscador.Name = "contenedorBuscador";
             this.contenedorBuscador.Size = new System.Drawing.Size(224, 276);
             this.contenedorBuscador.TabIndex = 1;
@@ -240,6 +240,7 @@
             this.btnBuscarDispositivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnBuscarDispositivo.isPassword = false;
             this.btnBuscarDispositivo.Location = new System.Drawing.Point(0, 0);
+            this.btnBuscarDispositivo.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarDispositivo.Name = "btnBuscarDispositivo";
             this.btnBuscarDispositivo.Size = new System.Drawing.Size(224, 36);
             this.btnBuscarDispositivo.TabIndex = 0;
@@ -251,16 +252,16 @@
             this.contenedorMapa.Controls.Add(this.gmFinca);
             this.contenedorMapa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contenedorMapa.Location = new System.Drawing.Point(0, 0);
-            this.contenedorMapa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contenedorMapa.Margin = new System.Windows.Forms.Padding(2);
             this.contenedorMapa.Name = "contenedorMapa";
-            this.contenedorMapa.Size = new System.Drawing.Size(880, 694);
+            this.contenedorMapa.Size = new System.Drawing.Size(880, 693);
             this.contenedorMapa.TabIndex = 6;
             // 
             // Mapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 789);
+            this.ClientSize = new System.Drawing.Size(1104, 788);
             this.Controls.Add(this.contenedorMapa);
             this.Controls.Add(this.contenedorBotonesInferiores);
             this.Controls.Add(this.contenedorBuscadorLog);

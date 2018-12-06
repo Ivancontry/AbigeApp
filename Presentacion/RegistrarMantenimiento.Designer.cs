@@ -47,6 +47,7 @@
             this.cbxEstadoMantenimiento = new System.Windows.Forms.ComboBox();
             this.cbxEstadoDispositivo = new System.Windows.Forms.ComboBox();
             this.fecha = new System.Windows.Forms.DateTimePicker();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             ((System.ComponentModel.ISupportInitialize)(this.epIdDispositivo)).BeginInit();
             this.grbBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epDescripcion)).BeginInit();
@@ -64,16 +65,13 @@
             this.txtCodigoDispositivo.LineIdleColor = System.Drawing.Color.SeaGreen;
             this.txtCodigoDispositivo.LineMouseHoverColor = System.Drawing.Color.Green;
             this.txtCodigoDispositivo.LineThickness = 4;
-            this.txtCodigoDispositivo.Location = new System.Drawing.Point(213, 13);
+            this.txtCodigoDispositivo.Location = new System.Drawing.Point(270, 39);
             this.txtCodigoDispositivo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtCodigoDispositivo.Name = "txtCodigoDispositivo";
-            this.txtCodigoDispositivo.Size = new System.Drawing.Size(231, 33);
+            this.txtCodigoDispositivo.Size = new System.Drawing.Size(174, 33);
             this.txtCodigoDispositivo.TabIndex = 6;
-            this.txtCodigoDispositivo.Text = "Codigo del Dispositivo";
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCodigoDispositivo.OnValueChanged += new System.EventHandler(this.txtCodigoDispositivo_OnValueChanged);
-            this.txtCodigoDispositivo.Enter += new System.EventHandler(this.txtCodigoDispositivo_Enter);
-            this.txtCodigoDispositivo.Leave += new System.EventHandler(this.txtCodigoDispositivo_Leave);
+
             // 
             // epIdDispositivo
             // 
@@ -85,7 +83,7 @@
             this.grbBotones.Controls.Add(this.bnfActualizar);
             this.grbBotones.Controls.Add(this.bnfRegistrar);
             this.grbBotones.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grbBotones.Location = new System.Drawing.Point(57, 280);
+            this.grbBotones.Location = new System.Drawing.Point(57, 347);
             this.grbBotones.Name = "grbBotones";
             this.grbBotones.Size = new System.Drawing.Size(543, 81);
             this.grbBotones.TabIndex = 9;
@@ -219,7 +217,7 @@
             this.bnfBuscar.IconVisible = true;
             this.bnfBuscar.IconZoom = 60D;
             this.bnfBuscar.IsTab = false;
-            this.bnfBuscar.Location = new System.Drawing.Point(478, 13);
+            this.bnfBuscar.Location = new System.Drawing.Point(478, 39);
             this.bnfBuscar.Name = "bnfBuscar";
             this.bnfBuscar.Normalcolor = System.Drawing.Color.White;
             this.bnfBuscar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
@@ -235,19 +233,19 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(270, 92);
+            this.txtDescripcion.Location = new System.Drawing.Point(270, 130);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtDescripcion.Size = new System.Drawing.Size(330, 189);
             this.txtDescripcion.TabIndex = 12;
-            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+           
             // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(53, 68);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(53, 106);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(52, 20);
             this.bunifuCustomLabel1.TabIndex = 14;
@@ -257,7 +255,7 @@
             // 
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(266, 67);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(266, 105);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(102, 21);
             this.bunifuCustomLabel2.TabIndex = 15;
@@ -276,23 +274,22 @@
             // 
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Segoe UI Symbol", 11F, System.Drawing.FontStyle.Bold);
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(53, 149);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(53, 187);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(179, 20);
             this.bunifuCustomLabel3.TabIndex = 20;
             this.bunifuCustomLabel3.Text = "Estado Mantenimiento";
-            this.bunifuCustomLabel3.Click += new System.EventHandler(this.bunifuCustomLabel3_Click);
-            // 
+            
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Segoe UI Symbol", 11F, System.Drawing.FontStyle.Bold);
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(53, 220);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(53, 258);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(150, 20);
             this.bunifuCustomLabel4.TabIndex = 22;
             this.bunifuCustomLabel4.Text = "Estado Dispositivo";
-            this.bunifuCustomLabel4.Click += new System.EventHandler(this.bunifuCustomLabel4_Click);
+          
             // 
             // cbxEstadoMantenimiento
             // 
@@ -305,7 +302,7 @@
             "Pendiente",
             "Enviado",
             "Revisado"});
-            this.cbxEstadoMantenimiento.Location = new System.Drawing.Point(57, 184);
+            this.cbxEstadoMantenimiento.Location = new System.Drawing.Point(57, 222);
             this.cbxEstadoMantenimiento.Name = "cbxEstadoMantenimiento";
             this.cbxEstadoMantenimiento.Size = new System.Drawing.Size(182, 21);
             this.cbxEstadoMantenimiento.TabIndex = 23;
@@ -319,27 +316,38 @@
             "En Espera",
             "Funcionando",
             "Dañado"});
-            this.cbxEstadoDispositivo.Location = new System.Drawing.Point(57, 253);
+            this.cbxEstadoDispositivo.Location = new System.Drawing.Point(57, 291);
             this.cbxEstadoDispositivo.Name = "cbxEstadoDispositivo";
             this.cbxEstadoDispositivo.Size = new System.Drawing.Size(182, 21);
             this.cbxEstadoDispositivo.TabIndex = 24;
-            this.cbxEstadoDispositivo.SelectedIndexChanged += new System.EventHandler(this.cbxEstadoDispositivo_SelectedIndexChanged);
+            
             // 
             // fecha
             // 
             this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fecha.Location = new System.Drawing.Point(57, 109);
+            this.fecha.Location = new System.Drawing.Point(57, 147);
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(182, 22);
             this.fecha.TabIndex = 25;
-            this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
+
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(53, 52);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(183, 20);
+            this.bunifuCustomLabel5.TabIndex = 26;
+            this.bunifuCustomLabel5.Text = "Codigo del Dispositivo";
             // 
             // RegistrarMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(658, 373);
+            this.ClientSize = new System.Drawing.Size(656, 440);
+            this.Controls.Add(this.bunifuCustomLabel5);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.cbxEstadoDispositivo);
             this.Controls.Add(this.cbxEstadoMantenimiento);
@@ -385,5 +393,6 @@
         private System.Windows.Forms.ComboBox cbxEstadoMantenimiento;
         private System.Windows.Forms.DateTimePicker fecha;
         private Bunifu.Framework.UI.BunifuFlatButton bnfLimpiar;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
     }
 }

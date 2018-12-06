@@ -153,37 +153,6 @@ namespace Presentacion
             }
         }
 
-        private void bnfBuscar_Click(object sender, EventArgs e)
-        {
-            DataTable dispositivo = new DataTable();
-            dispositivo = logicaDispositivo.buscarDispositvo(txtCodigoDispositivo.Text);
-            if (validarIdDispositivo() == 1)
-            {
-                if (dispositivo.Rows.Count > 0)
-                {
-                    bnfRegistrar.Enabled = false;
-                    bnfActualizar.Enabled = true;
-                    txtCodigoAnimal.Text= dispositivo.Rows[0]["idanimal"].ToString();
-                    cbxPerimetro.SelectedIndex = cbxPerimetro.FindString(dispositivo.Rows[0]["idperimetro"].ToString());
-                    cbxEstado.SelectedIndex = cbxEstado.FindString(dispositivo.Rows[0]["estado"].ToString());
-                    txtBateria.Text = dispositivo.Rows[0]["bateria"].ToString();
-                    DateTime data;
-                    data = DateTime.ParseExact(dispositivo.Rows[0]["fecha"].ToString().Substring(0, 10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    fecha.Value = data;
-
-                    MessageBox.Show("Dispositivo Encontrado");
-                    txtCodigoDispositivo.Enabled = false;
-                }
-                else
-                {
-                    MessageBox.Show("Dispositivo no existe, Registrelo");
-                    bnfRegistrar.Enabled = true;
-                    bnfActualizar.Enabled = false;
-                }
-            }
-           
-        }
-
         private void cbxPerimetro_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var item in lista)
@@ -249,6 +218,36 @@ namespace Presentacion
                     MessageBox.Show("Error al realizar en registro");
                 }
 
+            }
+        }
+
+        private void bnfBuscar_Click_1(object sender, EventArgs e)
+        {
+            DataTable dispositivo = new DataTable();
+            dispositivo = logicaDispositivo.buscarDispositvo(txtCodigoDispositivo.Text);
+            if (validarIdDispositivo() == 1)
+            {
+                if (dispositivo.Rows.Count > 0)
+                {
+                    bnfRegistrar.Enabled = false;
+                    bnfActualizar.Enabled = true;
+                    txtCodigoAnimal.Text = dispositivo.Rows[0]["idanimal"].ToString();
+                    cbxPerimetro.SelectedIndex = cbxPerimetro.FindString(dispositivo.Rows[0]["idperimetro"].ToString());
+                    cbxEstado.SelectedIndex = cbxEstado.FindString(dispositivo.Rows[0]["estado"].ToString());
+                    txtBateria.Text = dispositivo.Rows[0]["bateria"].ToString();
+                    DateTime data;
+                    data = DateTime.ParseExact(dispositivo.Rows[0]["fecha"].ToString().Substring(0, 10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    fecha.Value = data;
+
+                    MessageBox.Show("Dispositivo Encontrado");
+                    txtCodigoDispositivo.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Dispositivo no existe, Registrelo");
+                    bnfRegistrar.Enabled = true;
+                    bnfActualizar.Enabled = false;
+                }
             }
         }
     }

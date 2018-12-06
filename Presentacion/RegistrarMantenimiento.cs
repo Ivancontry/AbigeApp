@@ -211,52 +211,6 @@ namespace Presentacion
             estadoCamposInicial();
         }
 
-        private void txtCodigoDispositivo_Leave(object sender, EventArgs e)
-        {
-            if (txtCodigoDispositivo.Text == "")
-            {
-                //d
-                txtCodigoDispositivo.Text = "Codigo del Dispositivo";
-            }
-        }
-
-        private void txtCodigoDispositivo_Enter(object sender, EventArgs e)
-        {
-
-            if (txtCodigoDispositivo.Text == "Codigo del Dispositivo")
-            {
-                txtCodigoDispositivo.Text = "";
-            }
-        }
-
-        private void cbxEstadoDispositivo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuCustomLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuCustomLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDescripcion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fecha_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodigoDispositivo_OnValueChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

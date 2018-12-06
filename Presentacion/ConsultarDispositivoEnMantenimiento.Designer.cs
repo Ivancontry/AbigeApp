@@ -156,7 +156,7 @@
             this.figura.Legends.Add(legend1);
             this.figura.Location = new System.Drawing.Point(12, 357);
             this.figura.Name = "figura";
-            this.figura.Size = new System.Drawing.Size(678, 183);
+            this.figura.Size = new System.Drawing.Size(678, 294);
             this.figura.TabIndex = 34;
             this.figura.Text = "chart1";
             // 
@@ -484,7 +484,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(713, 574);
+            this.ClientSize = new System.Drawing.Size(713, 674);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bunifuCustomLabel2);
             this.Controls.Add(this.bunifuCustomLabel1);

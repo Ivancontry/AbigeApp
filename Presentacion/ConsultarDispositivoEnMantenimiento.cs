@@ -86,7 +86,7 @@ namespace Presentacion
             s1.ChartArea = "ChartArea1";
             foreach (DataRow fila in tabla.Rows)
             {
-                if (fila["estadoActual"].ToString().Equals("A")) { contGeneral++; }
+                //if (fila["estadoActual"].ToString().Equals("A")) { contGeneral++; }
                 if (int.Parse(fila["estadoMantenimiento"].ToString()) == 0 && int.Parse(fila["estadoDispositivo"].ToString()) == 0)
                 {
                     s1.Points.AddXY ("",fila["fecha"]);
@@ -118,7 +118,7 @@ namespace Presentacion
             labelAveriadoTaller.Text = contAveriadosTaller.ToString();
             labelFuncionando.Text = contFuncionando.ToString();
             labelDañado.Text = contDañados.ToString();
-            labelGeneral.Text = contGeneral.ToString();
+            labelGeneral.Text = (contFuncionando+contDañados).ToString();
 
         }
         private void bnfBuscar_Click(object sender, EventArgs e)
