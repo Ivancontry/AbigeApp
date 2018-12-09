@@ -105,7 +105,7 @@
             this.btnDispositivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.btnDispositivos.Enabled = false;
             this.btnDispositivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivos.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivos.ForeColor = System.Drawing.Color.DarkRed;
             this.btnDispositivos.Location = new System.Drawing.Point(287, 0);
             this.btnDispositivos.Margin = new System.Windows.Forms.Padding(2);
             this.btnDispositivos.Name = "btnDispositivos";
@@ -135,7 +135,7 @@
             this.btnNovedadBateria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnNovedadBateria.Enabled = false;
             this.btnNovedadBateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovedadBateria.ForeColor = System.Drawing.Color.White;
+            this.btnNovedadBateria.ForeColor = System.Drawing.Color.DarkRed;
             this.btnNovedadBateria.Location = new System.Drawing.Point(456, 2);
             this.btnNovedadBateria.Margin = new System.Windows.Forms.Padding(2);
             this.btnNovedadBateria.Name = "btnNovedadBateria";
@@ -150,7 +150,7 @@
             this.btnDispositivosFuera.BackColor = System.Drawing.Color.DarkRed;
             this.btnDispositivosFuera.Enabled = false;
             this.btnDispositivosFuera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.White;
+            this.btnDispositivosFuera.ForeColor = System.Drawing.Color.DarkRed;
             this.btnDispositivosFuera.Location = new System.Drawing.Point(118, 0);
             this.btnDispositivosFuera.Margin = new System.Windows.Forms.Padding(2);
             this.btnDispositivosFuera.Name = "btnDispositivosFuera";

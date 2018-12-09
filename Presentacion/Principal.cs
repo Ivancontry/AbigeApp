@@ -35,7 +35,11 @@ namespace Presentacion
                 //fro.Top = (this.panelcontenedor.Height - fro.Height) / 3;
                 fro.Dock = DockStyle.Fill;
                 fro.Show();
-
+                if (fro.Name == "Mapa")
+                {
+                    Mapa mapa = fro as Mapa;
+                    mapa.peticionDePosicion();
+                }
             }
         }
         private void Principal_Load(object sender, EventArgs e)

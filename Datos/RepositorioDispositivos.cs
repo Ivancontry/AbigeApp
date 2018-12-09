@@ -156,7 +156,7 @@ namespace Datos
 
         public DataTable listadoPerimetros()
         {
-            return cargarRegistros("mostrarPerimetros");
+            return cargarRegistros("cargarPerimetros");
         }
 
         public DataTable listadoCoordenadasPerimetro(int idPerimetro)
@@ -198,7 +198,7 @@ namespace Datos
 
         public DataTable cargarPerimetros()
         {
-            return cargarRegistros("mostrarPerimetros");
+            return cargarRegistros("cargarPerimetros");
         }
 
 
