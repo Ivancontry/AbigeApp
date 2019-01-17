@@ -74,6 +74,7 @@ namespace Presentacion
             gmFinca.MaxZoom = 24;
             gmFinca.Zoom = 17;
             gmFinca.AutoScroll = true;
+            
         }
 
         
@@ -173,7 +174,7 @@ namespace Presentacion
         private void insertarMarcador(Posicion dispositivo) {
             List<GMapOverlay> lista = new List<GMapOverlay>();
             lista = gmFinca.Overlays.ToList();//Se obtiene una lista de marcadores sobre el mapa
-            gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
+            //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));//comento para que no remueva el marcador anterior
             //De aqui hasta donde aviso esta en prueba por las anomalias
             markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
             if (dispositivo.novedadDispositivo == 1)
@@ -230,7 +231,7 @@ namespace Presentacion
             {
                 gmFinca.Invoke(new MethodInvoker(delegate
                 {
-                    gmFinca.Zoom += 0;
+                    gmFinca.Zoom += 0.00008;
                     //refrescarPoligonos();
                 }));
             }
@@ -272,7 +273,7 @@ namespace Presentacion
                 {
                     gmFinca.Invoke(new MethodInvoker(delegate
                     {
-                        gmFinca.Zoom-=0;
+                        gmFinca.Zoom-=0.00008;
                         //gmFinca.Refresh();
                         txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
                     "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
@@ -285,7 +286,7 @@ namespace Presentacion
                     }));
                 }
             }
-            peticionDePosicion();//Pide al dispositivo por el siguiente codigo
+            //peticionDePosicion();//Pide al dispositivo por el siguiente codigo
             //MessageBox.Show(mostrarMesaje);
         }
         private void cambio(string formName,bool color)
@@ -322,8 +323,7 @@ namespace Presentacion
         {            
             if (dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count == 0)
             {                
-                dispositivoFuera = false;
-               
+                dispositivoFuera = false;               
             }
             else
             {

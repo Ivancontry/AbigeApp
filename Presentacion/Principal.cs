@@ -38,7 +38,7 @@ namespace Presentacion
                 if (fro.Name == "Mapa")
                 {
                     Mapa mapa = fro as Mapa;
-                    mapa.peticionDePosicion();
+                    //mapa.peticionDePosicion();
                 }
             }
         }
