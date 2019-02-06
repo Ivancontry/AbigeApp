@@ -21,17 +21,17 @@ namespace Datos
 
                     cmd = new MySqlCommand("registrarOActulizarUsuario", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new MySqlParameter("XIDENTIFICACION", usuario.identificacion));
-                    cmd.Parameters.Add(new MySqlParameter("XNOMBRES", usuario.nombres));
-                    cmd.Parameters.Add(new MySqlParameter("XPRIMER_APELLIDO", usuario.primerApellido));
-                    cmd.Parameters.Add(new MySqlParameter("XSEGUNDO_APELLIDO", usuario.segundoApellido));
-                    cmd.Parameters.Add(new MySqlParameter("XROL", usuario.rol));
-                    cmd.Parameters.Add(new MySqlParameter("XID_FINCA", usuario.idfinca));
-                    cmd.Parameters.Add(new MySqlParameter("XEMAIL", usuario.email));
-                    cmd.Parameters.Add(new MySqlParameter("XTELEFONO", usuario.telefono));
-                    cmd.Parameters.Add(new MySqlParameter("XDIRECCION", usuario.direccion));
-                    cmd.Parameters.Add(new MySqlParameter("XESTADO", usuario.estado));                    
-                    cmd.Parameters.Add(new MySqlParameter("XCLAVE", usuario.clave));                    
+                    cmd.Parameters.Add(new MySqlParameter("XIDENTIFICACION", usuario.Identificacion));
+                    cmd.Parameters.Add(new MySqlParameter("XNOMBRES", usuario.Nombres));
+                    cmd.Parameters.Add(new MySqlParameter("XPRIMER_APELLIDO", usuario.PrimerApellido));
+                    cmd.Parameters.Add(new MySqlParameter("XSEGUNDO_APELLIDO", usuario.SegundoApellido));
+                    cmd.Parameters.Add(new MySqlParameter("XROL", usuario.Rol));
+                    cmd.Parameters.Add(new MySqlParameter("XID_FINCA", usuario.Idfinca));
+                    cmd.Parameters.Add(new MySqlParameter("XEMAIL", usuario.Email));
+                    cmd.Parameters.Add(new MySqlParameter("XTELEFONO", usuario.Telefono));
+                    cmd.Parameters.Add(new MySqlParameter("XDIRECCION", usuario.Direccion));
+                    cmd.Parameters.Add(new MySqlParameter("XESTADO", usuario.Estado));                    
+                    cmd.Parameters.Add(new MySqlParameter("XCLAVE", usuario.Clave));                    
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {

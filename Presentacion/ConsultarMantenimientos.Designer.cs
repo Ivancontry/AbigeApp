@@ -34,24 +34,13 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bnfFuncionando = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bnfAveridadoTaller = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bnfAveriadoFinca = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bnfDañados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelGeneral = new System.Windows.Forms.Label();
             this.bnfGeneral = new Bunifu.Framework.UI.BunifuFlatButton();
             this.labelDañado = new System.Windows.Forms.Label();
-            this.labelAveriadoTaller = new System.Windows.Forms.Label();
-            this.labelAveridadoFinca = new System.Windows.Forms.Label();
             this.labelFuncionando = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tablaGeneral = new System.Windows.Forms.DataGridView();
-            this.codigoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoMantenimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtCantidadTop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,6 +50,11 @@
             this.bnfBuscar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.codigoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoMantenimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -88,7 +82,7 @@
             this.bnfFuncionando.IconVisible = true;
             this.bnfFuncionando.IconZoom = 60D;
             this.bnfFuncionando.IsTab = false;
-            this.bnfFuncionando.Location = new System.Drawing.Point(177, 42);
+            this.bnfFuncionando.Location = new System.Drawing.Point(335, 41);
             this.bnfFuncionando.Margin = new System.Windows.Forms.Padding(4);
             this.bnfFuncionando.Name = "bnfFuncionando";
             this.bnfFuncionando.Normalcolor = System.Drawing.Color.MediumSeaGreen;
@@ -102,78 +96,6 @@
             this.bnfFuncionando.Textcolor = System.Drawing.Color.Black;
             this.bnfFuncionando.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bnfFuncionando.Click += new System.EventHandler(this.bnfFuncionando_Click);
-            // 
-            // bnfAveridadoTaller
-            // 
-            this.bnfAveridadoTaller.Activecolor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.BackColor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bnfAveridadoTaller.BorderRadius = 0;
-            this.bnfAveridadoTaller.ButtonText = "Taller";
-            this.bnfAveridadoTaller.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bnfAveridadoTaller.DisabledColor = System.Drawing.Color.Gray;
-            this.bnfAveridadoTaller.Iconcolor = System.Drawing.Color.Transparent;
-            this.bnfAveridadoTaller.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfAveridadoTaller.Iconimage")));
-            this.bnfAveridadoTaller.Iconimage_right = null;
-            this.bnfAveridadoTaller.Iconimage_right_Selected = null;
-            this.bnfAveridadoTaller.Iconimage_Selected = null;
-            this.bnfAveridadoTaller.IconMarginLeft = 0;
-            this.bnfAveridadoTaller.IconMarginRight = 0;
-            this.bnfAveridadoTaller.IconRightVisible = true;
-            this.bnfAveridadoTaller.IconRightZoom = 0D;
-            this.bnfAveridadoTaller.IconVisible = true;
-            this.bnfAveridadoTaller.IconZoom = 60D;
-            this.bnfAveridadoTaller.IsTab = false;
-            this.bnfAveridadoTaller.Location = new System.Drawing.Point(698, 40);
-            this.bnfAveridadoTaller.Margin = new System.Windows.Forms.Padding(4);
-            this.bnfAveridadoTaller.Name = "bnfAveridadoTaller";
-            this.bnfAveridadoTaller.Normalcolor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bnfAveridadoTaller.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bnfAveridadoTaller.selected = false;
-            this.bnfAveridadoTaller.Size = new System.Drawing.Size(108, 29);
-            this.bnfAveridadoTaller.TabIndex = 26;
-            this.bnfAveridadoTaller.Text = "Taller";
-            this.bnfAveridadoTaller.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bnfAveridadoTaller.Textcolor = System.Drawing.Color.Black;
-            this.bnfAveridadoTaller.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnfAveridadoTaller.Click += new System.EventHandler(this.bnfAveridadoTaller_Click);
-            // 
-            // bnfAveriadoFinca
-            // 
-            this.bnfAveriadoFinca.Activecolor = System.Drawing.Color.Yellow;
-            this.bnfAveriadoFinca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bnfAveriadoFinca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bnfAveriadoFinca.BorderRadius = 2;
-            this.bnfAveriadoFinca.ButtonText = "Finca";
-            this.bnfAveriadoFinca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bnfAveriadoFinca.DisabledColor = System.Drawing.Color.Gray;
-            this.bnfAveriadoFinca.Iconcolor = System.Drawing.Color.Transparent;
-            this.bnfAveriadoFinca.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfAveriadoFinca.Iconimage")));
-            this.bnfAveriadoFinca.Iconimage_right = null;
-            this.bnfAveriadoFinca.Iconimage_right_Selected = null;
-            this.bnfAveriadoFinca.Iconimage_Selected = null;
-            this.bnfAveriadoFinca.IconMarginLeft = 0;
-            this.bnfAveriadoFinca.IconMarginRight = 0;
-            this.bnfAveriadoFinca.IconRightVisible = true;
-            this.bnfAveriadoFinca.IconRightZoom = 0D;
-            this.bnfAveriadoFinca.IconVisible = true;
-            this.bnfAveriadoFinca.IconZoom = 60D;
-            this.bnfAveriadoFinca.IsTab = false;
-            this.bnfAveriadoFinca.Location = new System.Drawing.Point(563, 42);
-            this.bnfAveriadoFinca.Margin = new System.Windows.Forms.Padding(4);
-            this.bnfAveriadoFinca.Name = "bnfAveriadoFinca";
-            this.bnfAveriadoFinca.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bnfAveriadoFinca.OnHovercolor = System.Drawing.Color.Yellow;
-            this.bnfAveriadoFinca.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bnfAveriadoFinca.selected = false;
-            this.bnfAveriadoFinca.Size = new System.Drawing.Size(108, 29);
-            this.bnfAveriadoFinca.TabIndex = 27;
-            this.bnfAveriadoFinca.Text = "Finca";
-            this.bnfAveriadoFinca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bnfAveriadoFinca.Textcolor = System.Drawing.Color.Black;
-            this.bnfAveriadoFinca.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnfAveriadoFinca.Click += new System.EventHandler(this.bnfAveriadoFinca_Click);
             // 
             // bnfDañados
             // 
@@ -196,7 +118,7 @@
             this.bnfDañados.IconVisible = true;
             this.bnfDañados.IconZoom = 60D;
             this.bnfDañados.IsTab = false;
-            this.bnfDañados.Location = new System.Drawing.Point(398, 42);
+            this.bnfDañados.Location = new System.Drawing.Point(556, 41);
             this.bnfDañados.Margin = new System.Windows.Forms.Padding(4);
             this.bnfDañados.Name = "bnfDañados";
             this.bnfDañados.Normalcolor = System.Drawing.Color.Red;
@@ -209,21 +131,15 @@
             this.bnfDañados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bnfDañados.Textcolor = System.Drawing.Color.Black;
             this.bnfDañados.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnfDañados.Click += new System.EventHandler(this.bnfDañados_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.labelGeneral);
             this.groupBox1.Controls.Add(this.bnfGeneral);
             this.groupBox1.Controls.Add(this.labelDañado);
-            this.groupBox1.Controls.Add(this.labelAveriadoTaller);
-            this.groupBox1.Controls.Add(this.labelAveridadoFinca);
             this.groupBox1.Controls.Add(this.labelFuncionando);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.bnfFuncionando);
             this.groupBox1.Controls.Add(this.bnfDañados);
-            this.groupBox1.Controls.Add(this.bnfAveriadoFinca);
-            this.groupBox1.Controls.Add(this.bnfAveridadoTaller);
             this.groupBox1.Location = new System.Drawing.Point(14, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(848, 77);
@@ -235,7 +151,7 @@
             this.labelGeneral.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelGeneral.AutoSize = true;
             this.labelGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGeneral.Location = new System.Drawing.Point(128, 42);
+            this.labelGeneral.Location = new System.Drawing.Point(286, 41);
             this.labelGeneral.Name = "labelGeneral";
             this.labelGeneral.Size = new System.Drawing.Size(26, 29);
             this.labelGeneral.TabIndex = 35;
@@ -263,7 +179,7 @@
             this.bnfGeneral.IconVisible = true;
             this.bnfGeneral.IconZoom = 60D;
             this.bnfGeneral.IsTab = false;
-            this.bnfGeneral.Location = new System.Drawing.Point(23, 42);
+            this.bnfGeneral.Location = new System.Drawing.Point(181, 41);
             this.bnfGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.bnfGeneral.Name = "bnfGeneral";
             this.bnfGeneral.Normalcolor = System.Drawing.Color.White;
@@ -283,59 +199,24 @@
             this.labelDañado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDañado.AutoSize = true;
             this.labelDañado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDañado.Location = new System.Drawing.Point(502, 42);
+            this.labelDañado.Location = new System.Drawing.Point(660, 41);
             this.labelDañado.Name = "labelDañado";
             this.labelDañado.Size = new System.Drawing.Size(26, 29);
             this.labelDañado.TabIndex = 33;
             this.labelDañado.Text = "0";
             this.labelDañado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelAveriadoTaller
-            // 
-            this.labelAveriadoTaller.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelAveriadoTaller.AutoSize = true;
-            this.labelAveriadoTaller.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAveriadoTaller.Location = new System.Drawing.Point(801, 40);
-            this.labelAveriadoTaller.Name = "labelAveriadoTaller";
-            this.labelAveriadoTaller.Size = new System.Drawing.Size(26, 29);
-            this.labelAveriadoTaller.TabIndex = 32;
-            this.labelAveriadoTaller.Text = "0";
-            this.labelAveriadoTaller.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelAveridadoFinca
-            // 
-            this.labelAveridadoFinca.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelAveridadoFinca.AutoSize = true;
-            this.labelAveridadoFinca.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAveridadoFinca.Location = new System.Drawing.Point(647, 42);
-            this.labelAveridadoFinca.Name = "labelAveridadoFinca";
-            this.labelAveridadoFinca.Size = new System.Drawing.Size(26, 29);
-            this.labelAveridadoFinca.TabIndex = 31;
-            this.labelAveridadoFinca.Text = "0";
-            this.labelAveridadoFinca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // labelFuncionando
             // 
             this.labelFuncionando.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelFuncionando.AutoSize = true;
             this.labelFuncionando.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFuncionando.Location = new System.Drawing.Point(335, 42);
+            this.labelFuncionando.Location = new System.Drawing.Point(493, 41);
             this.labelFuncionando.Name = "labelFuncionando";
             this.labelFuncionando.Size = new System.Drawing.Size(26, 29);
             this.labelFuncionando.TabIndex = 30;
             this.labelFuncionando.Text = "0";
             this.labelFuncionando.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(638, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Averiados";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tablaGeneral
             // 
@@ -349,53 +230,15 @@
             this.descripcion,
             this.fecha,
             this.estadoMantenimiento,
-            this.estadoDispositivo,
             this.estadoActual});
             this.tablaGeneral.GridColor = System.Drawing.Color.White;
-            this.tablaGeneral.Location = new System.Drawing.Point(15, 401);
+            this.tablaGeneral.Location = new System.Drawing.Point(123, 401);
             this.tablaGeneral.Name = "tablaGeneral";
             this.tablaGeneral.ReadOnly = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.tablaGeneral.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.tablaGeneral.Size = new System.Drawing.Size(847, 221);
+            this.tablaGeneral.Size = new System.Drawing.Size(622, 221);
             this.tablaGeneral.TabIndex = 30;
-            // 
-            // codigoDispositivo
-            // 
-            this.codigoDispositivo.HeaderText = "Cod_Dispositivo";
-            this.codigoDispositivo.Name = "codigoDispositivo";
-            this.codigoDispositivo.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 180;
-            // 
-            // fecha
-            // 
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            // 
-            // estadoMantenimiento
-            // 
-            this.estadoMantenimiento.HeaderText = "Est_Mantenimiento";
-            this.estadoMantenimiento.Name = "estadoMantenimiento";
-            this.estadoMantenimiento.ReadOnly = true;
-            // 
-            // estadoDispositivo
-            // 
-            this.estadoDispositivo.HeaderText = "Est_Dispositivo";
-            this.estadoDispositivo.Name = "estadoDispositivo";
-            this.estadoDispositivo.ReadOnly = true;
-            // 
-            // estadoActual
-            // 
-            this.estadoActual.HeaderText = "EstadoActual";
-            this.estadoActual.Name = "estadoActual";
-            this.estadoActual.ReadOnly = true;
             // 
             // chart1
             // 
@@ -515,6 +358,37 @@
             this.label4.TabIndex = 40;
             this.label4.Text = "Fecha 1";
             // 
+            // codigoDispositivo
+            // 
+            this.codigoDispositivo.HeaderText = "Cod_Dispositivo";
+            this.codigoDispositivo.Name = "codigoDispositivo";
+            this.codigoDispositivo.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 180;
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            // 
+            // estadoMantenimiento
+            // 
+            this.estadoMantenimiento.HeaderText = "Est_Mantenimiento";
+            this.estadoMantenimiento.Name = "estadoMantenimiento";
+            this.estadoMantenimiento.ReadOnly = true;
+            // 
+            // estadoActual
+            // 
+            this.estadoActual.HeaderText = "EstadoActual";
+            this.estadoActual.Name = "estadoActual";
+            this.estadoActual.ReadOnly = true;
+            // 
             // ConsultarMantenimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -541,24 +415,13 @@
 
         #endregion
         private Bunifu.Framework.UI.BunifuFlatButton bnfFuncionando;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfAveridadoTaller;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfAveriadoFinca;
         private Bunifu.Framework.UI.BunifuFlatButton bnfDañados;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelDañado;
-        private System.Windows.Forms.Label labelAveriadoTaller;
-        private System.Windows.Forms.Label labelAveridadoFinca;
         private System.Windows.Forms.Label labelFuncionando;
         private System.Windows.Forms.Label labelGeneral;
         private Bunifu.Framework.UI.BunifuFlatButton bnfGeneral;
         private System.Windows.Forms.DataGridView tablaGeneral;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDispositivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoMantenimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoDispositivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estadoActual;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TextBox txtCantidadTop;
         private System.Windows.Forms.Label label2;
@@ -568,5 +431,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuFlatButton bnfBuscar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDispositivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoMantenimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoActual;
     }
 }

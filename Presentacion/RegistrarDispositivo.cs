@@ -180,12 +180,12 @@ namespace Presentacion
         private void bnfRegistrar_Click(object sender, EventArgs e)
         {
             if (validarBateria()==1 && validarCodigoAnimal()==1 && validarIdDispositivo()==1) {
-                dispositivo.idDispositivo = txtCodigoDispositivo.Text;
-                dispositivo.idAnimal = txtCodigoAnimal.Text;
-                dispositivo.idPerimetro = int.Parse(cbxPerimetro.Text);
-                dispositivo.estado = cbxEstado.Text;
-                dispositivo.fecha = fecha.Value;
-                dispositivo.bateria = float.Parse(txtBateria.Text);
+                dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
+                dispositivo.IdAnimal = txtCodigoAnimal.Text;
+                dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
+                dispositivo.Estado = cbxEstado.Text;
+                dispositivo.Fecha = fecha.Value;
+                dispositivo.Bateria = float.Parse(txtBateria.Text);
                 if (logicaDispositivo.registrarDispositivo(dispositivo) == 1)
                 {
                     MessageBox.Show("Operacion Exitosa");
@@ -202,12 +202,12 @@ namespace Presentacion
         {
             if (validarBateria() == 1 && validarCodigoAnimal() == 1 )
             {
-                dispositivo.idDispositivo = txtCodigoDispositivo.Text;
-                dispositivo.idAnimal = txtCodigoAnimal.Text;
-                dispositivo.idPerimetro = int.Parse(cbxPerimetro.Text);
-                dispositivo.estado = cbxEstado.Text;
-                dispositivo.fecha = fecha.Value;
-                dispositivo.bateria = float.Parse(txtBateria.Text);
+                dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
+                dispositivo.IdAnimal = txtCodigoAnimal.Text;
+                dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
+                dispositivo.Estado = cbxEstado.Text;
+                dispositivo.Fecha = fecha.Value;
+                dispositivo.Bateria = float.Parse(txtBateria.Text);
 
                 if (logicaDispositivo.actulizarDispositivo(dispositivo)==1)
                 {

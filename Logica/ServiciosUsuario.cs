@@ -25,17 +25,17 @@ namespace Logica
         {
 
             Usuarios usuarios = new Usuarios();
-            usuarios.identificacion = row["IDENTIFICACION"].ToString();
-            usuarios.nombres = row["NOMBRES"].ToString();
-            usuarios.primerApellido = row["PRIMERAPELLIDO"].ToString();
-            usuarios.segundoApellido = row["SEGUNDOAPELLIDO"].ToString();
-            usuarios.telefono = row["TELEFONO"].ToString();
-            usuarios.rol = row["ROL"].ToString();
-            usuarios.estado =Char.Parse( row["ESTADO"].ToString());
-            usuarios.idfinca = int.Parse(row["IDFINCA"].ToString());
-            usuarios.clave = row["CLAVE"].ToString();
-            usuarios.direccion = row["DIRECCION"].ToString();
-            usuarios.email = row["EMAIL"].ToString();
+            usuarios.Identificacion = row["IDENTIFICACION"].ToString();
+            usuarios.Nombres = row["NOMBRES"].ToString();
+            usuarios.PrimerApellido = row["PRIMERAPELLIDO"].ToString();
+            usuarios.SegundoApellido = row["SEGUNDOAPELLIDO"].ToString();
+            usuarios.Telefono = row["TELEFONO"].ToString();
+            usuarios.Rol = row["ROL"].ToString();
+            usuarios.Estado =Char.Parse( row["ESTADO"].ToString());
+            usuarios.Idfinca = int.Parse(row["IDFINCA"].ToString());
+            usuarios.Clave = row["CLAVE"].ToString();
+            usuarios.Direccion = row["DIRECCION"].ToString();
+            usuarios.Email = row["EMAIL"].ToString();
             return usuarios;
         }
         public Usuarios buscarPorIdentificacion(string identificacion)

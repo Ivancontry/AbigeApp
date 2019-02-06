@@ -31,8 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.panelLogo = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.panelLateral = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.panelEmpleados = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnOpciones = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panelBtnGestionEmpleado = new System.Windows.Forms.Panel();
+            this.btnGestionEmpleado = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panelBtnOpciones = new System.Windows.Forms.Panel();
             this.panelBtnInicio = new System.Windows.Forms.Panel();
             this.btnInicio = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnMantenimientos = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnGestionDispositivo = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panelBtnDispositivo = new System.Windows.Forms.Panel();
+            this.panelBtnMantenimientos = new System.Windows.Forms.Panel();
             this.panelDispositivo = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnRegistrarDispositivos = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -56,18 +67,13 @@
             this.bunifuFlatButton11 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton12 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panelBtnDispositivo = new System.Windows.Forms.Panel();
-            this.btnGestionDispositivo = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panelBtnMantenimientos = new System.Windows.Forms.Panel();
-            this.btnMantenimientos = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panelBtnOpciones = new System.Windows.Forms.Panel();
-            this.btnOpciones = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.imagenUsuario = new System.Windows.Forms.PictureBox();
             this.labelUsuario = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelcontenedor = new System.Windows.Forms.Panel();
             this.panelLateral.SuspendLayout();
+            this.panelEmpleados.SuspendLayout();
             this.panelDispositivo.SuspendLayout();
             this.panelMantenimientos.SuspendLayout();
             this.panelOpciones.SuspendLayout();
@@ -87,24 +93,27 @@
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Quality = 10;
-            this.panelLogo.Size = new System.Drawing.Size(325, 89);
+            this.panelLogo.Size = new System.Drawing.Size(325, 121);
             this.panelLogo.TabIndex = 12;
             // 
             // panelLateral
             // 
             this.panelLateral.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLateral.BackgroundImage")));
             this.panelLateral.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelLateral.Controls.Add(this.panelMantenimientos);
+            this.panelLateral.Controls.Add(this.panelDispositivo);
+            this.panelLateral.Controls.Add(this.panelEmpleados);
+            this.panelLateral.Controls.Add(this.btnOpciones);
+            this.panelLateral.Controls.Add(this.panelBtnGestionEmpleado);
+            this.panelLateral.Controls.Add(this.btnGestionEmpleado);
+            this.panelLateral.Controls.Add(this.panelOpciones);
+            this.panelLateral.Controls.Add(this.panelBtnOpciones);
             this.panelLateral.Controls.Add(this.panelBtnInicio);
             this.panelLateral.Controls.Add(this.btnInicio);
-            this.panelLateral.Controls.Add(this.panelDispositivo);
-            this.panelLateral.Controls.Add(this.panelMantenimientos);
-            this.panelLateral.Controls.Add(this.panelOpciones);
-            this.panelLateral.Controls.Add(this.panelBtnDispositivo);
-            this.panelLateral.Controls.Add(this.btnGestionDispositivo);
-            this.panelLateral.Controls.Add(this.panelBtnMantenimientos);
             this.panelLateral.Controls.Add(this.btnMantenimientos);
-            this.panelLateral.Controls.Add(this.panelBtnOpciones);
-            this.panelLateral.Controls.Add(this.btnOpciones);
+            this.panelLateral.Controls.Add(this.btnGestionDispositivo);
+            this.panelLateral.Controls.Add(this.panelBtnDispositivo);
+            this.panelLateral.Controls.Add(this.panelBtnMantenimientos);
             this.panelLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLateral.GradientBottomLeft = System.Drawing.Color.LimeGreen;
             this.panelLateral.GradientBottomRight = System.Drawing.Color.SkyBlue;
@@ -113,13 +122,154 @@
             this.panelLateral.Location = new System.Drawing.Point(0, 0);
             this.panelLateral.Name = "panelLateral";
             this.panelLateral.Quality = 10;
-            this.panelLateral.Size = new System.Drawing.Size(325, 772);
+            this.panelLateral.Size = new System.Drawing.Size(325, 788);
             this.panelLateral.TabIndex = 12;
+            // 
+            // panelEmpleados
+            // 
+            this.panelEmpleados.BackColor = System.Drawing.Color.Transparent;
+            this.panelEmpleados.Controls.Add(this.panel2);
+            this.panelEmpleados.Controls.Add(this.bunifuFlatButton2);
+            this.panelEmpleados.Location = new System.Drawing.Point(9, 220);
+            this.panelEmpleados.Name = "panelEmpleados";
+            this.panelEmpleados.Size = new System.Drawing.Size(316, 48);
+            this.panelEmpleados.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Lime;
+            this.panel2.Location = new System.Drawing.Point(8, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 40);
+            this.panel2.TabIndex = 18;
+            // 
+            // bunifuFlatButton2
+            // 
+            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton2.BorderRadius = 0;
+            this.bunifuFlatButton2.ButtonText = "Registrar Dispositivo";
+            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
+            this.bunifuFlatButton2.Iconimage_right = null;
+            this.bunifuFlatButton2.Iconimage_right_Selected = null;
+            this.bunifuFlatButton2.Iconimage_Selected = null;
+            this.bunifuFlatButton2.IconMarginLeft = 0;
+            this.bunifuFlatButton2.IconMarginRight = 0;
+            this.bunifuFlatButton2.IconRightVisible = true;
+            this.bunifuFlatButton2.IconRightZoom = 0D;
+            this.bunifuFlatButton2.IconVisible = true;
+            this.bunifuFlatButton2.IconZoom = 60D;
+            this.bunifuFlatButton2.IsTab = false;
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(17, 3);
+            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
+            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.selected = false;
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(298, 41);
+            this.bunifuFlatButton2.TabIndex = 19;
+            this.bunifuFlatButton2.Text = "Registrar Dispositivo";
+            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // btnOpciones
+            // 
+            this.btnOpciones.Activecolor = System.Drawing.Color.Transparent;
+            this.btnOpciones.BackColor = System.Drawing.Color.Transparent;
+            this.btnOpciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOpciones.BorderRadius = 0;
+            this.btnOpciones.ButtonText = "Opciones";
+            this.btnOpciones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpciones.DisabledColor = System.Drawing.Color.Gray;
+            this.btnOpciones.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnOpciones.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
+            this.btnOpciones.Iconimage_right = null;
+            this.btnOpciones.Iconimage_right_Selected = null;
+            this.btnOpciones.Iconimage_Selected = null;
+            this.btnOpciones.IconMarginLeft = 0;
+            this.btnOpciones.IconMarginRight = 0;
+            this.btnOpciones.IconRightVisible = true;
+            this.btnOpciones.IconRightZoom = 0D;
+            this.btnOpciones.IconVisible = true;
+            this.btnOpciones.IconZoom = 60D;
+            this.btnOpciones.IsTab = false;
+            this.btnOpciones.Location = new System.Drawing.Point(12, 653);
+            this.btnOpciones.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOpciones.Name = "btnOpciones";
+            this.btnOpciones.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnOpciones.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnOpciones.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnOpciones.selected = false;
+            this.btnOpciones.Size = new System.Drawing.Size(315, 41);
+            this.btnOpciones.TabIndex = 11;
+            this.btnOpciones.Text = "Opciones";
+            this.btnOpciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnOpciones.Textcolor = System.Drawing.Color.White;
+            this.btnOpciones.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpciones.Click += new System.EventHandler(this.btnOpciones_Click_1);
+            // 
+            // panelBtnGestionEmpleado
+            // 
+            this.panelBtnGestionEmpleado.BackColor = System.Drawing.Color.Lime;
+            this.panelBtnGestionEmpleado.Location = new System.Drawing.Point(3, 174);
+            this.panelBtnGestionEmpleado.Name = "panelBtnGestionEmpleado";
+            this.panelBtnGestionEmpleado.Size = new System.Drawing.Size(10, 40);
+            this.panelBtnGestionEmpleado.TabIndex = 20;
+            // 
+            // btnGestionEmpleado
+            // 
+            this.btnGestionEmpleado.Activecolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.BackColor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGestionEmpleado.BorderRadius = 0;
+            this.btnGestionEmpleado.ButtonText = "Registrar Empleado";
+            this.btnGestionEmpleado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionEmpleado.DisabledColor = System.Drawing.Color.Gray;
+            this.btnGestionEmpleado.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
+            this.btnGestionEmpleado.Iconimage_right = null;
+            this.btnGestionEmpleado.Iconimage_right_Selected = null;
+            this.btnGestionEmpleado.Iconimage_Selected = null;
+            this.btnGestionEmpleado.IconMarginLeft = 0;
+            this.btnGestionEmpleado.IconMarginRight = 0;
+            this.btnGestionEmpleado.IconRightVisible = true;
+            this.btnGestionEmpleado.IconRightZoom = 0D;
+            this.btnGestionEmpleado.IconVisible = true;
+            this.btnGestionEmpleado.IconZoom = 60D;
+            this.btnGestionEmpleado.IsTab = false;
+            this.btnGestionEmpleado.Location = new System.Drawing.Point(12, 174);
+            this.btnGestionEmpleado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGestionEmpleado.Name = "btnGestionEmpleado";
+            this.btnGestionEmpleado.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnGestionEmpleado.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnGestionEmpleado.selected = false;
+            this.btnGestionEmpleado.Size = new System.Drawing.Size(313, 41);
+            this.btnGestionEmpleado.TabIndex = 21;
+            this.btnGestionEmpleado.Text = "Registrar Empleado";
+            this.btnGestionEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGestionEmpleado.Textcolor = System.Drawing.Color.White;
+            this.btnGestionEmpleado.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionEmpleado.Click += new System.EventHandler(this.btnGestionEmpleado_Click);
+            // 
+            // panelBtnOpciones
+            // 
+            this.panelBtnOpciones.BackColor = System.Drawing.Color.Lime;
+            this.panelBtnOpciones.Location = new System.Drawing.Point(3, 653);
+            this.panelBtnOpciones.Name = "panelBtnOpciones";
+            this.panelBtnOpciones.Size = new System.Drawing.Size(10, 40);
+            this.panelBtnOpciones.TabIndex = 2;
             // 
             // panelBtnInicio
             // 
             this.panelBtnInicio.BackColor = System.Drawing.Color.Lime;
-            this.panelBtnInicio.Location = new System.Drawing.Point(3, 110);
+            this.panelBtnInicio.Location = new System.Drawing.Point(3, 127);
             this.panelBtnInicio.Name = "panelBtnInicio";
             this.panelBtnInicio.Size = new System.Drawing.Size(10, 40);
             this.panelBtnInicio.TabIndex = 18;
@@ -145,7 +295,7 @@
             this.btnInicio.IconVisible = true;
             this.btnInicio.IconZoom = 60D;
             this.btnInicio.IsTab = false;
-            this.btnInicio.Location = new System.Drawing.Point(12, 110);
+            this.btnInicio.Location = new System.Drawing.Point(12, 127);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Normalcolor = System.Drawing.Color.Transparent;
@@ -160,6 +310,94 @@
             this.btnInicio.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
+            // btnMantenimientos
+            // 
+            this.btnMantenimientos.Activecolor = System.Drawing.Color.Transparent;
+            this.btnMantenimientos.BackColor = System.Drawing.Color.Transparent;
+            this.btnMantenimientos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMantenimientos.BorderRadius = 0;
+            this.btnMantenimientos.ButtonText = "Gestion Mantenimientos";
+            this.btnMantenimientos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMantenimientos.DisabledColor = System.Drawing.Color.Gray;
+            this.btnMantenimientos.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnMantenimientos.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
+            this.btnMantenimientos.Iconimage_right = null;
+            this.btnMantenimientos.Iconimage_right_Selected = null;
+            this.btnMantenimientos.Iconimage_Selected = null;
+            this.btnMantenimientos.IconMarginLeft = 0;
+            this.btnMantenimientos.IconMarginRight = 0;
+            this.btnMantenimientos.IconRightVisible = true;
+            this.btnMantenimientos.IconRightZoom = 0D;
+            this.btnMantenimientos.IconVisible = true;
+            this.btnMantenimientos.IconZoom = 60D;
+            this.btnMantenimientos.IsTab = false;
+            this.btnMantenimientos.Location = new System.Drawing.Point(12, 464);
+            this.btnMantenimientos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMantenimientos.Name = "btnMantenimientos";
+            this.btnMantenimientos.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnMantenimientos.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnMantenimientos.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnMantenimientos.selected = false;
+            this.btnMantenimientos.Size = new System.Drawing.Size(312, 41);
+            this.btnMantenimientos.TabIndex = 10;
+            this.btnMantenimientos.Text = "Gestion Mantenimientos";
+            this.btnMantenimientos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnMantenimientos.Textcolor = System.Drawing.Color.White;
+            this.btnMantenimientos.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMantenimientos.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
+            // 
+            // btnGestionDispositivo
+            // 
+            this.btnGestionDispositivo.Activecolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.BackColor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGestionDispositivo.BorderRadius = 0;
+            this.btnGestionDispositivo.ButtonText = "Gestion Dispositivo";
+            this.btnGestionDispositivo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionDispositivo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnGestionDispositivo.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnGestionDispositivo.Iconimage")));
+            this.btnGestionDispositivo.Iconimage_right = null;
+            this.btnGestionDispositivo.Iconimage_right_Selected = null;
+            this.btnGestionDispositivo.Iconimage_Selected = null;
+            this.btnGestionDispositivo.IconMarginLeft = 0;
+            this.btnGestionDispositivo.IconMarginRight = 0;
+            this.btnGestionDispositivo.IconRightVisible = true;
+            this.btnGestionDispositivo.IconRightZoom = 0D;
+            this.btnGestionDispositivo.IconVisible = true;
+            this.btnGestionDispositivo.IconZoom = 60D;
+            this.btnGestionDispositivo.IsTab = false;
+            this.btnGestionDispositivo.Location = new System.Drawing.Point(12, 274);
+            this.btnGestionDispositivo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGestionDispositivo.Name = "btnGestionDispositivo";
+            this.btnGestionDispositivo.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnGestionDispositivo.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnGestionDispositivo.selected = false;
+            this.btnGestionDispositivo.Size = new System.Drawing.Size(313, 41);
+            this.btnGestionDispositivo.TabIndex = 9;
+            this.btnGestionDispositivo.Text = "Gestion Dispositivo";
+            this.btnGestionDispositivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGestionDispositivo.Textcolor = System.Drawing.Color.White;
+            this.btnGestionDispositivo.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionDispositivo.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
+            // 
+            // panelBtnDispositivo
+            // 
+            this.panelBtnDispositivo.BackColor = System.Drawing.Color.Lime;
+            this.panelBtnDispositivo.Location = new System.Drawing.Point(3, 274);
+            this.panelBtnDispositivo.Name = "panelBtnDispositivo";
+            this.panelBtnDispositivo.Size = new System.Drawing.Size(10, 40);
+            this.panelBtnDispositivo.TabIndex = 3;
+            // 
+            // panelBtnMantenimientos
+            // 
+            this.panelBtnMantenimientos.BackColor = System.Drawing.Color.Lime;
+            this.panelBtnMantenimientos.Location = new System.Drawing.Point(3, 464);
+            this.panelBtnMantenimientos.Name = "panelBtnMantenimientos";
+            this.panelBtnMantenimientos.Size = new System.Drawing.Size(10, 40);
+            this.panelBtnMantenimientos.TabIndex = 3;
+            // 
             // panelDispositivo
             // 
             this.panelDispositivo.BackColor = System.Drawing.Color.Transparent;
@@ -169,9 +407,9 @@
             this.panelDispositivo.Controls.Add(this.bunifuFlatButton5);
             this.panelDispositivo.Controls.Add(this.panel12);
             this.panelDispositivo.Controls.Add(this.bunifuFlatButton6);
-            this.panelDispositivo.Location = new System.Drawing.Point(10, 203);
+            this.panelDispositivo.Location = new System.Drawing.Point(9, 320);
             this.panelDispositivo.Name = "panelDispositivo";
-            this.panelDispositivo.Size = new System.Drawing.Size(251, 138);
+            this.panelDispositivo.Size = new System.Drawing.Size(316, 138);
             this.panelDispositivo.TabIndex = 17;
             // 
             // panel10
@@ -314,9 +552,9 @@
             this.panelMantenimientos.Controls.Add(this.bunifuFlatButton8);
             this.panelMantenimientos.Controls.Add(this.panel15);
             this.panelMantenimientos.Controls.Add(this.bunifuFlatButton9);
-            this.panelMantenimientos.Location = new System.Drawing.Point(9, 380);
+            this.panelMantenimientos.Location = new System.Drawing.Point(15, 508);
             this.panelMantenimientos.Name = "panelMantenimientos";
-            this.panelMantenimientos.Size = new System.Drawing.Size(251, 138);
+            this.panelMantenimientos.Size = new System.Drawing.Size(310, 138);
             this.panelMantenimientos.TabIndex = 22;
             // 
             // panel8
@@ -355,7 +593,7 @@
             this.bunifuFlatButton7.OnHovercolor = System.Drawing.Color.LimeGreen;
             this.bunifuFlatButton7.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton7.selected = false;
-            this.bunifuFlatButton7.Size = new System.Drawing.Size(235, 41);
+            this.bunifuFlatButton7.Size = new System.Drawing.Size(296, 41);
             this.bunifuFlatButton7.TabIndex = 11;
             this.bunifuFlatButton7.Text = "Consultar Mantenimientos de un Dispositivo";
             this.bunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -399,7 +637,7 @@
             this.bunifuFlatButton8.OnHovercolor = System.Drawing.Color.LimeGreen;
             this.bunifuFlatButton8.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton8.selected = false;
-            this.bunifuFlatButton8.Size = new System.Drawing.Size(235, 41);
+            this.bunifuFlatButton8.Size = new System.Drawing.Size(296, 41);
             this.bunifuFlatButton8.TabIndex = 21;
             this.bunifuFlatButton8.Text = "Consultar Mantenimientos";
             this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,7 +681,7 @@
             this.bunifuFlatButton9.OnHovercolor = System.Drawing.Color.LimeGreen;
             this.bunifuFlatButton9.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton9.selected = false;
-            this.bunifuFlatButton9.Size = new System.Drawing.Size(235, 41);
+            this.bunifuFlatButton9.Size = new System.Drawing.Size(296, 41);
             this.bunifuFlatButton9.TabIndex = 19;
             this.bunifuFlatButton9.Text = "Registrar Mantenimintos";
             this.bunifuFlatButton9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -462,9 +700,9 @@
             this.panelOpciones.Controls.Add(this.bunifuFlatButton11);
             this.panelOpciones.Controls.Add(this.panel5);
             this.panelOpciones.Controls.Add(this.bunifuFlatButton12);
-            this.panelOpciones.Location = new System.Drawing.Point(8, 569);
+            this.panelOpciones.Location = new System.Drawing.Point(9, 701);
             this.panelOpciones.Name = "panelOpciones";
-            this.panelOpciones.Size = new System.Drawing.Size(252, 182);
+            this.panelOpciones.Size = new System.Drawing.Size(316, 182);
             this.panelOpciones.TabIndex = 0;
             // 
             // panel6
@@ -639,138 +877,6 @@
             this.bunifuFlatButton12.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton12.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // panelBtnDispositivo
-            // 
-            this.panelBtnDispositivo.BackColor = System.Drawing.Color.Lime;
-            this.panelBtnDispositivo.Location = new System.Drawing.Point(3, 157);
-            this.panelBtnDispositivo.Name = "panelBtnDispositivo";
-            this.panelBtnDispositivo.Size = new System.Drawing.Size(10, 40);
-            this.panelBtnDispositivo.TabIndex = 3;
-            // 
-            // btnGestionDispositivo
-            // 
-            this.btnGestionDispositivo.Activecolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.BackColor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGestionDispositivo.BorderRadius = 0;
-            this.btnGestionDispositivo.ButtonText = "Gestion Dispositivo";
-            this.btnGestionDispositivo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestionDispositivo.DisabledColor = System.Drawing.Color.Gray;
-            this.btnGestionDispositivo.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnGestionDispositivo.Iconimage")));
-            this.btnGestionDispositivo.Iconimage_right = null;
-            this.btnGestionDispositivo.Iconimage_right_Selected = null;
-            this.btnGestionDispositivo.Iconimage_Selected = null;
-            this.btnGestionDispositivo.IconMarginLeft = 0;
-            this.btnGestionDispositivo.IconMarginRight = 0;
-            this.btnGestionDispositivo.IconRightVisible = true;
-            this.btnGestionDispositivo.IconRightZoom = 0D;
-            this.btnGestionDispositivo.IconVisible = true;
-            this.btnGestionDispositivo.IconZoom = 60D;
-            this.btnGestionDispositivo.IsTab = false;
-            this.btnGestionDispositivo.Location = new System.Drawing.Point(12, 157);
-            this.btnGestionDispositivo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGestionDispositivo.Name = "btnGestionDispositivo";
-            this.btnGestionDispositivo.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.OnHovercolor = System.Drawing.Color.LimeGreen;
-            this.btnGestionDispositivo.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnGestionDispositivo.selected = false;
-            this.btnGestionDispositivo.Size = new System.Drawing.Size(313, 41);
-            this.btnGestionDispositivo.TabIndex = 9;
-            this.btnGestionDispositivo.Text = "Gestion Dispositivo";
-            this.btnGestionDispositivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGestionDispositivo.Textcolor = System.Drawing.Color.White;
-            this.btnGestionDispositivo.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionDispositivo.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
-            // 
-            // panelBtnMantenimientos
-            // 
-            this.panelBtnMantenimientos.BackColor = System.Drawing.Color.Lime;
-            this.panelBtnMantenimientos.Location = new System.Drawing.Point(3, 334);
-            this.panelBtnMantenimientos.Name = "panelBtnMantenimientos";
-            this.panelBtnMantenimientos.Size = new System.Drawing.Size(10, 40);
-            this.panelBtnMantenimientos.TabIndex = 3;
-            // 
-            // btnMantenimientos
-            // 
-            this.btnMantenimientos.Activecolor = System.Drawing.Color.Transparent;
-            this.btnMantenimientos.BackColor = System.Drawing.Color.Transparent;
-            this.btnMantenimientos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMantenimientos.BorderRadius = 0;
-            this.btnMantenimientos.ButtonText = "Gestion Mantenimientos";
-            this.btnMantenimientos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMantenimientos.DisabledColor = System.Drawing.Color.Gray;
-            this.btnMantenimientos.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnMantenimientos.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
-            this.btnMantenimientos.Iconimage_right = null;
-            this.btnMantenimientos.Iconimage_right_Selected = null;
-            this.btnMantenimientos.Iconimage_Selected = null;
-            this.btnMantenimientos.IconMarginLeft = 0;
-            this.btnMantenimientos.IconMarginRight = 0;
-            this.btnMantenimientos.IconRightVisible = true;
-            this.btnMantenimientos.IconRightZoom = 0D;
-            this.btnMantenimientos.IconVisible = true;
-            this.btnMantenimientos.IconZoom = 60D;
-            this.btnMantenimientos.IsTab = false;
-            this.btnMantenimientos.Location = new System.Drawing.Point(12, 333);
-            this.btnMantenimientos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMantenimientos.Name = "btnMantenimientos";
-            this.btnMantenimientos.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnMantenimientos.OnHovercolor = System.Drawing.Color.LimeGreen;
-            this.btnMantenimientos.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnMantenimientos.selected = false;
-            this.btnMantenimientos.Size = new System.Drawing.Size(315, 41);
-            this.btnMantenimientos.TabIndex = 10;
-            this.btnMantenimientos.Text = "Gestion Mantenimientos";
-            this.btnMantenimientos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnMantenimientos.Textcolor = System.Drawing.Color.White;
-            this.btnMantenimientos.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMantenimientos.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
-            // 
-            // panelBtnOpciones
-            // 
-            this.panelBtnOpciones.BackColor = System.Drawing.Color.Lime;
-            this.panelBtnOpciones.Location = new System.Drawing.Point(3, 523);
-            this.panelBtnOpciones.Name = "panelBtnOpciones";
-            this.panelBtnOpciones.Size = new System.Drawing.Size(10, 40);
-            this.panelBtnOpciones.TabIndex = 2;
-            // 
-            // btnOpciones
-            // 
-            this.btnOpciones.Activecolor = System.Drawing.Color.Transparent;
-            this.btnOpciones.BackColor = System.Drawing.Color.Transparent;
-            this.btnOpciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnOpciones.BorderRadius = 0;
-            this.btnOpciones.ButtonText = "Opciones";
-            this.btnOpciones.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOpciones.DisabledColor = System.Drawing.Color.Gray;
-            this.btnOpciones.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnOpciones.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
-            this.btnOpciones.Iconimage_right = null;
-            this.btnOpciones.Iconimage_right_Selected = null;
-            this.btnOpciones.Iconimage_Selected = null;
-            this.btnOpciones.IconMarginLeft = 0;
-            this.btnOpciones.IconMarginRight = 0;
-            this.btnOpciones.IconRightVisible = true;
-            this.btnOpciones.IconRightZoom = 0D;
-            this.btnOpciones.IconVisible = true;
-            this.btnOpciones.IconZoom = 60D;
-            this.btnOpciones.IsTab = false;
-            this.btnOpciones.Location = new System.Drawing.Point(12, 523);
-            this.btnOpciones.Margin = new System.Windows.Forms.Padding(4);
-            this.btnOpciones.Name = "btnOpciones";
-            this.btnOpciones.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnOpciones.OnHovercolor = System.Drawing.Color.LimeGreen;
-            this.btnOpciones.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnOpciones.selected = false;
-            this.btnOpciones.Size = new System.Drawing.Size(315, 41);
-            this.btnOpciones.TabIndex = 11;
-            this.btnOpciones.Text = "Opciones";
-            this.btnOpciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnOpciones.Textcolor = System.Drawing.Color.White;
-            this.btnOpciones.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpciones.Click += new System.EventHandler(this.btnOpciones_Click_1);
-            // 
             // panelSuperior
             // 
             this.panelSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelSuperior.BackgroundImage")));
@@ -848,10 +954,11 @@
             // 
             // panelcontenedor
             // 
+            this.panelcontenedor.BackColor = System.Drawing.SystemColors.WindowText;
             this.panelcontenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelcontenedor.Location = new System.Drawing.Point(325, 56);
             this.panelcontenedor.Name = "panelcontenedor";
-            this.panelcontenedor.Size = new System.Drawing.Size(1055, 716);
+            this.panelcontenedor.Size = new System.Drawing.Size(1055, 732);
             this.panelcontenedor.TabIndex = 24;
             // 
             // Principal
@@ -860,7 +967,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1380, 772);
+            this.ClientSize = new System.Drawing.Size(1380, 788);
             this.Controls.Add(this.panelcontenedor);
             this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.panelLogo);
@@ -871,6 +978,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Principal_Load);
             this.panelLateral.ResumeLayout(false);
+            this.panelEmpleados.ResumeLayout(false);
             this.panelDispositivo.ResumeLayout(false);
             this.panelMantenimientos.ResumeLayout(false);
             this.panelOpciones.ResumeLayout(false);
@@ -920,5 +1028,10 @@
         public System.Windows.Forms.Panel panelDispositivo;
         public System.Windows.Forms.Panel panelMantenimientos;
         private System.Windows.Forms.Panel panelcontenedor;
+        private System.Windows.Forms.Panel panelBtnGestionEmpleado;
+        private Bunifu.Framework.UI.BunifuFlatButton btnGestionEmpleado;
+        public System.Windows.Forms.Panel panelEmpleados;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
     }
 }

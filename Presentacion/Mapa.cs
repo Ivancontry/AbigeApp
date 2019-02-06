@@ -114,24 +114,24 @@ namespace Presentacion
         Posicion mapearDispositivo(DataRow row)
         {
             Posicion dispositivo = new Posicion();
-            dispositivo.idDispositivo = row["iddispositivo"].ToString();
-            dispositivo.idAnimal = row["idAnimal"].ToString();
+            dispositivo.IdDispositivo = row["iddispositivo"].ToString();
+            dispositivo.IdAnimal = row["idAnimal"].ToString();
             if (row["longitud"].ToString().Equals(""))
             {
-                dispositivo.longitud = 0;
+                dispositivo.Longitud = 0;
             }else
-                dispositivo.longitud = Double.Parse(row["longitud"].ToString());
+                dispositivo.Longitud = Double.Parse(row["longitud"].ToString());
             if (row["latitud"].ToString().Equals(""))
             {
-                dispositivo.latitud = 0;
+                dispositivo.Latitud = 0;
             }
             else
             {
-                dispositivo.latitud = Double.Parse(row["latitud"].ToString());
+                dispositivo.Latitud = Double.Parse(row["latitud"].ToString());
             }
-            dispositivo.idPerimetro = row["idPerimetro"].ToString();
-            dispositivo.estadoBateria = row[11].ToString();
-            dispositivo.estadoDispositivo = row[10].ToString();
+            dispositivo.IdPerimetro = int.Parse(row["idPerimetro"].ToString());
+            dispositivo.EstadoBateria = row[11].ToString();
+            dispositivo.EstadoDispositivo = row[10].ToString();
             return dispositivo;
         }
         public void cargarPerimetros()
@@ -175,44 +175,44 @@ namespace Presentacion
             lista = gmFinca.Overlays.ToList();
             //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
             
-            markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
-            if (dispositivo.novedadDispositivo == 1)
+            markerOverlay = new GMapOverlay(dispositivo.IdDispositivo);
+            if (dispositivo.NovedadDispositivo == 1)
             {
-                marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
+                marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.red);
             }
             else
             {
-                if (dispositivo.novedadDispositivo == 2)
+                if (dispositivo.NovedadDispositivo == 2)
                 {
-                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.yellow_small);
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.yellow_small);
                 }
                 else
                 {
-                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.blue);
                 }
             }
-            if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)
+            if (dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo) == null)
             {
                 dispositivos.Add(dispositivo);
             }
             else
             {
-                Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
-                dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
-                dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
+                Posicion dispositivoActualizable = dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo);
+                dispositivoActualizable.IdDispositivo = dispositivo.IdDispositivo;
+                dispositivoActualizable.EstadoDispositivo = dispositivo.EstadoDispositivo;
             }
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
             //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
             //Agregar un marcador
-            marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
+            marker.ToolTipText = string.Format("{0}", dispositivo.IdDispositivo);
             gmFinca.Overlays.Add(markerOverlay);            
         }
 
         private void conectarPuerto() {
             serialPort1.Close();
-            serialPort1.PortName = "COM3";
+            serialPort1.PortName = "COM13";
             serialPort1.Open();           
         }
 
@@ -245,14 +245,15 @@ namespace Presentacion
                     datos[2], int.Parse(datos[3]),datos[4]);
 
             
-                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
+                latLng = new PointLatLng(dispositivo.Latitud, dispositivo.Longitud);
                 if (poligonos.Find(x => x.IsInside(latLng)) != null)
                 {
-                    dispositivo.estadoDispositivo = "Dentro";
+                    dispositivo.EstadoDispositivo = "Dentro";
                 }
                 else
                 {
-                    dispositivo.estadoDispositivo = "Fuera";                    
+                    dispositivo.EstadoDispositivo = "Fuera";
+              
                 }
                 insertarMarcador(dispositivo);                
                 cambiarColorPaneles("Principal");                
@@ -276,11 +277,11 @@ namespace Presentacion
                         txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
                     "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
                     "Estado: {4}\n" +
-                    "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
-                    , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
+                    "-----------------------------------", dispositivo.IdDispositivo, dispositivo.Latitud
+                    , dispositivo.Longitud, dispositivo.EstadoBateria, dispositivo.EstadoDispositivo);
                         txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;
                         txtLogDispositivos.ScrollToCaret();
-                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;
+                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count;
                     }));
                 }
             }
@@ -319,7 +320,7 @@ namespace Presentacion
         }
         private void cambiarColorPaneles(string formName)
         {            
-            if (dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count == 0)
+            if (dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count == 0)
             {                
                 dispositivoFuera = false;
                

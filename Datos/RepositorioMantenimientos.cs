@@ -21,11 +21,10 @@ namespace Datos
                     cmd = new MySqlCommand("registrarMantenimientos", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", mantenimientos.idDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.fecha));
-                    cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.descripcion));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.estadoMantenimiento));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", mantenimientos.IdDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.Fecha));
+                    cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.Descripcion));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.EstadoMantenimiento));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
@@ -65,11 +64,10 @@ namespace Datos
                     cmd = new MySqlCommand("actualizarMantenimientos", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", mantenimientos.idDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.fecha));
-                    cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.descripcion));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.estadoMantenimiento));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", mantenimientos.estadoDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", mantenimientos.IdDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xfecha", mantenimientos.Fecha));
+                    cmd.Parameters.Add(new MySqlParameter("xdescripcion", mantenimientos.Descripcion));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoMantenimiento", mantenimientos.EstadoMantenimiento));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
