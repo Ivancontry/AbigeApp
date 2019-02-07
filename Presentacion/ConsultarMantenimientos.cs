@@ -55,7 +55,7 @@ namespace Presentacion
             foreach (DataRow fila in tablaMantenimientos.Rows)
             {
               
-                if (fila["estadoDispositivo"].ToString().Equals(estadoMantenimiento))
+                if (fila["estadoMantenimiento"].ToString().Equals(estadoMantenimiento))
                 {
                     //Dispositivos funcionandos despues de una revision
                     tablaGeneral.Rows.Add(
@@ -66,18 +66,7 @@ namespace Presentacion
                        fila["estadoActual"]
                        );
                 }
-                if (fila["estadoDispositivo"].ToString().Equals(estadoMantenimiento))
-                {
-                    //Dispositivos dañados despues de una revision
-                    tablaGeneral.Rows.Add(
-                       fila["iddispositivo"],
-                       fila["descripcion"],
-                       fila["fecha"],
-                      convertirEstadoMantenimiento(fila["estadoMantenimiento"].ToString()),
-                       fila["estadoActual"]
-                       );
-                }
-               
+                               
             }
 
         }
@@ -94,6 +83,17 @@ namespace Presentacion
             tablaGrafica = logicaMantenimientos.topMantenimientos(int.Parse(txtCantidadTop.Text),fecha1.Value,fecha2.Value);
             cargarGrafica(tablaGrafica);
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bnfDañados_Click(object sender, EventArgs e)
+        {
+            cargarTablaFiltrada("0");
+        }
+
         public void cargarGrafica(DataTable tabla) {
             chart1.Series.Clear();       
             Series s1 = chart1.Series.Add("Dispositivos");
@@ -140,11 +140,10 @@ namespace Presentacion
                     {
                         contDañados++;
                     }
-                    tablaGeneral.Rows.Add(fila["iddispositivo"], fila["descripcion"], fila["fecha"],
+                }
+                 tablaGeneral.Rows.Add(fila["iddispositivo"], fila["descripcion"], fila["fecha"],
                                           convertirEstadoMantenimiento(fila["estadoMantenimiento"].ToString()),
                                           fila["estadoActual"]);
-
-                }
                 
             }
             labelDañado.Text = contDañados.ToString();

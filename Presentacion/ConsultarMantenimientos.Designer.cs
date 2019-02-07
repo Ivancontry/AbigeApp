@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarMantenimientos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bnfFuncionando = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bnfDañados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -41,6 +41,11 @@
             this.labelDañado = new System.Windows.Forms.Label();
             this.labelFuncionando = new System.Windows.Forms.Label();
             this.tablaGeneral = new System.Windows.Forms.DataGridView();
+            this.codigoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoMantenimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtCantidadTop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,11 +55,6 @@
             this.bnfBuscar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.codigoDispositivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoMantenimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -131,6 +131,7 @@
             this.bnfDañados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bnfDañados.Textcolor = System.Drawing.Color.Black;
             this.bnfDañados.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnfDañados.Click += new System.EventHandler(this.bnfDañados_Click);
             // 
             // groupBox1
             // 
@@ -235,24 +236,55 @@
             this.tablaGeneral.Location = new System.Drawing.Point(123, 401);
             this.tablaGeneral.Name = "tablaGeneral";
             this.tablaGeneral.ReadOnly = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tablaGeneral.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tablaGeneral.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaGeneral.Size = new System.Drawing.Size(622, 221);
             this.tablaGeneral.TabIndex = 30;
             // 
+            // codigoDispositivo
+            // 
+            this.codigoDispositivo.HeaderText = "Cod_Dispositivo";
+            this.codigoDispositivo.Name = "codigoDispositivo";
+            this.codigoDispositivo.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 180;
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            // 
+            // estadoMantenimiento
+            // 
+            this.estadoMantenimiento.HeaderText = "Est_Mantenimiento";
+            this.estadoMantenimiento.Name = "estadoMantenimiento";
+            this.estadoMantenimiento.ReadOnly = true;
+            // 
+            // estadoActual
+            // 
+            this.estadoActual.HeaderText = "EstadoActual";
+            this.estadoActual.Name = "estadoActual";
+            this.estadoActual.ReadOnly = true;
+            // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(15, 145);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(847, 235);
             this.chart1.TabIndex = 31;
             this.chart1.Text = "chart1";
-            title1.Name = "Top de los dispositivos con mas mantenimientos";
-            this.chart1.Titles.Add(title1);
+            title2.Name = "Top de los dispositivos con mas mantenimientos";
+            this.chart1.Titles.Add(title2);
             // 
             // txtCantidadTop
             // 
@@ -301,6 +333,7 @@
             this.groupBox2.Size = new System.Drawing.Size(848, 58);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // bnfBuscar
             // 
@@ -357,37 +390,6 @@
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 40;
             this.label4.Text = "Fecha 1";
-            // 
-            // codigoDispositivo
-            // 
-            this.codigoDispositivo.HeaderText = "Cod_Dispositivo";
-            this.codigoDispositivo.Name = "codigoDispositivo";
-            this.codigoDispositivo.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 180;
-            // 
-            // fecha
-            // 
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            // 
-            // estadoMantenimiento
-            // 
-            this.estadoMantenimiento.HeaderText = "Est_Mantenimiento";
-            this.estadoMantenimiento.Name = "estadoMantenimiento";
-            this.estadoMantenimiento.ReadOnly = true;
-            // 
-            // estadoActual
-            // 
-            this.estadoActual.HeaderText = "EstadoActual";
-            this.estadoActual.Name = "estadoActual";
-            this.estadoActual.ReadOnly = true;
             // 
             // ConsultarMantenimientos
             // 

@@ -233,7 +233,7 @@ namespace Presentacion
                     bnfActualizar.Enabled = true;
                     txtCodigoAnimal.Text = dispositivo.Rows[0]["idanimal"].ToString();
                     cbxPerimetro.SelectedIndex = cbxPerimetro.FindString(dispositivo.Rows[0]["idperimetro"].ToString());
-                    cbxEstado.SelectedIndex = cbxEstado.FindString(dispositivo.Rows[0]["estado"].ToString());
+                    cbxEstado.SelectedIndex= int.Parse(dispositivo.Rows[0]["estado"].ToString());
                     txtBateria.Text = dispositivo.Rows[0]["bateria"].ToString();
                     DateTime data;
                     data = DateTime.ParseExact(dispositivo.Rows[0]["fecha"].ToString().Substring(0, 10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);

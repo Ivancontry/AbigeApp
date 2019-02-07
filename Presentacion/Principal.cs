@@ -284,5 +284,21 @@ namespace Presentacion
 
             }
         }
+
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            if (!CheckForm("frmGestionUsuarios"))
+            {
+                abrirformularioHija(new frmGestionUsuarios());
+            }
+        }
+
+        private void bunifuFlatButton6_Click(object sender, EventArgs e)
+        {
+            if (!CheckForm("frmConsultarNovedades"))
+            {
+                abrirformularioHija(new frmConsultarNovedades());
+            }
+        }
     }
 }
