@@ -16,6 +16,9 @@ using Entidades;
 using System.Media;
 using WMPLib;
 using System.Threading;
+using System.IO.Ports;
+using Microsoft.VisualBasic;
+
 namespace Presentacion
 {
     public partial class Mapa : Form
@@ -35,9 +38,9 @@ namespace Presentacion
         string mostrarMesaje;//Esto es para ver la media de tiempo en que se demora el proceso  para cada evento en el mapa
         DataTable listaMarcadores = new DataTable();
         int dispositivosTotalEnFinca = 0;
-        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
-        string rutaCancion = Application.StartupPath + "\\soundEmergency.mp3";
-        SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\duvan\source\repos\AbigeApp\Presentacion\soundEmergency.wav");
+        //WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
+       // string rutaCancion = Application.StartupPath + "\\soundEmergency.mp3";
+        //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\duvan\source\repos\AbigeApp\Presentacion\soundEmergency.wav");
         bool dispositivoFuera;
         bool colorFormPrincipal=false;
         public Mapa()
@@ -47,38 +50,55 @@ namespace Presentacion
         }
         void activarAlarma()
         {
-           
+           /*
                 mediaPlayer.URL = rutaCancion;
                 mediaPlayer.settings.setMode("loop", true);
                 mediaPlayer.controls.play();            
-               
+             */  
         }
 
         private void Mapa_Load(object sender, EventArgs e)
         {
-            gmFinca.IgnoreMarkerOnMouseWheel = true;
-            poligonos.Clear();
-            cargarMapa();
-            cargarPerimetros();
-            cargarListaMarcadores();
-            conectarPuerto();
+            try
+            {
+                gmFinca.IgnoreMarkerOnMouseWheel = true;
+                poligonos.Clear();
+                cargarMapa();
+                //cargarPerimetros();
+                //cargarListaMarcadores();
+                conectarPuerto();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("mapa_load");
+            }
+           
             
         }
         public void cargarMapa() {
            
-            gmFinca.DragButton = MouseButtons.Left;
-            gmFinca.CanDragMap = true;
-            gmFinca.MapProvider = GoogleMapProvider.Instance;
-            gmFinca.Position = new PointLatLng(latitudCentral, longitudCentral);
-            gmFinca.MinZoom = 1;
-            gmFinca.MaxZoom = 24;
-            gmFinca.Zoom = 17;
-            gmFinca.AutoScroll = true;
             
+            try
+            {
+                gmFinca.DragButton = MouseButtons.Left;
+                gmFinca.CanDragMap = true;
+                gmFinca.MapProvider = GoogleMapProvider.Instance;
+                gmFinca.Position = new PointLatLng(latitudCentral, longitudCentral);
+                gmFinca.MinZoom = 1;
+                gmFinca.MaxZoom = 24;
+                gmFinca.Zoom = 17;
+                gmFinca.AutoScroll = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("cargar mapa");
+            }
+
         }
 
         
         public void cargarListaMarcadores() {
+
             listaMarcadores = logicaDispositivo.listadoPosicionDispositivo();
             marcadores.Clear();
             foreach (DataRow dispositivo in listaMarcadores.Rows)
@@ -172,120 +192,147 @@ namespace Presentacion
         }
 
         private void insertarMarcador(Posicion dispositivo) {
-            List<GMapOverlay> lista = new List<GMapOverlay>();
-            lista = gmFinca.Overlays.ToList();//Se obtiene una lista de marcadores sobre el mapa
-            //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));//comento para que no remueva el marcador anterior
-            //De aqui hasta donde aviso esta en prueba por las anomalias
-            markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
-            if (dispositivo.novedadDispositivo == 1)
+            try
             {
-                marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
-            }
-            else
-            {
-                if (dispositivo.novedadDispositivo == 2)
+                List<GMapOverlay> lista = new List<GMapOverlay>();
+                lista = gmFinca.Overlays.ToList();//Se obtiene una lista de marcadores sobre el mapa
+                                                  //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));//comento para que no remueva el marcador anterior
+                                                  //De aqui hasta donde aviso esta en prueba por las anomalias
+                markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
+                if (dispositivo.novedadDispositivo == 1)
                 {
-                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.yellow_small);
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
                 }
                 else
                 {
-                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
+                    if (dispositivo.novedadDispositivo == 2)
+                    {
+                        marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.yellow_small);
+                    }
+                    else
+                    {
+                        marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.blue);
+                    }
+                } // Hasta aca esta lo de prueba 
+                if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)//Si el dispositivo es nuevo se agrega a la lista
+                {
+                    dispositivos.Add(dispositivo);
                 }
-            } // Hasta aca esta lo de prueba 
-            if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)//Si el dispositivo es nuevo se agrega a la lista
+                else
+                {//Sino se actualizan sus datos
+                    Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
+                    dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
+                    dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
+                }
+                markerOverlay.Markers.Add(marker); //Agregamos el mapa            
+                                                   //Agregamos un mensaje a los marcadores
+                marker.ToolTipMode = MarkerTooltipMode.Always;
+                //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
+                //Agregar un marcador
+                marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
+                gmFinca.Overlays.Add(markerOverlay);
+            }
+            catch (Exception)
             {
-                dispositivos.Add(dispositivo);
+                MessageBox.Show("insertar marcador");
             }
-            else
-            {//Sino se actualizan sus datos
-                Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
-                dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
-                dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
-            }
-            markerOverlay.Markers.Add(marker); //Agregamos el mapa            
-            //Agregamos un mensaje a los marcadores
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
-            //Agregar un marcador
-            marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
-            gmFinca.Overlays.Add(markerOverlay);            
+                      
         }
 
-        private void conectarPuerto() {            
-            serialPort1.Close();
-            serialPort1.PortName = "COM3";
-            serialPort1.Open();           
+        private void conectarPuerto() {
+            try
+            {
+                string[] puertosDisponibles = SerialPort.GetPortNames();
+              string a= Interaction.InputBox("ingrese el numero del COM");
+                serialPort1.Close();
+                
+                serialPort1.PortName = "COM"+a;
+                serialPort1.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("conectar puerto");
+            }
+                      
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            TimeSpan stop;
-            TimeSpan start = new TimeSpan(DateTime.Now.Ticks);
-            //------------------------------------------------------
-            int confirmacionBaseDeDatos;//1 o -1
-            object datosIn = new object();
-            datosIn = serialPort1.ReadLine();//Se recibe el vector 
-            Posicion dispositivo;
-            string cadena = datosIn.ToString();
-            if (gmFinca.InvokeRequired)//Esto es un como un proceso alterno Porque salia un error de que no se podia modificar un control desde un subproeso
+            try
             {
-                gmFinca.Invoke(new MethodInvoker(delegate
-                {
-                    gmFinca.Zoom += 0.00008;
-                    //refrescarPoligonos();
-                }));
-            }
-            if (!cadena.Trim().Equals("") && cadena.Contains("{"))
-            {
-                cadena = cadena.TrimStart();
-                cadena = cadena.TrimStart('{');
-                cadena = cadena.TrimEnd();
-                cadena = cadena.TrimEnd('}');
-                string[] datos = cadena.Split(',');
-                dispositivo = new Posicion(datos[0], datos[1] ,
-                    datos[2], int.Parse(datos[3]),datos[4]);
-
-            
-                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);//Se convierte las coordenadas en una posicion para validar que el dispositivo esta dentro de algun perimetro
-                if (poligonos.Find(x => x.IsInside(latLng)) != null)//Aqui se valida
-                {
-                    dispositivo.estadoDispositivo = "Dentro";
-                }
-                else
-                {
-                    dispositivo.estadoDispositivo = "Fuera";                    
-                }
-                insertarMarcador(dispositivo);         //Se agrega al mapa el marcador       
-                cambiarColorPaneles("Principal");               //Cambia el color del formulario principal  
-                
-                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);//se actualiza en la base de datos
-                if (confirmacionBaseDeDatos == -1) {
-                    MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }                
-                
+                TimeSpan stop;
+                TimeSpan start = new TimeSpan(DateTime.Now.Ticks);
                 //------------------------------------------------------
-                //Esto lo estaba haciendo para ver el promedio de procesos
-                stop = new TimeSpan(DateTime.Now.Ticks);
-                mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
-                promedio += stop.Subtract(start).TotalMilliseconds;
-                //-------------------------------------------------------
-                if (gmFinca.InvokeRequired)
+                int confirmacionBaseDeDatos;//1 o -1
+                object datosIn = new object();
+                datosIn = serialPort1.ReadLine();//Se recibe el vector 
+                Posicion dispositivo;
+                string cadena = datosIn.ToString();
+                if (gmFinca.InvokeRequired)//Esto es un como un proceso alterno Porque salia un error de que no se podia modificar un control desde un subproeso
                 {
                     gmFinca.Invoke(new MethodInvoker(delegate
                     {
-                        gmFinca.Zoom-=0.00008;
-                        //gmFinca.Refresh();
-                        txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
-                    "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
-                    "Estado: {4}\n" +
-                    "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
-                    , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
-                        txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;//Esto es del textbox grande 
-                        txtLogDispositivos.ScrollToCaret();//para que me salgan la nueva informacion abajo
-                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;//Actualiza el boton
+                        gmFinca.Zoom += 0.00008;
+                        //refrescarPoligonos();
                     }));
                 }
+                if (!cadena.Trim().Equals("") && cadena.Contains("{"))
+                {
+                    cadena = cadena.TrimStart();
+                    cadena = cadena.TrimStart('{');
+                    cadena = cadena.TrimEnd();
+                    cadena = cadena.TrimEnd('}');
+                    string[] datos = cadena.Split(',');
+                    dispositivo = new Posicion(datos[0], datos[1],
+                        datos[2], int.Parse(datos[3]), datos[4]);
+
+
+                    latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);//Se convierte las coordenadas en una posicion para validar que el dispositivo esta dentro de algun perimetro
+                    if (poligonos.Find(x => x.IsInside(latLng)) != null)//Aqui se valida
+                    {
+                        dispositivo.estadoDispositivo = "Dentro";
+                    }
+                    else
+                    {
+                        dispositivo.estadoDispositivo = "Fuera";
+                    }
+                    insertarMarcador(dispositivo);         //Se agrega al mapa el marcador       
+                    cambiarColorPaneles("Principal");               //Cambia el color del formulario principal  
+
+                    /*confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);//se actualiza en la base de datos
+                    if (confirmacionBaseDeDatos == -1) {
+                        MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                
+                    */
+                    //------------------------------------------------------
+                    //Esto lo estaba haciendo para ver el promedio de procesos
+                    stop = new TimeSpan(DateTime.Now.Ticks);
+                    mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
+                    promedio += stop.Subtract(start).TotalMilliseconds;
+                    //-------------------------------------------------------
+                    if (gmFinca.InvokeRequired)
+                    {
+                        gmFinca.Invoke(new MethodInvoker(delegate
+                        {
+                            gmFinca.Zoom -= 0.00008;
+                            //gmFinca.Refresh();
+                            txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
+                        "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
+                        "Estado: {4}\n" +
+                        "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
+                        , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
+                            txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;//Esto es del textbox grande 
+                            txtLogDispositivos.ScrollToCaret();//para que me salgan la nueva informacion abajo
+                            btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;//Actualiza el boton
+                        }));
+                    }
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("serialPort1");
+            }
+           
             //peticionDePosicion();//Pide al dispositivo por el siguiente codigo
             //MessageBox.Show(mostrarMesaje);
         }
@@ -353,7 +400,7 @@ namespace Presentacion
                         {
                             cambio("Principal", false);
                             colorFormPrincipal = false;
-                            mediaPlayer.controls.stop();
+                            //mediaPlayer.controls.stop();
                         }
                     }
                 }
@@ -412,6 +459,11 @@ namespace Presentacion
             {
                 txtLogDispositivos.Text = "";
             }
+        }
+
+        private void gmFinca_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
