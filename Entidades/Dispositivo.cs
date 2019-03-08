@@ -12,7 +12,7 @@ namespace Entidades
         protected int idPerimetro;
         protected string estado;
         protected string idAnimal;
-        protected float bateria;
+        protected string bateria;
         protected DateTime fecha;
 
         public Dispositivo() {}
@@ -25,38 +25,50 @@ namespace Entidades
 
 
         public string IdDispositivo {
-            get { return IdDispositivo; }
+            get { return idDispositivo; }
             set
             {
-                if (!idDispositivo.Equals("") && idDispositivo.Length >= 5 && idDispositivo.Length<=10)
-                {
+                if (validarIdDispositivo(value)) {
                     idDispositivo = value;
+                }
+                else
+                {
+                    idDispositivo = "N/A";
                 }
             }
         }
         public int IdPerimetro { get => idPerimetro; set => idPerimetro = value; }
         public string Estado { get => estado; set => estado = value; }
         public string IdAnimal {
-            get { return IdAnimal; }
+            get { return idAnimal; }
             set
             {
-                if (!IdAnimal.Equals("") && IdAnimal.Length >= 4 && IdAnimal.Length <= 10)
+                if (validarIdAnimal(value))
                 {
-                    idDispositivo = value;
+                    idAnimal = value;
+                }
+                else
+                {
+                    idAnimal = "N/A";
                 }
             }
         }
-        public float Bateria {
-            get {return bateria; }
-            set
-            {
-                if (bateria>=0.0 && bateria<= 5.0)
-                {
-                    bateria = value;
-                }
-            }
-
+        public string Bateria {
+            get => estado; set => estado = value;
         }
         public DateTime Fecha { get => fecha; set => fecha = value; }
+
+        public bool validarIdDispositivo(string codigo) {
+            return (!codigo.Equals("") && codigo.Length >= 5 && codigo.Length <= 10);       
+                           
+        }
+
+        public bool validarIdAnimal(string codigo)
+        {
+            return (!codigo.Equals("") && codigo.Length >= 4 && codigo.Length <= 10);
+
+        }
+     
+
     }
 }

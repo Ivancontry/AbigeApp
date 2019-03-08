@@ -50,6 +50,18 @@ namespace Logica
             }
             return null;
         }
+        public Usuarios buscarPorCorreo(string correo)
+        {
+            DataTable dataTable = repositorioUsuarios.cargarRegistros("cargarUsuarios");
+            foreach (DataRow item in dataTable.Rows)
+            {
+                if (item["EMAIL"].ToString().Equals(correo))
+                {
+                    return mapearUsuario(item);
+                }
+            }
+            return null;
+        }
 
         public DataTable cargarRoles()
         {

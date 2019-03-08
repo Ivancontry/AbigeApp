@@ -12,6 +12,7 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using Logica;
 using Entidades;
+using System.Text.RegularExpressions;
 
 namespace Presentacion
 {
@@ -26,6 +27,8 @@ namespace Presentacion
         GMapPolygon polygon;
         GMapOverlay polyOverlay;
         List<GMapPolygon> lista = new List<GMapPolygon>();
+        Regex rg = new Regex(@"^[a-zA-Z0-9\s,]*$");
+        string valor = "", valor1="";
         private void RegistrarDispositivo_Load(object sender, EventArgs e)
         {
             
@@ -37,7 +40,12 @@ namespace Presentacion
             mapaDispositivo.Refresh();
             cargarCampos();
 
-
+            
+        }
+        public static bool IsAlfanumerico(string strIn)
+        {
+            // Return true if strIn is in valid e-mail format.
+            return Regex.IsMatch(strIn,"/^[A - Za - z0 - 9] +$/ g");
         }
         public void cargarCampos()
         {
@@ -50,6 +58,7 @@ namespace Presentacion
             txtBateria.Text = "";
             fecha.Value = DateTime.Now;
             txtCodigoDispositivo.Enabled = true;
+            txtBateria.Enabled = false;
 
         }
         public void cargarMapa()
@@ -97,7 +106,7 @@ namespace Presentacion
         {
 
             epCodigoDispoitivo.Clear();
-            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 20)
+            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 10 || txtCodigoDispositivo.Text.Length < 5)
             {
                 epCodigoDispoitivo.SetError(txtCodigoDispositivo, "Digite un Dispositivo Valido");
                 return -1;
@@ -106,43 +115,17 @@ namespace Presentacion
         }
         public int validarCodigoAnimal()
         {
-
             epCodigoAnimal.Clear();
-            if (txtCodigoAnimal.Text.Equals("") || txtCodigoAnimal.Text.Length > 50)
+            if (txtCodigoAnimal.Text.Equals("") || txtCodigoAnimal.Text.Length > 10 || txtCodigoAnimal.Text.Length < 4)
             {
-                epCodigoAnimal.SetError(txtCodigoAnimal, "Verifique que este campo no este vacio ó que no exceda los 50 caracteres");
-                return -1;
-            };
-            return 1;
-        }
-
-        public int validarBateria()
-        {
-            float numero = 0;
-            epBateria.Clear();
-            if (!float.TryParse(txtBateria.Text, out numero))
-            {
-                epCodigoDispoitivo.SetError(txtBateria, "no se puede escribir letras");
-                return -1;
-            }
-            if (txtBateria.Text.Equals("") || txtBateria.Text.Length > 20)
-            {
-               
-                epCodigoDispoitivo.SetError(txtBateria, "Verifique que este campo no este vacio ó que no exceda los 10 caracteres");
+                epCodigoAnimal.SetError(txtCodigoAnimal, "Verifique que este campo no este vacio, no exceda 10 caracteres, no tenga menos de 4 caracteres");
                 return -1;
             };
             return 1;
         }
 
 
-        private void txtCodigoDispositivo_Leave(object sender, EventArgs e)
-        {
-
-            if (txtCodigoDispositivo.Text == "")
-            {
-                txtCodigoDispositivo.Text = "Codigo del Dispositivo";
-            }
-        }
+      
 
         private void txtCodigoDispositivo_Enter(object sender, EventArgs e)
         {
@@ -150,6 +133,7 @@ namespace Presentacion
             if (txtCodigoDispositivo.Text == "Codigo del Dispositivo")
             {
                 txtCodigoDispositivo.Text = "";
+   
             }
         }
 
@@ -179,13 +163,13 @@ namespace Presentacion
 
         private void bnfRegistrar_Click(object sender, EventArgs e)
         {
-            if (validarBateria()==1 && validarCodigoAnimal()==1 && validarIdDispositivo()==1) {
+            if (validarCodigoAnimal()==1 && validarIdDispositivo()==1) {
                 dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
                 dispositivo.IdAnimal = txtCodigoAnimal.Text;
                 dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
                 dispositivo.Estado = cbxEstado.Text;
                 dispositivo.Fecha = fecha.Value;
-                dispositivo.Bateria = float.Parse(txtBateria.Text);
+                dispositivo.Bateria = txtBateria.Text;
                 if (logicaDispositivo.registrarDispositivo(dispositivo) == 1)
                 {
                     MessageBox.Show("Operacion Exitosa");
@@ -200,14 +184,14 @@ namespace Presentacion
 
         private void bnfActualizar_Click(object sender, EventArgs e)
         {
-            if (validarBateria() == 1 && validarCodigoAnimal() == 1 )
+            if (validarCodigoAnimal() == 1 )
             {
                 dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
                 dispositivo.IdAnimal = txtCodigoAnimal.Text;
                 dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
                 dispositivo.Estado = cbxEstado.Text;
                 dispositivo.Fecha = fecha.Value;
-                dispositivo.Bateria = float.Parse(txtBateria.Text);
+                dispositivo.Bateria = txtBateria.Text;
 
                 if (logicaDispositivo.actulizarDispositivo(dispositivo)==1)
                 {
@@ -248,6 +232,47 @@ namespace Presentacion
                     bnfRegistrar.Enabled = true;
                     bnfActualizar.Enabled = false;
                 }
+            }
+        }
+
+        private void txtCodigoDispositivo_Leave(object sender, EventArgs e)
+        {
+            if (IsAlfanumerico(txtCodigoDispositivo.Text)) {
+                epCodigoDispoitivo.Clear();
+                epCodigoDispoitivo.SetError(txtCodigoDispositivo,"Solo valores alfanumerico");
+            }
+        }
+
+      
+    
+     
+        private void txtCodigoDispositivo_OnValueChanged_1(object sender, EventArgs e)
+        {
+
+           
+            if (rg.IsMatch(txtCodigoDispositivo.Text))
+            {
+                valor = txtCodigoDispositivo.Text; 
+            }
+            else
+            {
+                txtCodigoDispositivo.Text = valor;
+                MessageBox.Show("Solo valores alfanumericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            }
+        }
+
+        private void txtCodigoAnimal_OnValueChanged(object sender, EventArgs e)
+        {
+     
+            if (rg.IsMatch(txtCodigoAnimal.Text))
+            {
+                valor1 = txtCodigoDispositivo.Text;
+            }
+            else
+            {
+                txtCodigoAnimal.Text = valor1;
+                MessageBox.Show("Solo valores alfanumericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

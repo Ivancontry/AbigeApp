@@ -21,7 +21,7 @@ namespace Entidades
             }
             set
             {
-                if (latitud <= 9999.99999999)
+                if (validarLatitud())
                 {
                     latitud = value;
                 }
@@ -34,9 +34,9 @@ namespace Entidades
             }
             set
             {
-                if (longitud <= 9999.99999999)
+                if (validarLongitud())
                 {
-                    longitud = value;
+                    longitud= value;
                 }
             }
         }
@@ -49,8 +49,32 @@ namespace Entidades
             this.idDispositivo = idDispositivo;
             this.latitud = Double.Parse(latitud.Replace(".", ","));
             this.longitud = Double.Parse(longitud.Replace(".", ","));
-            this.bateria = float.Parse(estadoBateria.Trim());
+            this.bateria = estadoBateria;
             
+        }
+
+
+        public bool validarLatitud()
+        {
+            if (latitud <= 9999.99999999)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool validarLongitud()
+        {
+            if (longitud<= 9999.99999999)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         //public double convertirCoordenada(string coordenada)
         //{
@@ -62,9 +86,9 @@ namespace Entidades
         //    double variable = ((Double.Parse(coordenadaSeparada[1]) /1000000) + parasegundo);
         //    double coordenadaCalculada = Double.Parse( coordenadaSeparada[0])
         //        + variable;
-            
+
         //        return coordenadaCalculada;
-                               
+
         //}
     }
 }

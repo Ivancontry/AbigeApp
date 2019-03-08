@@ -19,7 +19,7 @@ namespace Entidades
             get { return IdDispositivo; }
             set
             {
-                if (!idDispositivo.Equals("") && idDispositivo.Length >= 5 && idDispositivo.Length <= 10)
+                if (validarIdDispositivo())
                 {
                     idDispositivo = value;
                 }
@@ -31,7 +31,7 @@ namespace Entidades
             get { return descripcion; }
             set
             {
-                if (!descripcion.Equals("") && descripcion.Length >= 5 && descripcion.Length <= 10)
+                if (validarDescripcion())
                 {
                     descripcion = value;
                 }
@@ -39,5 +39,29 @@ namespace Entidades
         }
         public Char EstadoMantenimiento { get => estadoMantenimiento; set => estadoMantenimiento = value; }
         public Char EstadoActual{ get => estadoActual; set => estadoActual = value; }
+
+        public bool validarIdDispositivo()
+        {
+            if (!idDispositivo.Equals("") && idDispositivo.Length >= 5 && idDispositivo.Length <= 10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool validarDescripcion()
+        {
+            if (!descripcion.Equals("") && descripcion.Length >= 5 && descripcion.Length <= 10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

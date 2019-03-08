@@ -109,7 +109,7 @@ namespace Datos
                     cmd.Parameters.Add(new MySqlParameter("xlongitud", dispositivo.Longitud));
                     cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", dispositivo.EstadoDispositivo));
                     cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.IdDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", dispositivo.EstadoBateria));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", dispositivo.Bateria));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {

@@ -105,8 +105,8 @@
             this.txtCodigoDispositivo.Size = new System.Drawing.Size(185, 33);
             this.txtCodigoDispositivo.TabIndex = 11;
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoDispositivo.OnValueChanged += new System.EventHandler(this.txtCodigoDispositivo_OnValueChanged_1);
             this.txtCodigoDispositivo.Enter += new System.EventHandler(this.txtCodigoDispositivo_Enter);
-            this.txtCodigoDispositivo.Leave += new System.EventHandler(this.txtCodigoDispositivo_Leave);
             // 
             // txtCodigoAnimal
             // 
@@ -126,6 +126,7 @@
             this.txtCodigoAnimal.Size = new System.Drawing.Size(177, 33);
             this.txtCodigoAnimal.TabIndex = 14;
             this.txtCodigoAnimal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodigoAnimal.OnValueChanged += new System.EventHandler(this.txtCodigoAnimal_OnValueChanged);
             // 
             // txtBateria
             // 

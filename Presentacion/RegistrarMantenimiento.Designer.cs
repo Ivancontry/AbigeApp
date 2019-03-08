@@ -69,6 +69,7 @@
             this.txtCodigoDispositivo.Size = new System.Drawing.Size(174, 33);
             this.txtCodigoDispositivo.TabIndex = 6;
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoDispositivo.OnValueChanged += new System.EventHandler(this.txtCodigoDispositivo_OnValueChanged);
             // 
             // epIdDispositivo
             // 
@@ -236,6 +237,8 @@
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtDescripcion.Size = new System.Drawing.Size(330, 113);
             this.txtDescripcion.TabIndex = 12;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+            this.txtDescripcion.Leave += new System.EventHandler(this.txtDescripcion_Leave);
             // 
             // bunifuCustomLabel1
             // 

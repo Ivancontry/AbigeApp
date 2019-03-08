@@ -21,13 +21,13 @@ namespace Presentacion
         public frmGestionUsuarios()
         {
             InitializeComponent();            
-            btnActualizar.Enabled = false;
+          
         }
         public frmGestionUsuarios(Usuarios usuario)
         {
             InitializeComponent();
             this.usuarioSesion = usuario;            
-            btnActualizar.Enabled = false;
+  
         }
         private void validarSoloNumeros(KeyPressEventArgs e) {
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
@@ -46,7 +46,8 @@ namespace Presentacion
         private void RegistrarEmpleado_Load(object sender, EventArgs e)
         {
             quitarMenuClickDerecho();
-           
+            buscarUsuaruio();
+
         }
         private void quitarMenuClickDerecho() {
             txtIdentificacion.ContextMenuStrip = blankContextMenu;
@@ -125,9 +126,9 @@ namespace Presentacion
         {
             combo.SelectedIndex = combo.FindString(opcion);
         }
-        private void btnBuscarIdentificacion_Click_1(object sender, EventArgs e)
-        {
+        public void buscarUsuaruio() {
             Usuarios usuario = new Usuarios();
+            usuario = Usuario.usuario;
             usuario = serviciosUsuario.buscarPorIdentificacion(txtIdentificacion.Text.Trim());
             if (usuario == null)
             {
@@ -156,9 +157,13 @@ namespace Presentacion
                     ckbEstado.Checked = false;
 
                 txtIdentificacion.Enabled = false;
-                btnRegistrar.Enabled = false;
-                btnActualizar.Enabled = true;
+          
             }
+
+        }
+        private void btnBuscarIdentificacion_Click_1(object sender, EventArgs e)
+        {
+            
         }
         private void limpiarCampos(GroupBox groupBox)
         {
@@ -231,18 +236,10 @@ namespace Presentacion
                 }
             }
         }
-        private void registrarOActualizarEmpleado()
+        public void registrarOActualizarEmpleado()
         {
             Usuarios usuario = new Usuarios();
-            usuario.Identificacion = txtIdentificacion.Text;
-            usuario.Nombres = txtNombre.Text;
-            usuario.PrimerApellido = txtPrimerApellido.Text;
-            usuario.Direccion = txtDireccion.Text;
-            usuario.Email = txtEmail.Text;
-            usuario.Clave = txtContraseña.Text;
-            usuario.Telefono = txtTelefono.Text;
-            usuario.Idfinca = 1;
-            usuario.Rol = "EMPLEADO";
+            usuario = Usuario.usuario;
             if (ckbEstado.Checked == true)
             {
                 usuario.Estado = 'A';
@@ -276,8 +273,7 @@ namespace Presentacion
             {
                 MessageBox.Show("Proceso realizado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.None);
                 limpiarCampos(groupBox1);
-                btnActualizar.Enabled = false;
-                btnRegistrar.Enabled = true;
+        
                 txtIdentificacion.Enabled = true;
                 txtIdentificacion.Text = "";
             }
@@ -302,6 +298,21 @@ namespace Presentacion
             {
                 errorContraseñas.SetError(txtRepetirPassword,"Las contraseñas no coinciden");
             }
+        }
+
+        private void txtDireccion_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ckbEstado_OnChange(object sender, EventArgs e)
+        {
+
         }
     }
 }

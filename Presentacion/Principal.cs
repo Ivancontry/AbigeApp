@@ -44,125 +44,125 @@ namespace Presentacion
         }
         private void Principal_Load(object sender, EventArgs e)
         {
-            panelInicioGestion();
-
+            //panelInicioGestion();
             abrirformularioHija(new Mapa());
+                        
         }
-        public void panelInicioGestion()
-        {
-            panelDispositivo.Visible = false;
-            panelMantenimientos.Visible = false;
-            panelOpciones.Visible = false;
-            panelEmpleados.Visible = false;
-            btnGestionEmpleado.Location = new Point(12, 174);
-            panelBtnGestionEmpleado.Location = new Point(3, 174);
-            btnGestionDispositivo.Location = new Point(12, 221);
-            panelBtnDispositivo.Location = new Point(3, 221);
-            btnMantenimientos.Location = new Point(12, 268);
-            panelBtnMantenimientos.Location = new Point(3, 268);
-            btnOpciones.Location = new Point(12, 316);
-            panelBtnOpciones.Location = new Point(3, 316);
+        //public void panelInicioGestion()
+        //{
+        //    panelDispositivo.Visible = false;
+        //    panelMantenimientos.Visible = false;
+        //    panelOpciones.Visible = false;
+        //    panelEmpleados.Visible = false;
+        //    btnGestionEmpleado.Location = new Point(12, 174);
+        //    panelBtnGestionEmpleado.Location = new Point(3, 174);
+        //    btnGestionDispositivo.Location = new Point(12, 221);
+        //    panelBtnDispositivo.Location = new Point(3, 221);
+        //    btnMantenimientos.Location = new Point(12, 268);
+        //    panelBtnMantenimientos.Location = new Point(3, 268);
+        //    btnOpciones.Location = new Point(12, 316);
+        //    panelBtnOpciones.Location = new Point(3, 316);
           
-        }
+        //}
 
 
 
-        private void btnGestionDispositivo_Click(object sender, EventArgs e)
-        {
-            panelGestionDispositivo();
-        }
-        public void panelGestionDispositivo()
-        {
-            panelMantenimientos.Visible = false;
-            panelOpciones.Visible = false;
-            panelEmpleados.Visible = false;
-            btnGestionDispositivo.Location = new Point(12, 221);
-            panelBtnDispositivo.Location = new Point(3, 221);
-            if (panelDispositivo.Visible == false)
-            {
-                panelDispositivo.Location = new Point(9, 269);
-                panelDispositivo.Visible = true;
-                btnMantenimientos.Location = new Point(12, 413);
-                panelBtnMantenimientos.Location = new Point(3, 413);
-                btnOpciones.Location = new Point(12, 461);
-                panelBtnOpciones.Location = new Point(3, 461);
-            }
-            else
-            {
+        //private void btnGestionDispositivo_Click(object sender, EventArgs e)
+        //{
+        //    panelGestionDispositivo();
+        //}
+        //public void panelGestionDispositivo()
+        //{
+        //    panelMantenimientos.Visible = false;
+        //    panelOpciones.Visible = false;
+        //    panelEmpleados.Visible = false;
+        //    btnGestionDispositivo.Location = new Point(12, 221);
+        //    panelBtnDispositivo.Location = new Point(3, 221);
+        //    if (panelDispositivo.Visible == false)
+        //    {
+        //        panelDispositivo.Location = new Point(9, 269);
+        //        panelDispositivo.Visible = true;
+        //        btnMantenimientos.Location = new Point(12, 413);
+        //        panelBtnMantenimientos.Location = new Point(3, 413);
+        //        btnOpciones.Location = new Point(12, 461);
+        //        panelBtnOpciones.Location = new Point(3, 461);
+        //    }
+        //    else
+        //    {
 
-                panelInicioGestion();
+        //        panelInicioGestion();
 
-            }
-        }
+        //    }
+        //}
 
-        public void panelGestionMantenimientos()
-        {
-            panelDispositivo.Visible = false;
-            panelOpciones.Visible = false;
-            panelEmpleados.Visible = false;
-            btnMantenimientos.Location = new Point(12, 268);
-            panelBtnMantenimientos.Location = new Point(3, 268);
+        //public void panelGestionMantenimientos()
+        //{
+        //    panelDispositivo.Visible = false;
+        //    panelOpciones.Visible = false;
+        //    panelEmpleados.Visible = false;
+        //    btnMantenimientos.Location = new Point(12, 268);
+        //    panelBtnMantenimientos.Location = new Point(3, 268);
 
 
-            if (panelMantenimientos.Visible == false)
-            {
-                panelMantenimientos.Visible = true;
-                panelMantenimientos.Location = new Point(9, 316);
-                btnGestionDispositivo.Location = new Point(12, 221);
-                panelBtnDispositivo.Location = new Point(3, 221);
-                btnOpciones.Location = new Point(12, 460);
-                panelBtnOpciones.Location = new Point(3, 460);
+        //    if (panelMantenimientos.Visible == false)
+        //    {
+        //        panelMantenimientos.Visible = true;
+        //        panelMantenimientos.Location = new Point(9, 316);
+        //        btnGestionDispositivo.Location = new Point(12, 221);
+        //        panelBtnDispositivo.Location = new Point(3, 221);
+        //        btnOpciones.Location = new Point(12, 460);
+        //        panelBtnOpciones.Location = new Point(3, 460);
 
-            }
-            else
-            {
-                panelInicioGestion();
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        panelInicioGestion();
+        //    }
+        //}
 
-        public void panelGestionOpciones()
-        {
-            panelDispositivo.Visible = false;
-            panelMantenimientos.Visible = false;
-            panelEmpleados.Visible = false;
-            btnOpciones.Location = new Point(12, 316);
-            panelBtnOpciones.Location = new Point(3, 316);
+        //public void panelGestionOpciones()
+        //{
+        //    panelDispositivo.Visible = false;
+        //    panelMantenimientos.Visible = false;
+        //    panelEmpleados.Visible = false;
+        //    btnOpciones.Location = new Point(12, 316);
+        //    panelBtnOpciones.Location = new Point(3, 316);
 
-            if (panelOpciones.Visible == false)
-            {
-                panelOpciones.Visible = true;
-                panelOpciones.Location = new Point(9, 364);
-            }
-            else
-            {
-                panelInicioGestion();
-            }
-        }
+        //    if (panelOpciones.Visible == false)
+        //    {
+        //        panelOpciones.Visible = true;
+        //        panelOpciones.Location = new Point(9, 364);
+        //    }
+        //    else
+        //    {
+        //        panelInicioGestion();
+        //    }
+        //}
 
-        private void btnMantenimientos_Click(object sender, EventArgs e)
-        {
-            panelGestionMantenimientos();
-        }
+        //private void btnMantenimientos_Click(object sender, EventArgs e)
+        //{
+        //    panelGestionMantenimientos();
+        //}
 
-        private void btnOpciones_Click(object sender, EventArgs e)
-        {
-            panelGestionOpciones();
-        }
+        //private void btnOpciones_Click(object sender, EventArgs e)
+        //{
+        //    panelGestionOpciones();
+        //}
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            panelGestionDispositivo();
+            
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            panelGestionMantenimientos();
+            
         }
 
 
         private void btnOpciones_Click_1(object sender, EventArgs e)
         {
-            panelGestionOpciones();
+            
         }
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
@@ -258,32 +258,32 @@ namespace Presentacion
 
         private void btnGestionEmpleado_Click(object sender, EventArgs e)
         {
-            panelGestionEmpleado();
+            
         }
 
-        public void panelGestionEmpleado()
-        {
-            panelMantenimientos.Visible = false;
-            panelOpciones.Visible = false;
-            panelDispositivo.Visible = false;
-            if (panelEmpleados.Visible == false)
-            {
-                panelEmpleados.Location = new Point(9, 222);
-                panelEmpleados.Visible = true;               
-                btnGestionDispositivo.Location = new Point(12,277);
-                panelBtnDispositivo.Location = new Point(3,277);
-                btnMantenimientos.Location = new Point(12, 324);
-                panelBtnMantenimientos.Location = new Point(3, 324);
-                btnOpciones.Location = new Point(12, 372);
-                panelBtnOpciones.Location = new Point(3, 372);
-            }
-            else
-            {
+        //public void panelGestionEmpleado()
+        //{
+        //    panelMantenimientos.Visible = false;
+        //    panelOpciones.Visible = false;
+        //    panelDispositivo.Visible = false;
+        //    if (panelEmpleados.Visible == false)
+        //    {
+        //        panelEmpleados.Location = new Point(9, 222);
+        //        panelEmpleados.Visible = true;               
+        //        btnGestionDispositivo.Location = new Point(12,277);
+        //        panelBtnDispositivo.Location = new Point(3,277);
+        //        btnMantenimientos.Location = new Point(12, 324);
+        //        panelBtnMantenimientos.Location = new Point(3, 324);
+        //        btnOpciones.Location = new Point(12, 372);
+        //        panelBtnOpciones.Location = new Point(3, 372);
+        //    }
+        //    else
+        //    {
 
-                panelInicioGestion();
+        //        panelInicioGestion();
 
-            }
-        }
+        //    }
+        //}
 
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
@@ -306,10 +306,7 @@ namespace Presentacion
 
         }
 
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void bunifuGradientPanel2_Paint(object sender, PaintEventArgs e)
         {
@@ -317,6 +314,27 @@ namespace Presentacion
         }
 
         private void panelSuperior_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuFlatButton13_Click(object sender, EventArgs e)
+        {
+
+            if (!CheckForm("Usuario"))
+            {
+                Usuario usuario= new Usuario();
+                usuario.ShowDialog();
+                
+                if (!CheckForm("frmGestionUsuarios"))
+                {
+                    abrirformularioHija(new frmGestionUsuarios());
+                }
+
+            }
+        }
+
+        private void panelLateral_Paint_1(object sender, PaintEventArgs e)
         {
 
         }

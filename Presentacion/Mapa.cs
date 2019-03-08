@@ -130,7 +130,7 @@ namespace Presentacion
                 dispositivo.Latitud = Double.Parse(row["Latitud"].ToString());
             }
             dispositivo.IdPerimetro = int.Parse(row["idPerimetro"].ToString());
-            dispositivo.EstadoBateria = row[11].ToString();
+            dispositivo.Bateria = row[11].ToString();
             dispositivo.EstadoDispositivo = row[10].ToString();
             return dispositivo;
         }
@@ -279,7 +279,7 @@ namespace Presentacion
                     "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
                     "Estado: {4}\n" +
                     "-----------------------------------", dispositivo.IdDispositivo, dispositivo.Latitud
-                    , dispositivo.Longitud, dispositivo.EstadoBateria, dispositivo.EstadoDispositivo);
+                    , dispositivo.Longitud, dispositivo.Bateria, dispositivo.EstadoDispositivo);
                         txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;
                         txtLogDispositivos.ScrollToCaret();
                         btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count;

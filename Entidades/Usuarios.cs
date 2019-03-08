@@ -34,16 +34,6 @@ namespace Entidades
         public string Direccion { get => direccion; set => direccion = value; }
         public char Estado { get => estado; set => estado = value; }
         public string Imagen { get => imagen; set => imagen = value; }
-        public string Clave
-        {
-            get { return clave; }
-            set
-            {
-                if (!clave.Equals("") && clave.Length >= 6 && clave.Length <= 20)
-                {
-                    clave = value;
-                }
-            }
-        }
+        public string Clave { get => clave; set => clave = value; }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logica;
 using Entidades;
+using System.Text.RegularExpressions;
 
 namespace Presentacion
 {
@@ -21,10 +22,14 @@ namespace Presentacion
         ServiciosMantenimientos logicaMantenimientos = new ServiciosMantenimientos();
         Mantenimientos mantenimientos = new Mantenimientos();
         int cont = 0;
+        Regex alfanumerica = new Regex(@"^[a-zA-Z0-9\s,]*$");
+        Regex soloNombres = new Regex(@"^[a-zA-Z0-9\s,]*$\s*");
+        string valor = "", valorNombre = "";
         private void RegistrarMantenimiento_Load(object sender, EventArgs e)
         {
             bnfRegistrar.Enabled = false;
             bnfActualizar.Enabled = false;
+            fecha.Enabled = false;
             cbxEstadoMantenimiento.SelectedIndex = 0;
 
         }
@@ -42,7 +47,7 @@ namespace Presentacion
         public int validarIdDispositivo() {
             
             epIdDispositivo.Clear();
-            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length>20) {
+            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length>20 || txtCodigoDispositivo.Text.Length < 5) {
                 epIdDispositivo.SetError(txtCodigoDispositivo,"Digite un Dispositivo Valido");                
                 return -1;
             };
@@ -119,14 +124,23 @@ namespace Presentacion
                 mantenimientos.Descripcion = txtDescripcion.Text;
                 mantenimientos.Fecha = fecha.Value.Date;
                 mantenimientos.EstadoMantenimiento =char.Parse(cbxEstadoMantenimiento.SelectedIndex.ToString());
-
-                if (logicaMantenimientos.registraMantenimiento(mantenimientos) == 1)
+                if (soloNombres.IsMatch(txtDescripcion.Text))
                 {
-                    MessageBox.Show("Operacion Existosa");
-                    estadoCamposInicial();
+                    if (logicaMantenimientos.registraMantenimiento(mantenimientos) == 1)
+                    {
+                        MessageBox.Show("Operacion Existosa");
+                        estadoCamposInicial();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la Operacion");
+                    }
+
                 }
-                else {
-                    MessageBox.Show("Error en la Operacion");
+                else
+                {
+                    MessageBox.Show("Solo valores frases de letras y numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    epDescripcion.SetError(txtDescripcion,"Solo valores frases de letras y numeros");
                 }
             }
         }
@@ -134,22 +148,30 @@ namespace Presentacion
       
         private void bnfActualizar_Click(object sender, EventArgs e)
         {
-            if (validarDescripcion() == 1)
+            if (soloNombres.IsMatch(txtDescripcion.Text))
             {
-                mantenimientos.IdDispositivo = txtCodigoDispositivo.Text;
-                mantenimientos.Descripcion = txtDescripcion.Text;
-                mantenimientos.Fecha = DateTime.Now;
-                mantenimientos.EstadoMantenimiento = char.Parse(cbxEstadoMantenimiento.SelectedIndex.ToString());
-                            
-                if (logicaMantenimientos.actualizarMantenimiento(mantenimientos) == 1)
+                if (validarDescripcion() == 1)
                 {
-                    MessageBox.Show("Operacion Existosa");
-                    estadoCamposInicial();
+                    mantenimientos.IdDispositivo = txtCodigoDispositivo.Text;
+                    mantenimientos.Descripcion = txtDescripcion.Text;
+                    mantenimientos.Fecha = DateTime.Now;
+                    mantenimientos.EstadoMantenimiento = char.Parse(cbxEstadoMantenimiento.SelectedIndex.ToString());
+
+                    if (logicaMantenimientos.actualizarMantenimiento(mantenimientos) == 1)
+                    {
+                        MessageBox.Show("Operacion Existosa");
+                        estadoCamposInicial();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la Operacion");
+                    }
                 }
-                else
+            }
+            else
                 {
-                    MessageBox.Show("Error en la Operacion");
-                }
+                    MessageBox.Show("Solo valores frases de letras y numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    epDescripcion.SetError(txtDescripcion, "Solo valores frases de letras y numeros");
             }
 
         }
@@ -159,6 +181,39 @@ namespace Presentacion
             estadoCamposInicial();
         }
 
-      
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
+          
+        }
+
+        private void txtDescripcion_Leave(object sender, EventArgs e)
+        {
+            //if (soloNombres.IsMatch(txtDescripcion.Text))
+            //{
+            //    valorNombre = txtDescripcion.Text;
+            //}
+            //else
+            //{
+                
+            //    MessageBox.Show("Solo valores letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtDescripcion.Text = valorNombre;
+            //}
+        }
+
+        private void txtCodigoDispositivo_OnValueChanged(object sender, EventArgs e)
+        {
+
+            if (alfanumerica.IsMatch(txtCodigoDispositivo.Text))
+            {
+                valor = txtCodigoDispositivo.Text;
+            }
+            else
+            {
+                txtCodigoDispositivo.Text = valor;
+                epIdDispositivo.SetError( txtCodigoDispositivo,"Solo valores alfanumericos");
+                MessageBox.Show("Solo valores alfanumericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
