@@ -368,6 +368,7 @@
             this.bnfBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bnfBuscar.Textcolor = System.Drawing.Color.Black;
             this.bnfBuscar.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnfBuscar.Click += new System.EventHandler(this.bnfBuscar_Click_1);
             // 
             // cbxEstado
             // 

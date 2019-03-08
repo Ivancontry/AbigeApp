@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{2C28D2BE-53B1-4D03-83D9-7B23F7E96750}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAbigeApp", "TestAbigeApp\TestAbigeApp.csproj", "{A0306286-5517-4959-9678-5E15B0731F29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2C28D2BE-53B1-4D03-83D9-7B23F7E96750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C28D2BE-53B1-4D03-83D9-7B23F7E96750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C28D2BE-53B1-4D03-83D9-7B23F7E96750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0306286-5517-4959-9678-5E15B0731F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0306286-5517-4959-9678-5E15B0731F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0306286-5517-4959-9678-5E15B0731F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0306286-5517-4959-9678-5E15B0731F29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
