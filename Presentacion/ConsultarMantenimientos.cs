@@ -113,13 +113,13 @@ namespace Presentacion
         public string convertirEstadoMantenimiento(string fila) {
             if (fila.Equals("0"))
             {
-                return fila = "Inactivo";
+                return fila = "Dañado";
             }
             else
             {
                 if (fila.Equals("1"))
                 {
-                   return fila = "Activo";
+                   return fila = "Funcionando";
                 }                
             }
             return "";

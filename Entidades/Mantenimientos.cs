@@ -16,10 +16,10 @@ namespace Entidades
 
         public string IdDispositivo
         {
-            get { return IdDispositivo; }
+            get { return idDispositivo; }
             set
             {
-                if (validarIdDispositivo())
+                if (validarIdDispositivo(value))
                 {
                     idDispositivo = value;
                 }
@@ -31,7 +31,7 @@ namespace Entidades
             get { return descripcion; }
             set
             {
-                if (validarDescripcion())
+                if (validarDescripcion(value))
                 {
                     descripcion = value;
                 }
@@ -40,21 +40,15 @@ namespace Entidades
         public Char EstadoMantenimiento { get => estadoMantenimiento; set => estadoMantenimiento = value; }
         public Char EstadoActual{ get => estadoActual; set => estadoActual = value; }
 
-        public bool validarIdDispositivo()
+        public bool validarIdDispositivo(string codigo)
         {
-            if (!idDispositivo.Equals("") && idDispositivo.Length >= 5 && idDispositivo.Length <= 10)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (!codigo.Equals("") && codigo.Length >= 5 && codigo.Length <= 10);
+
         }
 
-        public bool validarDescripcion()
+        public bool validarDescripcion(string codigo)
         {
-            if (!descripcion.Equals("") && descripcion.Length >= 5 && descripcion.Length <= 10)
+            if (!codigo.Equals("") && codigo.Length >= 5 && codigo.Length <= 10)
             {
                 return true;
             }
