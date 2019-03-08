@@ -12,13 +12,35 @@ namespace Entidades
         private double latitud;
         private double longitud;
         private string estadoDispositivo;
-        private string estadoBateria;
         private int novedadDispositivo;
 
-        public double Latitud { get=>latitud; set => latitud =value; }
-        public double Longitud { get => longitud; set => longitud = value; }
+        public double Latitud {
+            get
+            {
+                return latitud;
+            }
+            set
+            {
+                if (latitud <= 9999.99999999)
+                {
+                    latitud = value;
+                }
+            }
+        }
+        public double Longitud {
+            get
+            {
+                return longitud;
+            }
+            set
+            {
+                if (longitud <= 9999.99999999)
+                {
+                    longitud = value;
+                }
+            }
+        }
         public string EstadoDispositivo { get => estadoDispositivo; set => estadoDispositivo= value; } //primeramente manual ya que no sabemos como validar que este adentro :V. Ahora si se sabe XD
-        public string EstadoBateria { get => estadoBateria; set => estadoBateria = value; }
         public int NovedadDispositivo { get => novedadDispositivo; set => novedadDispositivo = value; }
 
         public Posicion() { }
@@ -27,7 +49,7 @@ namespace Entidades
             this.idDispositivo = idDispositivo;
             this.latitud = Double.Parse(latitud.Replace(".", ","));
             this.longitud = Double.Parse(longitud.Replace(".", ","));
-            this.estadoBateria = estadoBateria;
+            this.bateria = float.Parse(estadoBateria.Trim());
             
         }
         //public double convertirCoordenada(string coordenada)

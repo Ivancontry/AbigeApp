@@ -24,11 +24,39 @@ namespace Entidades
         }
 
 
-        public string IdDispositivo { get => idDispositivo; set => idDispositivo = value; }
+        public string IdDispositivo {
+            get { return IdDispositivo; }
+            set
+            {
+                if (!idDispositivo.Equals("") && idDispositivo.Length >= 5 && idDispositivo.Length<=10)
+                {
+                    idDispositivo = value;
+                }
+            }
+        }
         public int IdPerimetro { get => idPerimetro; set => idPerimetro = value; }
         public string Estado { get => estado; set => estado = value; }
-        public string IdAnimal { get => idAnimal; set => idAnimal = value; }
-        public float Bateria { get => bateria; set => bateria = value; }
+        public string IdAnimal {
+            get { return IdAnimal; }
+            set
+            {
+                if (!IdAnimal.Equals("") && IdAnimal.Length >= 4 && IdAnimal.Length <= 10)
+                {
+                    idDispositivo = value;
+                }
+            }
+        }
+        public float Bateria {
+            get {return bateria; }
+            set
+            {
+                if (bateria>=0.0 && bateria<= 5.0)
+                {
+                    bateria = value;
+                }
+            }
+
+        }
         public DateTime Fecha { get => fecha; set => fecha = value; }
     }
 }

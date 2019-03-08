@@ -30,8 +30,8 @@ namespace Presentacion
         GMapOverlay markerOverlay;
         PointLatLng latLng;
         double promedio = 0;
-        double latitudCentral = 10.4402915855;//estas dos coordenadas son para centrar el mapa
-        double longitudCentral = -73.2516118633;
+        double LatitudCentral = 10.4402915855;//estas dos coordenadas son para centrar el mapa
+        double LongitudCentral = -73.2516118633;
         string mostrarMesaje;//Esto es para ver la media de tiempo en que se demora el proceso  para cada evento en el mapa
         DataTable listaMarcadores = new DataTable();
         int dispositivosTotalEnFinca = 0;
@@ -69,7 +69,7 @@ namespace Presentacion
             gmFinca.DragButton = MouseButtons.Left;
             gmFinca.CanDragMap = true;
             gmFinca.MapProvider = GoogleMapProvider.Instance;
-            gmFinca.Position = new PointLatLng(latitudCentral, longitudCentral);
+            gmFinca.Position = new PointLatLng(LatitudCentral, LongitudCentral);
             gmFinca.MinZoom = 1;
             gmFinca.MaxZoom = 24;
             gmFinca.Zoom = 17;
@@ -83,14 +83,14 @@ namespace Presentacion
             foreach (DataRow dispositivo in listaMarcadores.Rows)
             {
                 //Agregar un marcador
-               /* markerOverlay = new GMapOverlay(dispositivo["Iddispositivo"].ToString());                
-                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.blue);
+               /* markerOverlay = new GMapOverlay(dispositivo["IdDispositivo"].ToString());                
+                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["Latitud"].ToString()),double.Parse(dispositivo["Longitud"].ToString())), GMarkerGoogleType.blue);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
            
                 //Agregamos un mensaje a los marcadores
                 marker.ToolTipMode = MarkerTooltipMode.Always;
-                //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", dispositivo["Iddispositivo"].ToString(), double.Parse(dispositivo["latitud"].ToString()), double.Parse(dispositivo["longitud"].ToString()));
-                marker.ToolTipText = string.Format("{0}", dispositivo["Iddispositivo"].ToString());
+                //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n Latitud:{1} \n Longitud:{2} \n ", dispositivo["IdDispositivo"].ToString(), double.Parse(dispositivo["Latitud"].ToString()), double.Parse(dispositivo["Longitud"].ToString()));
+                marker.ToolTipText = string.Format("{0}", dispositivo["IdDispositivo"].ToString());
                 
                 gmFinca.Overlays.Add(markerOverlay);
                 marcadores.Add(marker);*/
@@ -114,20 +114,20 @@ namespace Presentacion
         Posicion mapearDispositivo(DataRow row)
         {
             Posicion dispositivo = new Posicion();
-            dispositivo.IdDispositivo = row["iddispositivo"].ToString();
+            dispositivo.IdDispositivo = row["IdDispositivo"].ToString();
             dispositivo.IdAnimal = row["idAnimal"].ToString();
-            if (row["longitud"].ToString().Equals(""))
+            if (row["Longitud"].ToString().Equals(""))
             {
                 dispositivo.Longitud = 0;
             }else
-                dispositivo.Longitud = Double.Parse(row["longitud"].ToString());
-            if (row["latitud"].ToString().Equals(""))
+                dispositivo.Longitud = Double.Parse(row["Longitud"].ToString());
+            if (row["Latitud"].ToString().Equals(""))
             {
                 dispositivo.Latitud = 0;
             }
             else
             {
-                dispositivo.Latitud = Double.Parse(row["latitud"].ToString());
+                dispositivo.Latitud = Double.Parse(row["Latitud"].ToString());
             }
             dispositivo.IdPerimetro = int.Parse(row["idPerimetro"].ToString());
             dispositivo.EstadoBateria = row[11].ToString();
@@ -152,7 +152,7 @@ namespace Presentacion
             List<PointLatLng> points = new List<PointLatLng>();
             foreach (DataRow coordenadas in listaCoordenadasPerimetros.Rows)
             {
-                points.Add(new PointLatLng(double.Parse(coordenadas["latitud"].ToString()), double.Parse(coordenadas["longitud"].ToString())));
+                points.Add(new PointLatLng(double.Parse(coordenadas["Latitud"].ToString()), double.Parse(coordenadas["Longitud"].ToString())));
             }
 
             polygon = new GMapPolygon(points, "Poligono " + perimetro);
@@ -173,10 +173,10 @@ namespace Presentacion
         private void insertarMarcador(Posicion dispositivo) {
             List<GMapOverlay> lista = new List<GMapOverlay>();
             lista = gmFinca.Overlays.ToList();
-            //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
+            //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.IdDispositivo));
             
-            markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
-            if (dispositivo.novedadDispositivo == 1)
+            markerOverlay = new GMapOverlay(dispositivo.IdDispositivo);
+            if (dispositivo.NovedadDispositivo == 1)
             {
                 marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.red);
             }
@@ -191,20 +191,20 @@ namespace Presentacion
                     marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.blue);
                 }
             }
-            if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)
+            if (dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo) == null)
             {
                 dispositivos.Add(dispositivo);
             }
             else
             {
-                Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
-                dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
-                dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
+                Posicion dispositivoActualizable = dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo);
+                dispositivoActualizable.IdDispositivo = dispositivo.IdDispositivo;
+                dispositivoActualizable.EstadoDispositivo = dispositivo.EstadoDispositivo;
             }
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
             marker.ToolTipMode = MarkerTooltipMode.Always;
-            //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
+            //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n Latitud:{1} \n Longitud:{2} \n ", posicion.IdDispositivo, posicion.Latitud, posicion.Longitud);
             //Agregar un marcador
             marker.ToolTipText = string.Format("{0}", dispositivo.IdDispositivo);
             gmFinca.Overlays.Add(markerOverlay);            
@@ -245,7 +245,7 @@ namespace Presentacion
                     datos[2], int.Parse(datos[3]),datos[4]);
 
             
-                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
+                latLng = new PointLatLng(dispositivo.Latitud, dispositivo.Longitud);
                 if (poligonos.Find(x => x.IsInside(latLng)) != null)
                 {
                     dispositivo.EstadoDispositivo = "Dentro";
@@ -278,11 +278,11 @@ namespace Presentacion
                         txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
                     "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
                     "Estado: {4}\n" +
-                    "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
-                    , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
+                    "-----------------------------------", dispositivo.IdDispositivo, dispositivo.Latitud
+                    , dispositivo.Longitud, dispositivo.EstadoBateria, dispositivo.EstadoDispositivo);
                         txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;
                         txtLogDispositivos.ScrollToCaret();
-                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;
+                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count;
                     }));
                 }
             }
