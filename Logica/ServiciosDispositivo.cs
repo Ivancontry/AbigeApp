@@ -44,6 +44,9 @@ namespace Logica
             return datosDispositivo.listadoCoordenadasPerimetro(idPerimetro);
         }
 
-
+        public DataTable cargarPerimetros()
+        {
+            return datosDispositivo.cargarPerimetros();
+        }
     }
 }

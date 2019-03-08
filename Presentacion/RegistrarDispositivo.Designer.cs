@@ -48,10 +48,11 @@
             this.epEstado = new System.Windows.Forms.ErrorProvider(this.components);
             this.epBateria = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbxPerimetro = new System.Windows.Forms.ComboBox();
-            this.bnfBuscar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bnfBuscar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.grbBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epCodigoDispoitivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epPerimetro)).BeginInit();
@@ -68,7 +69,7 @@
             this.mapaDispositivo.GrayScaleMode = false;
             this.mapaDispositivo.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.mapaDispositivo.LevelsKeepInMemmory = 5;
-            this.mapaDispositivo.Location = new System.Drawing.Point(435, 12);
+            this.mapaDispositivo.Location = new System.Drawing.Point(507, 110);
             this.mapaDispositivo.MarkersEnabled = true;
             this.mapaDispositivo.MaxZoom = 2;
             this.mapaDispositivo.MinZoom = 2;
@@ -82,7 +83,7 @@
             this.mapaDispositivo.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.mapaDispositivo.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.mapaDispositivo.ShowTileGridLines = false;
-            this.mapaDispositivo.Size = new System.Drawing.Size(195, 138);
+            this.mapaDispositivo.Size = new System.Drawing.Size(464, 497);
             this.mapaDispositivo.TabIndex = 0;
             this.mapaDispositivo.Zoom = 0D;
             // 
@@ -98,12 +99,11 @@
             this.txtCodigoDispositivo.LineIdleColor = System.Drawing.Color.SeaGreen;
             this.txtCodigoDispositivo.LineMouseHoverColor = System.Drawing.Color.Green;
             this.txtCodigoDispositivo.LineThickness = 3;
-            this.txtCodigoDispositivo.Location = new System.Drawing.Point(24, 25);
+            this.txtCodigoDispositivo.Location = new System.Drawing.Point(95, 146);
             this.txtCodigoDispositivo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtCodigoDispositivo.Name = "txtCodigoDispositivo";
-            this.txtCodigoDispositivo.Size = new System.Drawing.Size(231, 33);
+            this.txtCodigoDispositivo.Size = new System.Drawing.Size(185, 33);
             this.txtCodigoDispositivo.TabIndex = 11;
-            this.txtCodigoDispositivo.Text = "Codigo del Dispositivo";
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCodigoDispositivo.Enter += new System.EventHandler(this.txtCodigoDispositivo_Enter);
             this.txtCodigoDispositivo.Leave += new System.EventHandler(this.txtCodigoDispositivo_Leave);
@@ -120,7 +120,7 @@
             this.txtCodigoAnimal.LineIdleColor = System.Drawing.Color.SeaGreen;
             this.txtCodigoAnimal.LineMouseHoverColor = System.Drawing.Color.Green;
             this.txtCodigoAnimal.LineThickness = 3;
-            this.txtCodigoAnimal.Location = new System.Drawing.Point(238, 117);
+            this.txtCodigoAnimal.Location = new System.Drawing.Point(309, 232);
             this.txtCodigoAnimal.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtCodigoAnimal.Name = "txtCodigoAnimal";
             this.txtCodigoAnimal.Size = new System.Drawing.Size(177, 33);
@@ -139,7 +139,7 @@
             this.txtBateria.LineIdleColor = System.Drawing.Color.SeaGreen;
             this.txtBateria.LineMouseHoverColor = System.Drawing.Color.Green;
             this.txtBateria.LineThickness = 3;
-            this.txtBateria.Location = new System.Drawing.Point(238, 193);
+            this.txtBateria.Location = new System.Drawing.Point(309, 308);
             this.txtBateria.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtBateria.Name = "txtBateria";
             this.txtBateria.Size = new System.Drawing.Size(177, 33);
@@ -150,7 +150,7 @@
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(20, 92);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(91, 207);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(88, 21);
             this.bunifuCustomLabel1.TabIndex = 17;
@@ -160,7 +160,7 @@
             // 
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(234, 92);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(305, 207);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(153, 21);
             this.bunifuCustomLabel2.TabIndex = 18;
@@ -170,7 +170,7 @@
             // 
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(20, 168);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(91, 283);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(62, 21);
             this.bunifuCustomLabel3.TabIndex = 19;
@@ -180,7 +180,7 @@
             // 
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(234, 168);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(305, 283);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(65, 21);
             this.bunifuCustomLabel4.TabIndex = 20;
@@ -192,9 +192,9 @@
             this.grbBotones.Controls.Add(this.bnfActualizar);
             this.grbBotones.Controls.Add(this.bnfRegistrar);
             this.grbBotones.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grbBotones.Location = new System.Drawing.Point(12, 251);
+            this.grbBotones.Location = new System.Drawing.Point(83, 441);
             this.grbBotones.Name = "grbBotones";
-            this.grbBotones.Size = new System.Drawing.Size(618, 81);
+            this.grbBotones.Size = new System.Drawing.Size(417, 81);
             this.grbBotones.TabIndex = 21;
             this.grbBotones.TabStop = false;
             // 
@@ -219,13 +219,14 @@
             this.bnfLimpiar.IconVisible = true;
             this.bnfLimpiar.IconZoom = 60D;
             this.bnfLimpiar.IsTab = false;
-            this.bnfLimpiar.Location = new System.Drawing.Point(383, 24);
+            this.bnfLimpiar.Location = new System.Drawing.Point(306, 31);
+            this.bnfLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.bnfLimpiar.Name = "bnfLimpiar";
             this.bnfLimpiar.Normalcolor = System.Drawing.Color.White;
             this.bnfLimpiar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
             this.bnfLimpiar.OnHoverTextColor = System.Drawing.Color.White;
             this.bnfLimpiar.selected = false;
-            this.bnfLimpiar.Size = new System.Drawing.Size(147, 32);
+            this.bnfLimpiar.Size = new System.Drawing.Size(110, 32);
             this.bnfLimpiar.TabIndex = 21;
             this.bnfLimpiar.Text = "Limpiar";
             this.bnfLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,13 +255,14 @@
             this.bnfActualizar.IconVisible = true;
             this.bnfActualizar.IconZoom = 60D;
             this.bnfActualizar.IsTab = false;
-            this.bnfActualizar.Location = new System.Drawing.Point(231, 24);
+            this.bnfActualizar.Location = new System.Drawing.Point(154, 31);
+            this.bnfActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.bnfActualizar.Name = "bnfActualizar";
             this.bnfActualizar.Normalcolor = System.Drawing.Color.White;
             this.bnfActualizar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
             this.bnfActualizar.OnHoverTextColor = System.Drawing.Color.White;
             this.bnfActualizar.selected = false;
-            this.bnfActualizar.Size = new System.Drawing.Size(126, 32);
+            this.bnfActualizar.Size = new System.Drawing.Size(104, 32);
             this.bnfActualizar.TabIndex = 20;
             this.bnfActualizar.Text = "Actualizar";
             this.bnfActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -290,14 +292,14 @@
             this.bnfRegistrar.IconVisible = true;
             this.bnfRegistrar.IconZoom = 60D;
             this.bnfRegistrar.IsTab = false;
-            this.bnfRegistrar.Location = new System.Drawing.Point(88, 24);
+            this.bnfRegistrar.Location = new System.Drawing.Point(11, 31);
             this.bnfRegistrar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.bnfRegistrar.Name = "bnfRegistrar";
             this.bnfRegistrar.Normalcolor = System.Drawing.Color.White;
             this.bnfRegistrar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
             this.bnfRegistrar.OnHoverTextColor = System.Drawing.Color.White;
             this.bnfRegistrar.selected = false;
-            this.bnfRegistrar.Size = new System.Drawing.Size(126, 32);
+            this.bnfRegistrar.Size = new System.Drawing.Size(104, 32);
             this.bnfRegistrar.TabIndex = 19;
             this.bnfRegistrar.Text = "Registrar";
             this.bnfRegistrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -329,11 +331,42 @@
             // 
             this.cbxPerimetro.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.cbxPerimetro.FormattingEnabled = true;
-            this.cbxPerimetro.Location = new System.Drawing.Point(24, 129);
+            this.cbxPerimetro.Location = new System.Drawing.Point(95, 244);
             this.cbxPerimetro.Name = "cbxPerimetro";
             this.cbxPerimetro.Size = new System.Drawing.Size(177, 21);
             this.cbxPerimetro.TabIndex = 22;
             this.cbxPerimetro.SelectedIndexChanged += new System.EventHandler(this.cbxPerimetro_SelectedIndexChanged);
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbxEstado.Location = new System.Drawing.Point(95, 320);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(177, 21);
+            this.cbxEstado.TabIndex = 24;
+            // 
+            // fecha
+            // 
+            this.fecha.Enabled = false;
+            this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fecha.Location = new System.Drawing.Point(183, 382);
+            this.fecha.Name = "fecha";
+            this.fecha.Size = new System.Drawing.Size(177, 20);
+            this.fecha.TabIndex = 27;
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(91, 382);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(52, 20);
+            this.bunifuCustomLabel5.TabIndex = 26;
+            this.bunifuCustomLabel5.Text = "Fecha";
             // 
             // bnfBuscar
             // 
@@ -356,7 +389,8 @@
             this.bnfBuscar.IconVisible = true;
             this.bnfBuscar.IconZoom = 60D;
             this.bnfBuscar.IsTab = false;
-            this.bnfBuscar.Location = new System.Drawing.Point(284, 25);
+            this.bnfBuscar.Location = new System.Drawing.Point(309, 146);
+            this.bnfBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.bnfBuscar.Name = "bnfBuscar";
             this.bnfBuscar.Normalcolor = System.Drawing.Color.White;
             this.bnfBuscar.OnHovercolor = System.Drawing.Color.MediumSeaGreen;
@@ -370,43 +404,23 @@
             this.bnfBuscar.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bnfBuscar.Click += new System.EventHandler(this.bnfBuscar_Click_1);
             // 
-            // cbxEstado
+            // bunifuCustomLabel6
             // 
-            this.cbxEstado.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.cbxEstado.FormattingEnabled = true;
-            this.cbxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbxEstado.Location = new System.Drawing.Point(24, 205);
-            this.cbxEstado.Name = "cbxEstado";
-            this.cbxEstado.Size = new System.Drawing.Size(177, 21);
-            this.cbxEstado.TabIndex = 24;
-            // 
-            // fecha
-            // 
-            this.fecha.Enabled = false;
-            this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fecha.Location = new System.Drawing.Point(435, 206);
-            this.fecha.Name = "fecha";
-            this.fecha.Size = new System.Drawing.Size(182, 20);
-            this.fecha.TabIndex = 27;
-            // 
-            // bunifuCustomLabel5
-            // 
-            this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(431, 169);
-            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(52, 20);
-            this.bunifuCustomLabel5.TabIndex = 26;
-            this.bunifuCustomLabel5.Text = "Fecha";
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(92, 121);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(188, 21);
+            this.bunifuCustomLabel6.TabIndex = 28;
+            this.bunifuCustomLabel6.Text = "Codigo del Dispositivo";
             // 
             // RegistrarDispositivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(642, 334);
+            this.ClientSize = new System.Drawing.Size(1055, 716);
+            this.Controls.Add(this.bunifuCustomLabel6);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.bunifuCustomLabel5);
             this.Controls.Add(this.cbxEstado);
@@ -421,6 +435,7 @@
             this.Controls.Add(this.txtCodigoAnimal);
             this.Controls.Add(this.txtCodigoDispositivo);
             this.Controls.Add(this.mapaDispositivo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistrarDispositivo";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "RegistrarDispositivo";
@@ -460,5 +475,6 @@
         private System.Windows.Forms.DateTimePicker fecha;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.Framework.UI.BunifuFlatButton bnfRegistrar;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
     }
 }

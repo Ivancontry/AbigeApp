@@ -52,6 +52,68 @@ namespace Presentacion
             txtIdentificacion.ContextMenuStrip = blankContextMenu;
             txtTelefono.ContextMenuStrip = blankContextMenu;
         }
+
+        public int validarCedula()
+        {
+            if (txtIdentificacion.Text.Length > 20 || txtIdentificacion.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int validarNombre()
+        {
+            if (txtNombre.Text.Length > 30 || txtNombre.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+        public int validarPrimerApellido()
+        {
+            if (txtPrimerApellido.Text.Length > 20 || txtPrimerApellido.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int validarTelefono()
+        {
+            if (txtTelefono.Text.Length > 20 || txtTelefono.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int validarEmail()
+        {
+            if (txtEmail.Text.Length > 45 || txtEmail.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int validarSegundoApellido()
+        {
+            if (txtSegundoApellido.Text.Length > 20 || txtSegundoApellido.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public int validarDireccion()
+        {
+            if (txtDireccion.Text.Length > 50 || txtDireccion.Text == "")
+            {
+                return -1;
+            }
+            return 1;
+        }
         public static bool IsValidEmail(string strIn)
         {
             // Return true if strIn is in valid e-mail format.
@@ -73,16 +135,20 @@ namespace Presentacion
             }
             else
             {
-                txtContraseña.Text = usuario.clave;
+                txtContraseña.Text = usuario.Clave;
                 txtIdentificacion.Enabled = false;
-                txtDireccion.Text = usuario.direccion;
-                txtEmail.Text = usuario.email;
-                txtNombre.Text = usuario.nombres;
-                txtPrimerApellido.Text = usuario.primerApellido;
-                txtSegundoApellido.Text = usuario.segundoApellido;
-                txtTelefono.Text = usuario.telefono;                
-                
-                if (usuario.estado == 'A')
+                txtDireccion.Text = usuario.Direccion;
+                txtEmail.Text = usuario.Email;
+                txtNombre.Text = usuario.Nombres;
+                txtPrimerApellido.Text = usuario.PrimerApellido;
+                txtSegundoApellido.Text = usuario.SegundoApellido;
+                txtTelefono.Text = usuario.Telefono;
+                txtRepetirPassword.Text = usuario.Clave;
+
+                txtContraseña.isPassword = true;
+                txtRepetirPassword.isPassword = true;
+
+                if (usuario.Estado == 'A')
                 {
                     ckbEstado.Checked = true;
                 }
@@ -96,6 +162,9 @@ namespace Presentacion
         }
         private void limpiarCampos(GroupBox groupBox)
         {
+            errorContraseñas.Clear();
+            errorProvider1.Clear();
+            txtIdentificacion.Text = "";
             foreach (Control c in groupBox.Controls)
             {
                 if (c is Bunifu.Framework.UI.BunifuMaterialTextbox)
@@ -165,23 +234,22 @@ namespace Presentacion
         private void registrarOActualizarEmpleado()
         {
             Usuarios usuario = new Usuarios();
-            usuario.identificacion = txtIdentificacion.Text;
-            usuario.nombres = txtNombre.Text;
-            usuario.primerApellido = txtPrimerApellido.Text;
-            usuario.segundoApellido = txtSegundoApellido.Text;
-            usuario.direccion = txtDireccion.Text;
-            usuario.email = txtEmail.Text;
-            usuario.clave = txtContraseña.Text;
-            usuario.telefono = txtTelefono.Text;
-            usuario.idfinca = 1;
-            usuario.rol = "EMPLEADO";
+            usuario.Identificacion = txtIdentificacion.Text;
+            usuario.Nombres = txtNombre.Text;
+            usuario.PrimerApellido = txtPrimerApellido.Text;
+            usuario.Direccion = txtDireccion.Text;
+            usuario.Email = txtEmail.Text;
+            usuario.Clave = txtContraseña.Text;
+            usuario.Telefono = txtTelefono.Text;
+            usuario.Idfinca = 1;
+            usuario.Rol = "EMPLEADO";
             if (ckbEstado.Checked == true)
             {
-                usuario.estado = 'A';
+                usuario.Estado = 'A';
             }
             else
             {
-                usuario.estado = 'I';
+                usuario.Estado = 'I';
             }
             if (!string.IsNullOrEmpty(txtEmail.Text))
             {
@@ -191,7 +259,18 @@ namespace Presentacion
                     return;
                 }
             }
-            String mensaje = serviciosUsuario.GuardarUsuarios(usuario);
+            if (txtContraseña.Text != txtRepetirPassword.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            String mensaje="";
+            if (validarCedula()==1 && validarDireccion()==1 && validarEmail()==1 && validarNombre()==1 &&
+                validarPrimerApellido()==1 && validarSegundoApellido()==1 && validarTelefono()==1)
+            {
+                mensaje = serviciosUsuario.GuardarUsuarios(usuario);
+            }
+           
 
             if (mensaje == "exito")
             {
@@ -208,12 +287,21 @@ namespace Presentacion
             }
             else
             {
-                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Error al digitar los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             registrarOActualizarEmpleado();
+        }
+
+        private void txtContraseña_Leave(object sender, EventArgs e)
+        {
+            errorContraseñas.Clear();
+            if (txtContraseña.Text != txtRepetirPassword.Text)
+            {
+                errorContraseñas.SetError(txtRepetirPassword,"Las contraseñas no coinciden");
+            }
         }
     }
 }

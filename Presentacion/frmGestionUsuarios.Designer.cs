@@ -38,6 +38,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtRepetirPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ckbEstado = new Bunifu.Framework.UI.BunifuCheckbox();
             this.txtSegundoApellido = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtTelefono = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -52,8 +54,11 @@
             this.btnRegistrar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnBuscarIdentificacion = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorContraseñas = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorContraseñas)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -120,7 +125,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(267, 228);
+            this.label9.Location = new System.Drawing.Point(6, 228);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 16);
             this.label9.TabIndex = 8;
@@ -138,6 +143,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtRepetirPassword);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.ckbEstado);
             this.groupBox1.Controls.Add(this.txtSegundoApellido);
             this.groupBox1.Controls.Add(this.txtTelefono);
@@ -160,6 +167,35 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             // 
+            // txtRepetirPassword
+            // 
+            this.txtRepetirPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRepetirPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRepetirPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRepetirPassword.HintForeColor = System.Drawing.Color.Empty;
+            this.txtRepetirPassword.HintText = "";
+            this.txtRepetirPassword.isPassword = true;
+            this.txtRepetirPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
+            this.txtRepetirPassword.LineIdleColor = System.Drawing.Color.Gray;
+            this.txtRepetirPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
+            this.txtRepetirPassword.LineThickness = 3;
+            this.txtRepetirPassword.Location = new System.Drawing.Point(579, 217);
+            this.txtRepetirPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRepetirPassword.Name = "txtRepetirPassword";
+            this.txtRepetirPassword.Size = new System.Drawing.Size(225, 27);
+            this.txtRepetirPassword.TabIndex = 36;
+            this.txtRepetirPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(427, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 16);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Repetir Contraseña";
+            // 
             // ckbEstado
             // 
             this.ckbEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
@@ -168,7 +204,7 @@
             this.ckbEstado.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.ckbEstado.ForeColor = System.Drawing.Color.White;
             this.ckbEstado.Location = new System.Drawing.Point(579, 177);
-            this.ckbEstado.Margin = new System.Windows.Forms.Padding(7);
+            this.ckbEstado.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.ckbEstado.Name = "ckbEstado";
             this.ckbEstado.Size = new System.Drawing.Size(20, 20);
             this.ckbEstado.TabIndex = 34;
@@ -176,7 +212,7 @@
             // txtSegundoApellido
             // 
             this.txtSegundoApellido.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSegundoApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSegundoApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSegundoApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSegundoApellido.HintForeColor = System.Drawing.Color.Empty;
             this.txtSegundoApellido.HintText = "";
@@ -186,7 +222,7 @@
             this.txtSegundoApellido.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtSegundoApellido.LineThickness = 3;
             this.txtSegundoApellido.Location = new System.Drawing.Point(579, 73);
-            this.txtSegundoApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSegundoApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSegundoApellido.Name = "txtSegundoApellido";
             this.txtSegundoApellido.Size = new System.Drawing.Size(225, 27);
             this.txtSegundoApellido.TabIndex = 29;
@@ -195,7 +231,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTelefono.HintForeColor = System.Drawing.Color.Empty;
             this.txtTelefono.HintText = "";
@@ -205,7 +241,7 @@
             this.txtTelefono.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtTelefono.LineThickness = 3;
             this.txtTelefono.Location = new System.Drawing.Point(579, 120);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(225, 27);
             this.txtTelefono.TabIndex = 27;
@@ -216,7 +252,7 @@
             // txtNombre
             // 
             this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNombre.HintForeColor = System.Drawing.Color.Empty;
             this.txtNombre.HintText = "";
@@ -226,7 +262,7 @@
             this.txtNombre.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtNombre.LineThickness = 3;
             this.txtNombre.Location = new System.Drawing.Point(367, 26);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(225, 27);
             this.txtNombre.TabIndex = 30;
@@ -235,26 +271,27 @@
             // txtContraseña
             // 
             this.txtContraseña.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtContraseña.HintForeColor = System.Drawing.Color.Empty;
             this.txtContraseña.HintText = "";
-            this.txtContraseña.isPassword = false;
+            this.txtContraseña.isPassword = true;
             this.txtContraseña.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtContraseña.LineIdleColor = System.Drawing.Color.Gray;
             this.txtContraseña.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtContraseña.LineThickness = 3;
-            this.txtContraseña.Location = new System.Drawing.Point(367, 217);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContraseña.Location = new System.Drawing.Point(139, 217);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(225, 27);
             this.txtContraseña.TabIndex = 32;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtContraseña.Leave += new System.EventHandler(this.txtContraseña_Leave);
             // 
             // txtPrimerApellido
             // 
             this.txtPrimerApellido.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPrimerApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrimerApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrimerApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrimerApellido.HintForeColor = System.Drawing.Color.Empty;
             this.txtPrimerApellido.HintText = "";
@@ -264,7 +301,7 @@
             this.txtPrimerApellido.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtPrimerApellido.LineThickness = 3;
             this.txtPrimerApellido.Location = new System.Drawing.Point(139, 76);
-            this.txtPrimerApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrimerApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrimerApellido.Name = "txtPrimerApellido";
             this.txtPrimerApellido.Size = new System.Drawing.Size(225, 27);
             this.txtPrimerApellido.TabIndex = 33;
@@ -273,7 +310,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccion.HintForeColor = System.Drawing.Color.Empty;
             this.txtDireccion.HintText = "";
@@ -283,7 +320,7 @@
             this.txtDireccion.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtDireccion.LineThickness = 3;
             this.txtDireccion.Location = new System.Drawing.Point(139, 170);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(225, 27);
             this.txtDireccion.TabIndex = 31;
@@ -292,7 +329,7 @@
             // txtEmail
             // 
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEmail.HintForeColor = System.Drawing.Color.Empty;
             this.txtEmail.HintText = "";
@@ -302,7 +339,7 @@
             this.txtEmail.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtEmail.LineThickness = 3;
             this.txtEmail.Location = new System.Drawing.Point(139, 123);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(225, 27);
             this.txtEmail.TabIndex = 25;
@@ -312,7 +349,7 @@
             // txtIdentificacion
             // 
             this.txtIdentificacion.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtIdentificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdentificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdentificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtIdentificacion.HintForeColor = System.Drawing.Color.Empty;
             this.txtIdentificacion.HintText = "";
@@ -322,7 +359,7 @@
             this.txtIdentificacion.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(161)))), ((int)(((byte)(124)))));
             this.txtIdentificacion.LineThickness = 3;
             this.txtIdentificacion.Location = new System.Drawing.Point(278, 38);
-            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(225, 27);
             this.txtIdentificacion.TabIndex = 22;
@@ -352,6 +389,7 @@
             this.btnActualizar.IconZoom = 70D;
             this.btnActualizar.IsTab = false;
             this.btnActualizar.Location = new System.Drawing.Point(391, 359);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Normalcolor = System.Drawing.Color.White;
             this.btnActualizar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -387,6 +425,7 @@
             this.btnLimpiar.IconZoom = 70D;
             this.btnLimpiar.IsTab = false;
             this.btnLimpiar.Location = new System.Drawing.Point(538, 359);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Normalcolor = System.Drawing.Color.White;
             this.btnLimpiar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -422,6 +461,7 @@
             this.btnRegistrar.IconZoom = 70D;
             this.btnRegistrar.IsTab = false;
             this.btnRegistrar.Location = new System.Drawing.Point(246, 359);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Normalcolor = System.Drawing.Color.White;
             this.btnRegistrar.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -457,6 +497,7 @@
             this.btnBuscarIdentificacion.IconZoom = 70D;
             this.btnBuscarIdentificacion.IsTab = false;
             this.btnBuscarIdentificacion.Location = new System.Drawing.Point(536, 17);
+            this.btnBuscarIdentificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscarIdentificacion.Name = "btnBuscarIdentificacion";
             this.btnBuscarIdentificacion.Normalcolor = System.Drawing.Color.White;
             this.btnBuscarIdentificacion.OnHovercolor = System.Drawing.Color.WhiteSmoke;
@@ -474,25 +515,43 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // RegistrarUsuario
+            // errorContraseñas
+            // 
+            this.errorContraseñas.ContainerControl = this;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(143, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 16);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "N° de Documento";
+            // 
+            // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(885, 429);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.btnBuscarIdentificacion);
             this.Controls.Add(this.txtIdentificacion);
             this.Controls.Add(this.groupBox1);
-            this.Name = "RegistrarUsuario";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "frmGestionUsuarios";
             this.Text = "RegistrarEmpleado";
             this.Load += new System.EventHandler(this.RegistrarEmpleado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorContraseñas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -520,5 +579,9 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnLimpiar;
         private Bunifu.Framework.UI.BunifuFlatButton btnActualizar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox txtRepetirPassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorContraseñas;
+        private System.Windows.Forms.Label label5;
     }
 }

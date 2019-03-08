@@ -13,127 +13,206 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using Logica;
 using Entidades;
-
-
+using System.Media;
+using WMPLib;
+using System.Threading;
 namespace Presentacion
 {
     public partial class Mapa : Form
     {
         GMapPolygon polygon;
+        List<GMapPolygon> poligonos = new List<GMapPolygon>();
         ServiciosDispositivo logicaDispositivo = new ServiciosDispositivo();
+        List<Posicion> dispositivos = new List<Posicion>();
         int contadorDeEventos = 0;
         GMarkerGoogle marker;
+        List<GMarkerGoogle> marcadores = new List<GMarkerGoogle>();
         GMapOverlay markerOverlay;
         PointLatLng latLng;
         double promedio = 0;
-        double latitudCentral = 10.4402915855;//estas dos coordenadas son para centrar el mapa
-        double longitudCentral = -73.2516118633;
+        double LatitudCentral = 10.4402915855;//estas dos coordenadas son para centrar el mapa
+        double LongitudCentral = -73.2516118633;
         string mostrarMesaje;//Esto es para ver la media de tiempo en que se demora el proceso  para cada evento en el mapa
         DataTable listaMarcadores = new DataTable();
+        int dispositivosTotalEnFinca = 0;
+        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
+        string rutaCancion = Application.StartupPath + "\\soundEmergency.mp3";
+        SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\duvan\source\repos\AbigeApp\Presentacion\soundEmergency.wav");
+        bool dispositivoFuera;
+        bool colorFormPrincipal=false;
         public Mapa()
         {
             InitializeComponent();
+            
         }
-
+        void activarAlarma()
+        {
+           
+                mediaPlayer.URL = rutaCancion;
+                mediaPlayer.settings.setMode("loop", true);
+                mediaPlayer.controls.play();            
+               
+        }
 
         private void Mapa_Load(object sender, EventArgs e)
         {
-            gMapControl1.IgnoreMarkerOnMouseWheel = true;
+            gmFinca.IgnoreMarkerOnMouseWheel = true;
+            poligonos.Clear();
             cargarMapa();
-            cargarPoligono();
+            cargarPerimetros();
             cargarListaMarcadores();
             conectarPuerto();
-            gMapControl1.Zoom = gMapControl1.Zoom + 1;
-            gMapControl1.Zoom = gMapControl1.Zoom - 1;
             
-            gMapControl1.Refresh();
-            timer1.Enabled = true;
-            timer2.Enabled = true;
         }
         public void cargarMapa() {
            
-            gMapControl1.DragButton = MouseButtons.Left;
-            gMapControl1.CanDragMap = true;
-            gMapControl1.MapProvider = GoogleMapProvider.Instance;
-            gMapControl1.Position = new PointLatLng(latitudCentral, longitudCentral);
-            gMapControl1.MinZoom = 0;
-            gMapControl1.MaxZoom = 24;
-            gMapControl1.Zoom = 20;
-            gMapControl1.AutoScroll = true;
-
+            gmFinca.DragButton = MouseButtons.Left;
+            gmFinca.CanDragMap = true;
+            gmFinca.MapProvider = GoogleMapProvider.Instance;
+            gmFinca.Position = new PointLatLng(LatitudCentral, LongitudCentral);
+            gmFinca.MinZoom = 1;
+            gmFinca.MaxZoom = 24;
+            gmFinca.Zoom = 17;
+            gmFinca.AutoScroll = true;
         }
 
         
         public void cargarListaMarcadores() {
             listaMarcadores = logicaDispositivo.listadoPosicionDispositivo();
+            marcadores.Clear();
             foreach (DataRow dispositivo in listaMarcadores.Rows)
             {
                 //Agregar un marcador
-                markerOverlay = new GMapOverlay(""+dispositivo["Iddispositivo"].ToString());                
-                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["latitud"].ToString()),double.Parse(dispositivo["longitud"].ToString())), GMarkerGoogleType.red);
+               /* markerOverlay = new GMapOverlay(dispositivo["IdDispositivo"].ToString());                
+                marker = new GMarkerGoogle(new PointLatLng(double.Parse(dispositivo["Latitud"].ToString()),double.Parse(dispositivo["Longitud"].ToString())), GMarkerGoogleType.blue);
                 markerOverlay.Markers.Add(marker); //Agregamos el mapa
            
                 //Agregamos un mensaje a los marcadores
                 marker.ToolTipMode = MarkerTooltipMode.Always;
-                //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", dispositivo["Iddispositivo"].ToString(), double.Parse(dispositivo["latitud"].ToString()), double.Parse(dispositivo["longitud"].ToString()));
-                marker.ToolTipText = string.Format("{0}", dispositivo["Iddispositivo"].ToString());
+                //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n Latitud:{1} \n Longitud:{2} \n ", dispositivo["IdDispositivo"].ToString(), double.Parse(dispositivo["Latitud"].ToString()), double.Parse(dispositivo["Longitud"].ToString()));
+                marker.ToolTipText = string.Format("{0}", dispositivo["IdDispositivo"].ToString());
                 
-                gMapControl1.Overlays.Add(markerOverlay);
-               
-
-
+                gmFinca.Overlays.Add(markerOverlay);
+                marcadores.Add(marker);*/
+                dispositivosTotalEnFinca++;
+                dispositivos.Add(mapearDispositivo(dispositivo));
             }
             //gMapControl1.Zoom = gMapControl1.Zoom + 1;
             //gMapControl1.Zoom = gMapControl1.Zoom - 1;
-
+            btnDispositivosEnTotal.Text = "Dispositivos en Total\n" + dispositivosTotalEnFinca;            
         }
-        public void cargarPoligono() {
-            GMapOverlay polyOverlay = new GMapOverlay("polygons");
+        public void peticionDePosicion()
+        {
+            Thread.Sleep(5000);
+            if (contadorDeEventos==10)
+            {
+                contadorDeEventos = 0;
+            }
+            contadorDeEventos++;
+            serialPort1.WriteLine("{D," + contadorDeEventos + "}");
+        }
+        Posicion mapearDispositivo(DataRow row)
+        {
+            Posicion dispositivo = new Posicion();
+            dispositivo.IdDispositivo = row["IdDispositivo"].ToString();
+            dispositivo.IdAnimal = row["idAnimal"].ToString();
+            if (row["Longitud"].ToString().Equals(""))
+            {
+                dispositivo.Longitud = 0;
+            }else
+                dispositivo.Longitud = Double.Parse(row["Longitud"].ToString());
+            if (row["Latitud"].ToString().Equals(""))
+            {
+                dispositivo.Latitud = 0;
+            }
+            else
+            {
+                dispositivo.Latitud = Double.Parse(row["Latitud"].ToString());
+            }
+            dispositivo.IdPerimetro = int.Parse(row["idPerimetro"].ToString());
+            dispositivo.EstadoBateria = row[11].ToString();
+            dispositivo.EstadoDispositivo = row[10].ToString();
+            return dispositivo;
+        }
+        public void cargarPerimetros()
+        {
+            DataTable listaPerimetros = new DataTable();
+            listaPerimetros = logicaDispositivo.cargarPerimetros();
+            poligonos.Clear();
+            foreach (DataRow perimetro in listaPerimetros.Rows)
+            {
+                cargarPerimetrosCoordenadas(perimetro["idperimetro"].ToString());                
+            }
+        }
+        public void cargarPerimetrosCoordenadas(string perimetro)
+        {
+            DataTable listaCoordenadasPerimetros = new DataTable();
+            listaCoordenadasPerimetros = logicaDispositivo.listadoCoordenadasPerimetro(int.Parse(perimetro));
+            markerOverlay = new GMapOverlay("" + perimetro);
             List<PointLatLng> points = new List<PointLatLng>();
-            points.Add(new PointLatLng(10.441329, -73.251367));
-            points.Add(new PointLatLng(10.441382, -73.252724));
-            points.Add(new PointLatLng(10.438916, -73.252872));
-            points.Add(new PointLatLng(10.440022, -73.251501));
-            
+            foreach (DataRow coordenadas in listaCoordenadasPerimetros.Rows)
+            {
+                points.Add(new PointLatLng(double.Parse(coordenadas["Latitud"].ToString()), double.Parse(coordenadas["Longitud"].ToString())));
+            }
 
-            polygon = new GMapPolygon(points, "mypolygon");
+            polygon = new GMapPolygon(points, "Poligono " + perimetro);
             polygon.Fill = new SolidBrush(Color.FromArgb(50, Color.Red));
             polygon.Stroke = new Pen(Color.Red, 1);
-            gMapControl1.Overlays.Add(polyOverlay);
-            polyOverlay.Polygons.Add(polygon);
-            //*******************            
+            markerOverlay.Polygons.Add(polygon);
+            gmFinca.Overlays.Add(markerOverlay);
+            poligonos.Add(polygon);
+            
         }
-        private void insertarMarcador(Posicion dispositivo) {
-            List<GMapOverlay> lista = new List<GMapOverlay>();
-            lista = gMapControl1.Overlays.ToList();
-            gMapControl1.Overlays.RemoveAt(lista.FindIndex(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
+        private void refrescarPoligonos()
+        {
+            markerOverlay.Polygons.Clear();
             
-            //******************************************************
-            /*foreach (var item in gMapControl1.Overlays.ToList())
-            {
-                if (item.Id == posicion.idDispositivo)
-                {
-                    //gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
-                    gMapControl1.Overlays.RemoveAt(gMapControl1.Overlays.IndexOf(item));
-                }                                   
-                
-            }
-            */
-            markerOverlay = new GMapOverlay("" + dispositivo.idDispositivo);
-            marker = new GMarkerGoogle(new PointLatLng(dispositivo.latitud, dispositivo.longitud), GMarkerGoogleType.red);
-            markerOverlay.Markers.Add(marker); //Agregamos el mapa
-            //Agregamos un mensaje a los marcadores
-            marker.ToolTipMode = MarkerTooltipMode.Always;
-            //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n latitud:{1} \n Longitud:{2} \n ", posicion.idDispositivo, posicion.latitud, posicion.longitud);
-            //Agregar un marcador
-            marker.ToolTipText = string.Format("{0}", dispositivo.idDispositivo);
-            gMapControl1.Overlays.Add(markerOverlay);
-            
+            poligonos.ForEach(x => markerOverlay.Polygons.Add(x));             
         }
 
-        private void conectarPuerto() {
+        private void insertarMarcador(Posicion dispositivo) {
+            List<GMapOverlay> lista = new List<GMapOverlay>();
+            lista = gmFinca.Overlays.ToList();
+            //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.IdDispositivo));
+            
+            markerOverlay = new GMapOverlay(dispositivo.IdDispositivo);
+            if (dispositivo.NovedadDispositivo == 1)
+            {
+                marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.red);
+            }
+            else
+            {
+                if (dispositivo.NovedadDispositivo == 2)
+                {
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.yellow_small);
+                }
+                else
+                {
+                    marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.blue);
+                }
+            }
+            if (dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo) == null)
+            {
+                dispositivos.Add(dispositivo);
+            }
+            else
+            {
+                Posicion dispositivoActualizable = dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo);
+                dispositivoActualizable.IdDispositivo = dispositivo.IdDispositivo;
+                dispositivoActualizable.EstadoDispositivo = dispositivo.EstadoDispositivo;
+            }
+            markerOverlay.Markers.Add(marker); //Agregamos el mapa            
+            //Agregamos un mensaje a los marcadores
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            //marker.ToolTipText = string.Format("Ubicacion:\n Dispositivo{0} \n Latitud:{1} \n Longitud:{2} \n ", posicion.IdDispositivo, posicion.Latitud, posicion.Longitud);
+            //Agregar un marcador
+            marker.ToolTipText = string.Format("{0}", dispositivo.IdDispositivo);
+            gmFinca.Overlays.Add(markerOverlay);            
+        }
+
+        private void conectarPuerto() {            
             serialPort1.Close();
-            serialPort1.PortName = "COM3";
+            serialPort1.PortName = "COM13";
             serialPort1.Open();           
         }
 
@@ -144,67 +223,196 @@ namespace Presentacion
             //------------------------------------------------------
             int confirmacionBaseDeDatos;//1 o -1
             object datosIn = new object();
-            datosIn = serialPort1.ReadLine();
+            datosIn = serialPort1.ReadLine();//Se recibe el vector 
             Posicion dispositivo;
             string cadena = datosIn.ToString();
-
-            if (!cadena.Trim().Equals(""))
+            if (gmFinca.InvokeRequired)//Esto es un como un proceso alterno Porque salia un error de que no se podia modificar un control desde un subproeso
             {
+                gmFinca.Invoke(new MethodInvoker(delegate
+                {
+                    gmFinca.Zoom += 0;
+                    //refrescarPoligonos();
+                }));
+            }
+            if (!cadena.Trim().Equals("") && cadena.Contains("{"))
+            {
+                cadena = cadena.TrimStart();
                 cadena = cadena.TrimStart('{');
                 cadena = cadena.TrimEnd();
-                cadena = cadena.TrimEnd('}');                    
+                cadena = cadena.TrimEnd('}');
                 string[] datos = cadena.Split(',');
-                dispositivo = new Posicion(datos[0], datos[1] + "," + datos[2] + "," + datos[3] + "," + datos[4],
-                    datos[5] + "," + datos[6] + "," + datos[7] + "," + datos[8], datos[9] + datos[10], datos[11] + datos[12], int.Parse(datos[13]));
-                insertarMarcador(dispositivo);
-                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
-                if(polygon.IsInside(latLng)){
-                    dispositivo.estadoDispositivo = "Dentro";
+                dispositivo = new Posicion(datos[0], datos[1] ,
+                    datos[2], int.Parse(datos[3]),datos[4]);
+
+            
+                latLng = new PointLatLng(dispositivo.Latitud, dispositivo.Longitud);
+                if (poligonos.Find(x => x.IsInside(latLng)) != null)
+                {
+                    dispositivo.EstadoDispositivo = "Dentro";
                 }
                 else
                 {
-                    dispositivo.estadoDispositivo = "Fuera";
+                    dispositivo.EstadoDispositivo = "Fuera";
+              
                 }
-                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
+                insertarMarcador(dispositivo);         //Se agrega al mapa el marcador       
+                cambiarColorPaneles("Principal");               //Cambia el color del formulario principal  
+                
+                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);//se actualiza en la base de datos
                 if (confirmacionBaseDeDatos == -1) {
-                    MessageBox.Show("Error al conectar","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }               
-                contadorDeEventos++;
+                    MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
+                
                 //------------------------------------------------------
+                //Esto lo estaba haciendo para ver el promedio de procesos
                 stop = new TimeSpan(DateTime.Now.Ticks);
                 mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
                 promedio += stop.Subtract(start).TotalMilliseconds;
+                //-------------------------------------------------------
+                if (gmFinca.InvokeRequired)
+                {
+                    gmFinca.Invoke(new MethodInvoker(delegate
+                    {
+                        gmFinca.Zoom-=0;
+                        //gmFinca.Refresh();
+                        txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
+                    "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
+                    "Estado: {4}\n" +
+                    "-----------------------------------", dispositivo.IdDispositivo, dispositivo.Latitud
+                    , dispositivo.Longitud, dispositivo.EstadoBateria, dispositivo.EstadoDispositivo);
+                        txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;
+                        txtLogDispositivos.ScrollToCaret();
+                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count;
+                    }));
+                }
+            }
+            peticionDePosicion();//Pide al dispositivo por el siguiente codigo
+            //MessageBox.Show(mostrarMesaje);
+        }
+        private void cambio(string formName,bool color)
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == formName)
+                {
+                    foreach (Control item in f.Controls)
+                    {
+                        if (item is Bunifu.Framework.UI.BunifuGradientPanel)
+                        {
+                            Bunifu.Framework.UI.BunifuGradientPanel gradientPanel = item as Bunifu.Framework.UI.BunifuGradientPanel;
+                            if (color)
+                            {
+                                gradientPanel.GradientBottomLeft = Color.Red;
+                                gradientPanel.GradientTopRight = Color.DarkRed;
+                                gradientPanel.GradientTopLeft = Color.DarkRed;
+                                gradientPanel.GradientBottomRight = Color.DarkRed;
+                            }
+                            else
+                            {
+                                gradientPanel.GradientBottomLeft = Color.LimeGreen;
+                                gradientPanel.GradientTopRight = Color.SkyBlue;
+                                gradientPanel.GradientTopLeft = Color.Green;
+                                gradientPanel.GradientBottomRight = Color.Black;
+                            }
+                        }
+                    }
+                }
             }
         }
+        private void cambiarColorPaneles(string formName)
+        {            
+            if (dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count == 0)
+            {                
+                dispositivoFuera = false;
+               
+            }
+            else
+            {
+                dispositivoFuera = true;
+            }
+            if (!colorFormPrincipal && !dispositivoFuera)
+            {
+                return;
+            }
+            else
+            {
+                if (!colorFormPrincipal && dispositivoFuera)
+                {
+                    cambio("Principal",true);
+                    colorFormPrincipal = true;
+                    activarAlarma();
+                }
+                else
+                {
+                    if (colorFormPrincipal && dispositivoFuera)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        if (colorFormPrincipal && !dispositivoFuera)
+                        {
+                            cambio("Principal", false);
+                            colorFormPrincipal = false;
+                            mediaPlayer.controls.stop();
+                        }
+                    }
+                }
+            }                        
+        }
+
+        private void gmFinca_MouseClick(object sender, MouseEventArgs e)
+        {
+          
+            if (sender is GMapControl)
+            {
+                var tmp = sender as GMapControl;//Se crea una ariable temporal para un gmapcontrol                
+                var poligono = poligonos.Find(x => x.IsInside(tmp.Position));//Se busca el poligono al que pertenece esa posicion
+                int novedadPorBateria = 0;
+                
+                if (poligono != null)
+                {
+                    int dispositivos = 0;
+                    poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));//Se cambia el color a los demas poligono
+                    poligono.Fill = new SolidBrush(Color.FromArgb(50, Color.Green));//Se cambia el color al poligono seleccionado
+                    dispositivos = marcadores.FindAll(x => poligono.IsInside(x.Position)).Count;
+                    novedadPorBateria = marcadores.FindAll(x => poligono.IsInside(x.Position) && x.Type == GMarkerGoogleType.yellow_small).Count;
                     
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(mostrarMesaje);
-            mostrarMesaje = "";
+                    btnDispositivos.Text = "Dispositivos en el Perimetro\n" + dispositivos;
+                    btnDispositivos.ForeColor = Color.White;
+                    btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
+                    btnNovedadBateria.ForeColor = Color.White;
+                    
+                    btnDispositivosFuera.ForeColor = Color.White;
+                }
+                else
+                {
+                   poligonos.ForEach(x => x.Fill = new SolidBrush(Color.FromArgb(50, Color.Red)));//Se cambia el color a los demas poligono
+                    btnDispositivos.Text = "Dispositivos en el Perimetro\n" + 0;
+                    novedadPorBateria = marcadores.FindAll(x =>  x.Type == GMarkerGoogleType.yellow_small).Count;
+                    
+                    btnNovedadBateria.Text = "Novedad por Bateria\n" + novedadPorBateria;
+                    
+                    btnDispositivos.ForeColor = Color.White;
+                    btnNovedadBateria.ForeColor = Color.White;
+                    btnDispositivosFuera.ForeColor = Color.White;
+                }
+                
+            }            
+           
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnLimpiarLog_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((promedio / contadorDeEventos).ToString() +"---"+ contadorDeEventos.ToString());
+            txtLogDispositivos.Text = "";
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void txtLogDispositivos_TextChanged(object sender, EventArgs e)
         {
-            gMapControl1.Zoom = gMapControl1.Zoom + 1;
-
-            gMapControl1.Zoom = gMapControl1.Zoom - 1;
-        }
-
-        private void gMapControl1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            //gMapControl1.Zoom = 17.5;
-
+            if (txtLogDispositivos.TextLength >=(txtLogDispositivos.MaxLength-50))
+            {
+                txtLogDispositivos.Text = "";
+            }
         }
     }
 }

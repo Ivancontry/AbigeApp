@@ -12,7 +12,6 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using Logica;
 using Entidades;
-using System.Text.RegularExpressions;
 
 namespace Presentacion
 {
@@ -22,8 +21,6 @@ namespace Presentacion
         {
             InitializeComponent();
         }
-        public Regex expresionAlfaNumerica = new Regex("^[a-zA-Z'.\\s]{1,40}$");
-        public Regex expresionCaracterLetra = new Regex("^[a-zA-Z']");
         ServiciosDispositivo logicaDispositivo = new ServiciosDispositivo();
         Dispositivo dispositivo = new Dispositivo();
         GMapPolygon polygon;
@@ -100,67 +97,22 @@ namespace Presentacion
         {
 
             epCodigoDispoitivo.Clear();
-            if (txtCodigoDispositivo.Text.Equals(""))
+            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 20)
             {
-                epCodigoDispoitivo.SetError(txtCodigoDispositivo, "Campo necesario");
+                epCodigoDispoitivo.SetError(txtCodigoDispositivo, "Digite un Dispositivo Valido");
                 return -1;
-            }
-            else {
-                if (txtCodigoDispositivo.Text.Length>10)
-                {
-                    epCodigoDispoitivo.SetError(txtCodigoDispositivo, "mínimo 3 caracteres, máximo 10");
-                    return -1;
-                }else
-                {
-                    if (txtCodigoDispositivo.Text.Length < 3)
-                    {
-                        epCodigoDispoitivo.SetError(txtCodigoDispositivo, "mínimo 3 caracteres, máximo 10");
-                        return -1;
-                    }
-                    else {
-                        if (!expresionAlfaNumerica.IsMatch(txtCodigoDispositivo.Text))
-                        {
-                            epCodigoDispoitivo.SetError(txtCodigoDispositivo, "Solo valores alfanumericos");
-                            return -1;
-                        }
-                    }
-                }
-            }
+            };
             return 1;
         }
         public int validarCodigoAnimal()
         {
 
             epCodigoAnimal.Clear();
-            if (txtCodigoAnimal.Text.Equals(""))
+            if (txtCodigoAnimal.Text.Equals("") || txtCodigoAnimal.Text.Length > 50)
             {
-                epCodigoAnimal.SetError(txtCodigoAnimal, "Campo necesario");
+                epCodigoAnimal.SetError(txtCodigoAnimal, "Verifique que este campo no este vacio ó que no exceda los 50 caracteres");
                 return -1;
-            }
-            else
-            {
-                if (txtCodigoAnimal.Text.Length > 10)
-                {
-                    epCodigoAnimal.SetError(txtCodigoAnimal, "mínimo 3 caracteres, máximo 10");
-                    return -1;
-                }
-                else
-                {
-                    if (txtCodigoAnimal.Text.Length < 4)
-                    {
-                        epCodigoAnimal.SetError(txtCodigoAnimal, "mínimo 3 caracteres, máximo 10");
-                        return -1;
-                    }
-                    else
-                    {
-                        if (!expresionAlfaNumerica.IsMatch(txtCodigoAnimal.Text))
-                        {
-                            epCodigoAnimal.SetError(txtCodigoAnimal, "Solo valores alfanumericos");
-                            return -1;
-                        }
-                    }
-                }
-            }
+            };
             return 1;
         }
 
@@ -201,11 +153,6 @@ namespace Presentacion
             }
         }
 
-        private void bnfBuscar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void cbxPerimetro_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var item in lista)
@@ -233,12 +180,12 @@ namespace Presentacion
         private void bnfRegistrar_Click(object sender, EventArgs e)
         {
             if (validarBateria()==1 && validarCodigoAnimal()==1 && validarIdDispositivo()==1) {
-                dispositivo.idDispositivo = txtCodigoDispositivo.Text;
-                dispositivo.idAnimal = txtCodigoAnimal.Text;
-                dispositivo.idPerimetro = int.Parse(cbxPerimetro.Text);
-                dispositivo.estado = cbxEstado.Text;
-                dispositivo.fecha = fecha.Value;
-                dispositivo.bateria = float.Parse(txtBateria.Text);
+                dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
+                dispositivo.IdAnimal = txtCodigoAnimal.Text;
+                dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
+                dispositivo.Estado = cbxEstado.Text;
+                dispositivo.Fecha = fecha.Value;
+                dispositivo.Bateria = float.Parse(txtBateria.Text);
                 if (logicaDispositivo.registrarDispositivo(dispositivo) == 1)
                 {
                     MessageBox.Show("Operacion Exitosa");
@@ -255,12 +202,12 @@ namespace Presentacion
         {
             if (validarBateria() == 1 && validarCodigoAnimal() == 1 )
             {
-                dispositivo.idDispositivo = txtCodigoDispositivo.Text;
-                dispositivo.idAnimal = txtCodigoAnimal.Text;
-                dispositivo.idPerimetro = int.Parse(cbxPerimetro.Text);
-                dispositivo.estado = cbxEstado.Text;
-                dispositivo.fecha = fecha.Value;
-                dispositivo.bateria = float.Parse(txtBateria.Text);
+                dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
+                dispositivo.IdAnimal = txtCodigoAnimal.Text;
+                dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
+                dispositivo.Estado = cbxEstado.Text;
+                dispositivo.Fecha = fecha.Value;
+                dispositivo.Bateria = float.Parse(txtBateria.Text);
 
                 if (logicaDispositivo.actulizarDispositivo(dispositivo)==1)
                 {
@@ -276,7 +223,6 @@ namespace Presentacion
 
         private void bnfBuscar_Click_1(object sender, EventArgs e)
         {
-
             DataTable dispositivo = new DataTable();
             dispositivo = logicaDispositivo.buscarDispositvo(txtCodigoDispositivo.Text);
             if (validarIdDispositivo() == 1)
@@ -287,7 +233,7 @@ namespace Presentacion
                     bnfActualizar.Enabled = true;
                     txtCodigoAnimal.Text = dispositivo.Rows[0]["idanimal"].ToString();
                     cbxPerimetro.SelectedIndex = cbxPerimetro.FindString(dispositivo.Rows[0]["idperimetro"].ToString());
-                    cbxEstado.SelectedIndex = cbxEstado.FindString(dispositivo.Rows[0]["estado"].ToString());
+                    cbxEstado.SelectedIndex= int.Parse(dispositivo.Rows[0]["estado"].ToString());
                     txtBateria.Text = dispositivo.Rows[0]["bateria"].ToString();
                     DateTime data;
                     data = DateTime.ParseExact(dispositivo.Rows[0]["fecha"].ToString().Substring(0, 10), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);

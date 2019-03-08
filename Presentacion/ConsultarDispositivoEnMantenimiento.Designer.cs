@@ -33,9 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarDispositivoEnMantenimiento));
             this.fecha = new System.Windows.Forms.DateTimePicker();
-            this.cbxEstadoDispositivo = new System.Windows.Forms.ComboBox();
             this.cbxEstadoMantenimiento = new System.Windows.Forms.ComboBox();
-            this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtCodigoDispositivo = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -48,14 +46,10 @@
             this.labelGeneral = new System.Windows.Forms.Label();
             this.bnfGeneral = new Bunifu.Framework.UI.BunifuFlatButton();
             this.labelDañado = new System.Windows.Forms.Label();
-            this.labelAveriadoTaller = new System.Windows.Forms.Label();
-            this.labelAveridadoFinca = new System.Windows.Forms.Label();
             this.labelFuncionando = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.bnfFuncionando = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bnfDañados = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bnfAveriadoFinca = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bnfAveridadoTaller = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.figura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epIdDispositivo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -68,19 +62,6 @@
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(182, 20);
             this.fecha.TabIndex = 33;
-            // 
-            // cbxEstadoDispositivo
-            // 
-            this.cbxEstadoDispositivo.BackColor = System.Drawing.Color.White;
-            this.cbxEstadoDispositivo.FormattingEnabled = true;
-            this.cbxEstadoDispositivo.Items.AddRange(new object[] {
-            "En Espera",
-            "Funcionando",
-            "Dañado"});
-            this.cbxEstadoDispositivo.Location = new System.Drawing.Point(75, 257);
-            this.cbxEstadoDispositivo.Name = "cbxEstadoDispositivo";
-            this.cbxEstadoDispositivo.Size = new System.Drawing.Size(182, 21);
-            this.cbxEstadoDispositivo.TabIndex = 32;
             // 
             // cbxEstadoMantenimiento
             // 
@@ -97,17 +78,6 @@
             this.cbxEstadoMantenimiento.Name = "cbxEstadoMantenimiento";
             this.cbxEstadoMantenimiento.Size = new System.Drawing.Size(182, 21);
             this.cbxEstadoMantenimiento.TabIndex = 31;
-            this.cbxEstadoMantenimiento.SelectedIndexChanged += new System.EventHandler(this.cbxEstadoMantenimiento_SelectedIndexChanged);
-            // 
-            // bunifuCustomLabel4
-            // 
-            this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("Segoe UI Symbol", 11F, System.Drawing.FontStyle.Bold);
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(71, 224);
-            this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-            this.bunifuCustomLabel4.Size = new System.Drawing.Size(150, 20);
-            this.bunifuCustomLabel4.TabIndex = 30;
-            this.bunifuCustomLabel4.Text = "Estado Dispositivo";
             // 
             // bunifuCustomLabel3
             // 
@@ -125,7 +95,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtDescripcion.Size = new System.Drawing.Size(330, 189);
+            this.txtDescripcion.Size = new System.Drawing.Size(330, 113);
             this.txtDescripcion.TabIndex = 28;
             // 
             // txtCodigoDispositivo
@@ -154,9 +124,9 @@
             this.figura.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.figura.Legends.Add(legend1);
-            this.figura.Location = new System.Drawing.Point(12, 357);
+            this.figura.Location = new System.Drawing.Point(12, 319);
             this.figura.Name = "figura";
-            this.figura.Size = new System.Drawing.Size(678, 183);
+            this.figura.Size = new System.Drawing.Size(678, 332);
             this.figura.TabIndex = 34;
             this.figura.Text = "chart1";
             // 
@@ -224,15 +194,11 @@
             this.groupBox1.Controls.Add(this.labelGeneral);
             this.groupBox1.Controls.Add(this.bnfGeneral);
             this.groupBox1.Controls.Add(this.labelDañado);
-            this.groupBox1.Controls.Add(this.labelAveriadoTaller);
-            this.groupBox1.Controls.Add(this.labelAveridadoFinca);
             this.groupBox1.Controls.Add(this.labelFuncionando);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.bnfFuncionando);
             this.groupBox1.Controls.Add(this.bnfDañados);
-            this.groupBox1.Controls.Add(this.bnfAveriadoFinca);
-            this.groupBox1.Controls.Add(this.bnfAveridadoTaller);
-            this.groupBox1.Location = new System.Drawing.Point(12, 291);
+            this.groupBox1.Location = new System.Drawing.Point(12, 239);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(679, 60);
             this.groupBox1.TabIndex = 37;
@@ -243,7 +209,7 @@
             this.labelGeneral.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelGeneral.AutoSize = true;
             this.labelGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGeneral.Location = new System.Drawing.Point(91, 19);
+            this.labelGeneral.Location = new System.Drawing.Point(238, 19);
             this.labelGeneral.Name = "labelGeneral";
             this.labelGeneral.Size = new System.Drawing.Size(26, 29);
             this.labelGeneral.TabIndex = 35;
@@ -271,7 +237,7 @@
             this.bnfGeneral.IconVisible = true;
             this.bnfGeneral.IconZoom = 60D;
             this.bnfGeneral.IsTab = false;
-            this.bnfGeneral.Location = new System.Drawing.Point(6, 19);
+            this.bnfGeneral.Location = new System.Drawing.Point(153, 19);
             this.bnfGeneral.Name = "bnfGeneral";
             this.bnfGeneral.Normalcolor = System.Drawing.Color.White;
             this.bnfGeneral.OnHovercolor = System.Drawing.Color.DodgerBlue;
@@ -289,43 +255,19 @@
             this.labelDañado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDañado.AutoSize = true;
             this.labelDañado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDañado.Location = new System.Drawing.Point(639, 19);
+            this.labelDañado.Location = new System.Drawing.Point(538, 19);
             this.labelDañado.Name = "labelDañado";
             this.labelDañado.Size = new System.Drawing.Size(26, 29);
             this.labelDañado.TabIndex = 33;
             this.labelDañado.Text = "0";
             this.labelDañado.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelAveriadoTaller
-            // 
-            this.labelAveriadoTaller.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelAveriadoTaller.AutoSize = true;
-            this.labelAveriadoTaller.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAveriadoTaller.Location = new System.Drawing.Point(330, 19);
-            this.labelAveriadoTaller.Name = "labelAveriadoTaller";
-            this.labelAveriadoTaller.Size = new System.Drawing.Size(26, 29);
-            this.labelAveriadoTaller.TabIndex = 32;
-            this.labelAveriadoTaller.Text = "0";
-            this.labelAveriadoTaller.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelAveridadoFinca
-            // 
-            this.labelAveridadoFinca.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelAveridadoFinca.AutoSize = true;
-            this.labelAveridadoFinca.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAveridadoFinca.Location = new System.Drawing.Point(210, 17);
-            this.labelAveridadoFinca.Name = "labelAveridadoFinca";
-            this.labelAveridadoFinca.Size = new System.Drawing.Size(26, 29);
-            this.labelAveridadoFinca.TabIndex = 31;
-            this.labelAveridadoFinca.Text = "0";
-            this.labelAveridadoFinca.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // labelFuncionando
             // 
             this.labelFuncionando.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelFuncionando.AutoSize = true;
             this.labelFuncionando.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFuncionando.Location = new System.Drawing.Point(496, 19);
+            this.labelFuncionando.Location = new System.Drawing.Point(395, 19);
             this.labelFuncionando.Name = "labelFuncionando";
             this.labelFuncionando.Size = new System.Drawing.Size(26, 29);
             this.labelFuncionando.TabIndex = 30;
@@ -364,13 +306,13 @@
             this.bnfFuncionando.IconVisible = true;
             this.bnfFuncionando.IconZoom = 60D;
             this.bnfFuncionando.IsTab = false;
-            this.bnfFuncionando.Location = new System.Drawing.Point(387, 19);
+            this.bnfFuncionando.Location = new System.Drawing.Point(276, 19);
             this.bnfFuncionando.Name = "bnfFuncionando";
             this.bnfFuncionando.Normalcolor = System.Drawing.Color.MediumSeaGreen;
             this.bnfFuncionando.OnHovercolor = System.Drawing.Color.Lime;
             this.bnfFuncionando.OnHoverTextColor = System.Drawing.Color.Black;
             this.bnfFuncionando.selected = false;
-            this.bnfFuncionando.Size = new System.Drawing.Size(119, 29);
+            this.bnfFuncionando.Size = new System.Drawing.Size(129, 29);
             this.bnfFuncionando.TabIndex = 24;
             this.bnfFuncionando.Text = "Funcionando";
             this.bnfFuncionando.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -398,7 +340,7 @@
             this.bnfDañados.IconVisible = true;
             this.bnfDañados.IconZoom = 60D;
             this.bnfDañados.IsTab = false;
-            this.bnfDañados.Location = new System.Drawing.Point(550, 19);
+            this.bnfDañados.Location = new System.Drawing.Point(449, 19);
             this.bnfDañados.Name = "bnfDañados";
             this.bnfDañados.Normalcolor = System.Drawing.Color.Red;
             this.bnfDañados.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -411,88 +353,18 @@
             this.bnfDañados.Textcolor = System.Drawing.Color.Black;
             this.bnfDañados.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // bnfAveriadoFinca
-            // 
-            this.bnfAveriadoFinca.Activecolor = System.Drawing.Color.Yellow;
-            this.bnfAveriadoFinca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bnfAveriadoFinca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bnfAveriadoFinca.BorderRadius = 2;
-            this.bnfAveriadoFinca.ButtonText = "Finca";
-            this.bnfAveriadoFinca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bnfAveriadoFinca.DisabledColor = System.Drawing.Color.Gray;
-            this.bnfAveriadoFinca.Iconcolor = System.Drawing.Color.Transparent;
-            this.bnfAveriadoFinca.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfAveriadoFinca.Iconimage")));
-            this.bnfAveriadoFinca.Iconimage_right = null;
-            this.bnfAveriadoFinca.Iconimage_right_Selected = null;
-            this.bnfAveriadoFinca.Iconimage_Selected = null;
-            this.bnfAveriadoFinca.IconMarginLeft = 0;
-            this.bnfAveriadoFinca.IconMarginRight = 0;
-            this.bnfAveriadoFinca.IconRightVisible = true;
-            this.bnfAveriadoFinca.IconRightZoom = 0D;
-            this.bnfAveriadoFinca.IconVisible = true;
-            this.bnfAveriadoFinca.IconZoom = 60D;
-            this.bnfAveriadoFinca.IsTab = false;
-            this.bnfAveriadoFinca.Location = new System.Drawing.Point(138, 17);
-            this.bnfAveriadoFinca.Name = "bnfAveriadoFinca";
-            this.bnfAveriadoFinca.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bnfAveriadoFinca.OnHovercolor = System.Drawing.Color.Yellow;
-            this.bnfAveriadoFinca.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bnfAveriadoFinca.selected = false;
-            this.bnfAveriadoFinca.Size = new System.Drawing.Size(76, 29);
-            this.bnfAveriadoFinca.TabIndex = 27;
-            this.bnfAveriadoFinca.Text = "Finca";
-            this.bnfAveriadoFinca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bnfAveriadoFinca.Textcolor = System.Drawing.Color.Black;
-            this.bnfAveriadoFinca.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // bnfAveridadoTaller
-            // 
-            this.bnfAveridadoTaller.Activecolor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.BackColor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bnfAveridadoTaller.BorderRadius = 0;
-            this.bnfAveridadoTaller.ButtonText = "Taller";
-            this.bnfAveridadoTaller.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bnfAveridadoTaller.DisabledColor = System.Drawing.Color.Gray;
-            this.bnfAveridadoTaller.Iconcolor = System.Drawing.Color.Transparent;
-            this.bnfAveridadoTaller.Iconimage = ((System.Drawing.Image)(resources.GetObject("bnfAveridadoTaller.Iconimage")));
-            this.bnfAveridadoTaller.Iconimage_right = null;
-            this.bnfAveridadoTaller.Iconimage_right_Selected = null;
-            this.bnfAveridadoTaller.Iconimage_Selected = null;
-            this.bnfAveridadoTaller.IconMarginLeft = 0;
-            this.bnfAveridadoTaller.IconMarginRight = 0;
-            this.bnfAveridadoTaller.IconRightVisible = true;
-            this.bnfAveridadoTaller.IconRightZoom = 0D;
-            this.bnfAveridadoTaller.IconVisible = true;
-            this.bnfAveridadoTaller.IconZoom = 60D;
-            this.bnfAveridadoTaller.IsTab = false;
-            this.bnfAveridadoTaller.Location = new System.Drawing.Point(259, 19);
-            this.bnfAveridadoTaller.Name = "bnfAveridadoTaller";
-            this.bnfAveridadoTaller.Normalcolor = System.Drawing.Color.Gold;
-            this.bnfAveridadoTaller.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bnfAveridadoTaller.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bnfAveridadoTaller.selected = false;
-            this.bnfAveridadoTaller.Size = new System.Drawing.Size(80, 29);
-            this.bnfAveridadoTaller.TabIndex = 26;
-            this.bnfAveridadoTaller.Text = "Taller";
-            this.bnfAveridadoTaller.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bnfAveridadoTaller.Textcolor = System.Drawing.Color.Black;
-            this.bnfAveridadoTaller.TextFont = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // ConsultarDispositivoEnMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(713, 574);
+            this.ClientSize = new System.Drawing.Size(713, 674);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bunifuCustomLabel2);
             this.Controls.Add(this.bunifuCustomLabel1);
             this.Controls.Add(this.figura);
             this.Controls.Add(this.fecha);
-            this.Controls.Add(this.cbxEstadoDispositivo);
             this.Controls.Add(this.cbxEstadoMantenimiento);
-            this.Controls.Add(this.bunifuCustomLabel4);
             this.Controls.Add(this.bunifuCustomLabel3);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.bnfBuscar);
@@ -513,9 +385,7 @@
         #endregion
 
         private System.Windows.Forms.DateTimePicker fecha;
-        private System.Windows.Forms.ComboBox cbxEstadoDispositivo;
         private System.Windows.Forms.ComboBox cbxEstadoMantenimiento;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private System.Windows.Forms.TextBox txtDescripcion;
         private Bunifu.Framework.UI.BunifuFlatButton bnfBuscar;
@@ -528,13 +398,9 @@
         private System.Windows.Forms.Label labelGeneral;
         private Bunifu.Framework.UI.BunifuFlatButton bnfGeneral;
         private System.Windows.Forms.Label labelDañado;
-        private System.Windows.Forms.Label labelAveriadoTaller;
-        private System.Windows.Forms.Label labelAveridadoFinca;
         private System.Windows.Forms.Label labelFuncionando;
         private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuFlatButton bnfFuncionando;
         private Bunifu.Framework.UI.BunifuFlatButton bnfDañados;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfAveriadoFinca;
-        private Bunifu.Framework.UI.BunifuFlatButton bnfAveridadoTaller;
     }
 }

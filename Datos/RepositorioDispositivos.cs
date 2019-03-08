@@ -22,13 +22,12 @@ namespace Datos
                     cmd = new MySqlCommand("registrarDispositivo", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.idDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xidPerimetro", dispositivo.idPerimetro));
-                    cmd.Parameters.Add(new MySqlParameter("xestado", dispositivo.estado));
-                    cmd.Parameters.Add(new MySqlParameter("xidAnimal", dispositivo.idAnimal));
-                    cmd.Parameters.Add(new MySqlParameter("xbateria", dispositivo.bateria));
-                    cmd.Parameters.Add(new MySqlParameter("xfecha", dispositivo.fecha));
-                   
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.IdDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xidPerimetro", dispositivo.IdPerimetro));
+                    cmd.Parameters.Add(new MySqlParameter("xestado", dispositivo.Estado));
+                    cmd.Parameters.Add(new MySqlParameter("xidAnimal", dispositivo.IdAnimal));
+                    cmd.Parameters.Add(new MySqlParameter("xbateria", dispositivo.Bateria));
+                    cmd.Parameters.Add(new MySqlParameter("xfecha", dispositivo.Fecha));                 
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
@@ -39,18 +38,15 @@ namespace Datos
                     {
                         return -1;
                     }
-
                 }
                 else
                 {
                     return -1;
                 }
-
             }
             catch (Exception e)
 
             {
-
                 return -1;
             }
             finally
@@ -65,17 +61,15 @@ namespace Datos
                 if (conectar())
                 {
                     MySqlTransaction transaction = connection.BeginTransaction();
-                    cmd = new MySqlCommand("actulizarDispositivo", connection, transaction);
+                    cmd = new MySqlCommand("actualizarDispositivo", connection, transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.idDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xidPerimetro", dispositivo.idPerimetro));
-                    cmd.Parameters.Add(new MySqlParameter("xestado", dispositivo.estado));
-                    cmd.Parameters.Add(new MySqlParameter("xidAnimal", dispositivo.idAnimal));
-                    cmd.Parameters.Add(new MySqlParameter("xbateria", dispositivo.bateria));
-                    cmd.Parameters.Add(new MySqlParameter("xfecha", dispositivo.fecha));
-
-
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.IdDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xidPerimetro", dispositivo.IdPerimetro));
+                    cmd.Parameters.Add(new MySqlParameter("xestado", dispositivo.Estado));
+                    cmd.Parameters.Add(new MySqlParameter("xidAnimal", dispositivo.IdAnimal));
+                    cmd.Parameters.Add(new MySqlParameter("xbateria", dispositivo.Bateria));
+                    cmd.Parameters.Add(new MySqlParameter("xfecha", dispositivo.Fecha));
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
                         transaction.Commit();
@@ -85,18 +79,15 @@ namespace Datos
                     {
                         return -1;
                     }
-
                 }
                 else
                 {
                     return -1;
                 }
-
             }
             catch (Exception e)
 
             {
-
                 return -1;
             }
             finally
@@ -114,11 +105,11 @@ namespace Datos
                     cmd = new MySqlCommand("registrarPosicionActual",connection,transaction);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = connection;
-                    cmd.Parameters.Add(new MySqlParameter("xlatitud", dispositivo.latitud));
-                    cmd.Parameters.Add(new MySqlParameter("xlongitud", dispositivo.longitud));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", dispositivo.estadoDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.idDispositivo));
-                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", dispositivo.estadoBateria));
+                    cmd.Parameters.Add(new MySqlParameter("xlatitud", dispositivo.Latitud));
+                    cmd.Parameters.Add(new MySqlParameter("xlongitud", dispositivo.Longitud));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoDispositivo", dispositivo.EstadoDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xidDispositivo", dispositivo.IdDispositivo));
+                    cmd.Parameters.Add(new MySqlParameter("xestadoBateria", dispositivo.EstadoBateria));
 
                     if (cmd.ExecuteNonQuery() >= 0)
                     {
@@ -156,7 +147,7 @@ namespace Datos
 
         public DataTable listadoPerimetros()
         {
-            return cargarRegistros("mostrarPerimetros");
+            return cargarRegistros("cargarPerimetros");
         }
 
         public DataTable listadoCoordenadasPerimetro(int idPerimetro)
@@ -196,7 +187,10 @@ namespace Datos
             }
         }
 
-
+        public DataTable cargarPerimetros()
+        {
+            return cargarRegistros("cargarPerimetros");
+        }
 
 
     }
