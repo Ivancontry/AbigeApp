@@ -267,7 +267,7 @@ namespace Presentacion
      
             if (rg.IsMatch(txtCodigoAnimal.Text))
             {
-                valor1 = txtCodigoDispositivo.Text;
+                valor1 = txtCodigoAnimal.Text;
             }
             else
             {

@@ -55,7 +55,7 @@ namespace Presentacion
         }
         public int validarDescripcion() {
             epDescripcion.Clear();
-            if (txtDescripcion.Text.Equals("") || txtDescripcion.Text.Length > 200)
+            if (txtDescripcion.Text.Equals("") || txtDescripcion.Text.Length > 200 || txtDescripcion.Text.Length<5)
             {
                 epDescripcion.SetError(txtDescripcion, "Por favor este campo no puede estar en blanco, ni exceder de los 250 caracteres");
                 return -1;
