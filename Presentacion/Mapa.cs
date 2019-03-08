@@ -103,7 +103,7 @@ namespace Presentacion
         }
         public void peticionDePosicion()
         {
-            //Thread.Sleep(5000);
+            Thread.Sleep(5000);
             if (contadorDeEventos==10)
             {
                 contadorDeEventos = 0;
@@ -175,8 +175,8 @@ namespace Presentacion
             lista = gmFinca.Overlays.ToList();
             //gmFinca.Overlays.Remove(lista.Find(gmapOverlay => gmapOverlay.Id == dispositivo.idDispositivo));
             
-            markerOverlay = new GMapOverlay(dispositivo.IdDispositivo);
-            if (dispositivo.NovedadDispositivo == 1)
+            markerOverlay = new GMapOverlay(dispositivo.idDispositivo);
+            if (dispositivo.novedadDispositivo == 1)
             {
                 marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.red);
             }
@@ -191,15 +191,15 @@ namespace Presentacion
                     marker = new GMarkerGoogle(new PointLatLng(dispositivo.Latitud, dispositivo.Longitud), GMarkerGoogleType.blue);
                 }
             }
-            if (dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo) == null)
+            if (dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo) == null)
             {
                 dispositivos.Add(dispositivo);
             }
             else
             {
-                Posicion dispositivoActualizable = dispositivos.Find(x => x.IdDispositivo == dispositivo.IdDispositivo);
-                dispositivoActualizable.IdDispositivo = dispositivo.IdDispositivo;
-                dispositivoActualizable.EstadoDispositivo = dispositivo.EstadoDispositivo;
+                Posicion dispositivoActualizable = dispositivos.Find(x => x.idDispositivo == dispositivo.idDispositivo);
+                dispositivoActualizable.idDispositivo = dispositivo.idDispositivo;
+                dispositivoActualizable.estadoDispositivo = dispositivo.estadoDispositivo;
             }
             markerOverlay.Markers.Add(marker); //Agregamos el mapa            
             //Agregamos un mensaje a los marcadores
@@ -210,7 +210,7 @@ namespace Presentacion
             gmFinca.Overlays.Add(markerOverlay);            
         }
 
-        private void conectarPuerto() {
+        private void conectarPuerto() {            
             serialPort1.Close();
             serialPort1.PortName = "COM13";
             serialPort1.Open();           
@@ -223,14 +223,14 @@ namespace Presentacion
             //------------------------------------------------------
             int confirmacionBaseDeDatos;//1 o -1
             object datosIn = new object();
-            datosIn = serialPort1.ReadLine();
+            datosIn = serialPort1.ReadLine();//Se recibe el vector 
             Posicion dispositivo;
             string cadena = datosIn.ToString();
-            if (gmFinca.InvokeRequired)
+            if (gmFinca.InvokeRequired)//Esto es un como un proceso alterno Porque salia un error de que no se podia modificar un control desde un subproeso
             {
                 gmFinca.Invoke(new MethodInvoker(delegate
                 {
-                    gmFinca.Zoom += 0.000008;
+                    gmFinca.Zoom += 0;
                     //refrescarPoligonos();
                 }));
             }
@@ -245,7 +245,7 @@ namespace Presentacion
                     datos[2], int.Parse(datos[3]),datos[4]);
 
             
-                latLng = new PointLatLng(dispositivo.Latitud, dispositivo.Longitud);
+                latLng = new PointLatLng(dispositivo.latitud, dispositivo.longitud);
                 if (poligonos.Find(x => x.IsInside(latLng)) != null)
                 {
                     dispositivo.EstadoDispositivo = "Dentro";
@@ -255,37 +255,38 @@ namespace Presentacion
                     dispositivo.EstadoDispositivo = "Fuera";
               
                 }
-                insertarMarcador(dispositivo);                
-                cambiarColorPaneles("Principal");                
+                insertarMarcador(dispositivo);         //Se agrega al mapa el marcador       
+                cambiarColorPaneles("Principal");               //Cambia el color del formulario principal  
                 
-                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);
+                confirmacionBaseDeDatos = logicaDispositivo.registraPosicionActual(dispositivo);//se actualiza en la base de datos
                 if (confirmacionBaseDeDatos == -1) {
                     MessageBox.Show("Error al conectar", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }                
                 
                 //------------------------------------------------------
+                //Esto lo estaba haciendo para ver el promedio de procesos
                 stop = new TimeSpan(DateTime.Now.Ticks);
                 mostrarMesaje += " " + stop.Subtract(start).TotalMilliseconds.ToString() + "\n";
                 promedio += stop.Subtract(start).TotalMilliseconds;
-                
+                //-------------------------------------------------------
                 if (gmFinca.InvokeRequired)
                 {
                     gmFinca.Invoke(new MethodInvoker(delegate
                     {
-                        gmFinca.Zoom-=0.000008;
+                        gmFinca.Zoom-=0;
                         //gmFinca.Refresh();
                         txtLogDispositivos.Text += string.Format("\nCodigo: {0}" +
                     "\nLatitud: {1}\nLongitud: {2}\nBateria: {3}\n" +
                     "Estado: {4}\n" +
-                    "-----------------------------------", dispositivo.IdDispositivo, dispositivo.Latitud
-                    , dispositivo.Longitud, dispositivo.EstadoBateria, dispositivo.EstadoDispositivo);
+                    "-----------------------------------", dispositivo.idDispositivo, dispositivo.latitud
+                    , dispositivo.longitud, dispositivo.estadoBateria, dispositivo.estadoDispositivo);
                         txtLogDispositivos.SelectionStart = txtLogDispositivos.TextLength;
                         txtLogDispositivos.ScrollToCaret();
-                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.EstadoDispositivo == "Fuera").Count;
+                        btnDispositivosFuera.Text = "Dispositivos fuera del Perimetro\n" + dispositivos.FindAll(x => x.estadoDispositivo == "Fuera").Count;
                     }));
                 }
             }
-            peticionDePosicion();
+            peticionDePosicion();//Pide al dispositivo por el siguiente codigo
             //MessageBox.Show(mostrarMesaje);
         }
         private void cambio(string formName,bool color)
