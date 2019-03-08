@@ -127,29 +127,29 @@ namespace Presentacion
             combo.SelectedIndex = combo.FindString(opcion);
         }
         public void buscarUsuaruio() {
-            Usuarios usuario = new Usuarios();
-            usuario = Usuario.usuario;
-            usuario = serviciosUsuario.buscarPorIdentificacion(txtIdentificacion.Text.Trim());
-            if (usuario == null)
+            Usuarios usuario1 = new Usuarios();
+            usuario1 = Usuario.usuario;
+            if (usuario1 == null)
             {
                 MessageBox.Show("La identificacion no existe", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                txtContraseña.Text = usuario.Clave;
+                txtIdentificacion.Text = usuario1.Identificacion;
+                txtContraseña.Text = usuario1.Clave;
                 txtIdentificacion.Enabled = false;
-                txtDireccion.Text = usuario.Direccion;
-                txtEmail.Text = usuario.Email;
-                txtNombre.Text = usuario.Nombres;
-                txtPrimerApellido.Text = usuario.PrimerApellido;
-                txtSegundoApellido.Text = usuario.SegundoApellido;
-                txtTelefono.Text = usuario.Telefono;
-                txtRepetirPassword.Text = usuario.Clave;
+                txtDireccion.Text = usuario1.Direccion;
+                txtEmail.Text = usuario1.Email;
+                txtNombre.Text = usuario1.Nombres;
+                txtPrimerApellido.Text = usuario1.PrimerApellido;
+                txtSegundoApellido.Text = usuario1.SegundoApellido;
+                txtTelefono.Text = usuario1.Telefono;
+                txtRepetirPassword.Text = usuario1.Clave;
 
                 txtContraseña.isPassword = true;
                 txtRepetirPassword.isPassword = true;
 
-                if (usuario.Estado == 'A')
+                if (usuario1.Estado == 'A')
                 {
                     ckbEstado.Checked = true;
                 }

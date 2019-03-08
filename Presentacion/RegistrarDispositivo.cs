@@ -102,21 +102,21 @@ namespace Presentacion
             lista.Add(polygon);
         }
 
-        public int validarIdDispositivo()
+        public int validarIdDispositivo(string codigo)
         {
 
             epCodigoDispoitivo.Clear();
-            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 10 || txtCodigoDispositivo.Text.Length < 5)
+            if (codigo.Equals("") || codigo.Length > 10 || codigo.Length < 5)
             {
                 epCodigoDispoitivo.SetError(txtCodigoDispositivo, "Digite un Dispositivo Valido");
                 return -1;
             };
             return 1;
         }
-        public int validarCodigoAnimal()
+        public int validarCodigoAnimal(string codigo)
         {
             epCodigoAnimal.Clear();
-            if (txtCodigoAnimal.Text.Equals("") || txtCodigoAnimal.Text.Length > 10 || txtCodigoAnimal.Text.Length < 4)
+            if (codigo.Equals("") || codigo.Length > 10 || codigo.Length < 4)
             {
                 epCodigoAnimal.SetError(txtCodigoAnimal, "Verifique que este campo no este vacio, no exceda 10 caracteres, no tenga menos de 4 caracteres");
                 return -1;
@@ -163,7 +163,7 @@ namespace Presentacion
 
         private void bnfRegistrar_Click(object sender, EventArgs e)
         {
-            if (validarCodigoAnimal()==1 && validarIdDispositivo()==1) {
+            if (validarCodigoAnimal(txtCodigoAnimal.Text)==1 && validarIdDispositivo(txtCodigoDispositivo.Text)==1) {
                 dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
                 dispositivo.IdAnimal = txtCodigoAnimal.Text;
                 dispositivo.IdPerimetro = int.Parse(cbxPerimetro.Text);
@@ -184,7 +184,7 @@ namespace Presentacion
 
         private void bnfActualizar_Click(object sender, EventArgs e)
         {
-            if (validarCodigoAnimal() == 1 )
+            if (validarCodigoAnimal(txtCodigoAnimal.Text) == 1 )
             {
                 dispositivo.IdDispositivo = txtCodigoDispositivo.Text;
                 dispositivo.IdAnimal = txtCodigoAnimal.Text;
@@ -209,7 +209,7 @@ namespace Presentacion
         {
             DataTable dispositivo = new DataTable();
             dispositivo = logicaDispositivo.buscarDispositvo(txtCodigoDispositivo.Text);
-            if (validarIdDispositivo() == 1)
+            if (validarIdDispositivo(txtCodigoDispositivo.Text) == 1)
             {
                 if (dispositivo.Rows.Count > 0)
                 {

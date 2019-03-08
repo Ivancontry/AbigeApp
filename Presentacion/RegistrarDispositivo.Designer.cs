@@ -343,8 +343,8 @@
             this.cbxEstado.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.cbxEstado.FormattingEnabled = true;
             this.cbxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
+            "Inactivo",
+            "Activo"});
             this.cbxEstado.Location = new System.Drawing.Point(95, 320);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(177, 21);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Presentacion;
 
 namespace TestAbigeApp
 {
@@ -13,12 +14,13 @@ namespace TestAbigeApp
         [Test]
         public void Test1()
         {
-            Entidades.Dispositivo dispositivo = new Entidades.Dispositivo();
+            RegistrarDispositivo dispositivo = new RegistrarDispositivo();
             // Arrange/Act
-            //Boolean resultado = dispositivo.validarIdDispositivo();
+            int resultado = dispositivo.validarIdDispositivo("123");
 
             //// Assert
-            //Assert.That(resultado, Is.EqualTo("Unit Testing"));
+            Assert.That(resultado, Is.EqualTo("-1"));
+            
         }
     }
 }

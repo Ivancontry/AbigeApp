@@ -42,7 +42,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(97, 40);
+            this.txtUsuario.Location = new System.Drawing.Point(97, 81);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(170, 20);
             this.txtUsuario.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 40);
+            this.label1.Location = new System.Drawing.Point(24, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 86);
+            this.label2.Location = new System.Drawing.Point(24, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
@@ -67,14 +67,14 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(97, 83);
+            this.txtContraseña.Location = new System.Drawing.Point(97, 124);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(170, 20);
             this.txtContraseña.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(122, 137);
+            this.button1.Location = new System.Drawing.Point(122, 178);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -94,15 +94,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 172);
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ClientSize = new System.Drawing.Size(310, 261);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsuario);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Usuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario";
-
             ((System.ComponentModel.ISupportInitialize)(this.epUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epContraseña)).EndInit();
             this.ResumeLayout(false);

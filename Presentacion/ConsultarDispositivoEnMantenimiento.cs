@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -20,11 +21,13 @@ namespace Presentacion
         }
         ServiciosMantenimientos logicaMantenimientos = new ServiciosMantenimientos();
         int cont = 0;
+        Regex rg = new Regex(@"^[a-zA-Z0-9\s,]*$");
+        string valor = "", valor1 = "";
         public int validarIdDispositivo()
         {
 
             epIdDispositivo.Clear();
-            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 20)
+            if (txtCodigoDispositivo.Text.Equals("") || txtCodigoDispositivo.Text.Length > 20 || txtCodigoDispositivo.Text.Length<5)
             {
                 epIdDispositivo.SetError(txtCodigoDispositivo, "Digite un Dispositivo Valido");
                 return -1;
@@ -120,5 +123,18 @@ namespace Presentacion
             }
         }
 
+        private void txtCodigoDispositivo_OnValueChanged(object sender, EventArgs e)
+        {
+            if (rg.IsMatch(txtCodigoDispositivo.Text))
+            {
+                valor = txtCodigoDispositivo.Text;
+            }
+            else
+            {
+                txtCodigoDispositivo.Text = valor;
+                MessageBox.Show("Solo valores alfanumericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }

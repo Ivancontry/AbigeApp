@@ -16,6 +16,7 @@ namespace Presentacion
     {
         ServiciosMantenimientos logicaMantenimientos = new ServiciosMantenimientos();
         DataTable tablaMantenimientos = new DataTable();
+        ContextMenuStrip blankContextMenu = new ContextMenuStrip();
         int contDañados=0,contAveriadosFincas=0,contAveriadosTaller=0,contFuncionando=0;
         public ConsultarMantenimientos()
         {
@@ -27,6 +28,7 @@ namespace Presentacion
           
             cargarTablaMantenimientos();
             cargarCamposConsulta();
+            quitarMenuClickDerecho();
         }
         public void cargarCamposConsulta() {           
             txtCantidadTop.Text = "";
@@ -92,6 +94,20 @@ namespace Presentacion
         private void bnfDañados_Click(object sender, EventArgs e)
         {
             cargarTablaFiltrada("0");
+        }
+        private void quitarMenuClickDerecho()
+        {
+            txtCantidadTop.ContextMenuStrip = blankContextMenu;
+            
+        }
+        private void txtCantidadTop_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                //MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
 
         public void cargarGrafica(DataTable tabla) {

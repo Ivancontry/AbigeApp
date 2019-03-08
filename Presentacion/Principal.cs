@@ -46,7 +46,19 @@ namespace Presentacion
         {
             //panelInicioGestion();
             abrirformularioHija(new Mapa());
-                        
+          
+            //int i = 1;
+            //while (Usuario.usuario == null || Usuario.usuario.Email==null)
+            //{
+            //    Usuario usuario= new Usuario();
+            //    usuario.ShowDialog();
+            //    i++;
+            //}
+            //if (Usuario.usuario.Email == "NA") {
+            //    this.Close();
+            //}
+           
+
         }
         //public void panelInicioGestion()
         //{
@@ -149,21 +161,7 @@ namespace Presentacion
         //    panelGestionOpciones();
         //}
 
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void bunifuFlatButton2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void btnOpciones_Click_1(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
@@ -206,10 +204,7 @@ namespace Presentacion
             }
         }
 
-        private void bunifuFlatButton5_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void bunifuFlatButton9_Click(object sender, EventArgs e)
         {
@@ -256,10 +251,6 @@ namespace Presentacion
             return false;
         }
 
-        private void btnGestionEmpleado_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         //public void panelGestionEmpleado()
         //{
@@ -301,22 +292,6 @@ namespace Presentacion
             }
         }
 
-        private void panelLateral_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
-        private void bunifuGradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelSuperior_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void bunifuFlatButton13_Click(object sender, EventArgs e)
         {
@@ -324,19 +299,23 @@ namespace Presentacion
             if (!CheckForm("Usuario"))
             {
                 Usuario usuario= new Usuario();
+                Principal principal = new Principal();
+                usuario.Close();
                 usuario.ShowDialog();
-                
                 if (!CheckForm("frmGestionUsuarios"))
                 {
                     abrirformularioHija(new frmGestionUsuarios());
+                    principal.labelUsuario.Text = Usuario.usuario.Nombres + " "+ Usuario.usuario.SegundoApellido;
                 }
 
             }
         }
 
-        private void panelLateral_Paint_1(object sender, PaintEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            Usuario usuario = new Usuario();
+            usuario.Close();
+            this.Close();
         }
     }
 }

@@ -117,6 +117,7 @@
             this.txtCodigoDispositivo.Size = new System.Drawing.Size(208, 33);
             this.txtCodigoDispositivo.TabIndex = 1;
             this.txtCodigoDispositivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoDispositivo.OnValueChanged += new System.EventHandler(this.txtCodigoDispositivo_OnValueChanged);
             // 
             // figura
             // 

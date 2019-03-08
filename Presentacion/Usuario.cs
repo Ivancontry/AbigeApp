@@ -59,7 +59,12 @@ namespace Presentacion
                     {
                         if (txtContraseña.Text.Equals(usuario.Clave))
                         {
-                            this.Close();
+                            this.Hide();
+                            
+                               Principal principal = new Principal();
+                               principal.Show();
+                            
+                            
                         }
                         else
                         {
@@ -80,6 +85,7 @@ namespace Presentacion
             }
         }
 
-        
+       
+
     }
 }

@@ -48,15 +48,16 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnOpciones = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnGestionEmpleado = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnInicio = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnMantenimientos = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnGestionDispositivo = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.imagenUsuario = new System.Windows.Forms.PictureBox();
             this.labelUsuario = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelcontenedor = new System.Windows.Forms.Panel();
-            this.btnGestionDispositivo = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnGestionEmpleado = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelLateral.SuspendLayout();
             this.panelOpciones.SuspendLayout();
             this.panelMantenimientos.SuspendLayout();
@@ -104,7 +105,6 @@
             this.panelLateral.Quality = 10;
             this.panelLateral.Size = new System.Drawing.Size(325, 788);
             this.panelLateral.TabIndex = 12;
-            this.panelLateral.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLateral_Paint_1);
             // 
             // panelOpciones
             // 
@@ -448,7 +448,41 @@
             this.btnOpciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOpciones.Textcolor = System.Drawing.Color.White;
             this.btnOpciones.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpciones.Click += new System.EventHandler(this.btnOpciones_Click_1);
+            // 
+            // btnGestionEmpleado
+            // 
+            this.btnGestionEmpleado.Activecolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.BackColor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGestionEmpleado.BorderRadius = 0;
+            this.btnGestionEmpleado.ButtonText = "Registrar Empleado";
+            this.btnGestionEmpleado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionEmpleado.DisabledColor = System.Drawing.Color.Gray;
+            this.btnGestionEmpleado.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
+            this.btnGestionEmpleado.Iconimage_right = null;
+            this.btnGestionEmpleado.Iconimage_right_Selected = null;
+            this.btnGestionEmpleado.Iconimage_Selected = null;
+            this.btnGestionEmpleado.IconMarginLeft = 0;
+            this.btnGestionEmpleado.IconMarginRight = 0;
+            this.btnGestionEmpleado.IconRightVisible = true;
+            this.btnGestionEmpleado.IconRightZoom = 0D;
+            this.btnGestionEmpleado.IconVisible = true;
+            this.btnGestionEmpleado.IconZoom = 60D;
+            this.btnGestionEmpleado.IsTab = false;
+            this.btnGestionEmpleado.Location = new System.Drawing.Point(12, 174);
+            this.btnGestionEmpleado.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGestionEmpleado.Name = "btnGestionEmpleado";
+            this.btnGestionEmpleado.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnGestionEmpleado.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnGestionEmpleado.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnGestionEmpleado.selected = false;
+            this.btnGestionEmpleado.Size = new System.Drawing.Size(313, 41);
+            this.btnGestionEmpleado.TabIndex = 21;
+            this.btnGestionEmpleado.Text = "Registrar Empleado";
+            this.btnGestionEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGestionEmpleado.Textcolor = System.Drawing.Color.White;
+            this.btnGestionEmpleado.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // btnInicio
             // 
@@ -520,12 +554,47 @@
             this.btnMantenimientos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnMantenimientos.Textcolor = System.Drawing.Color.White;
             this.btnMantenimientos.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMantenimientos.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
+            // 
+            // btnGestionDispositivo
+            // 
+            this.btnGestionDispositivo.Activecolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.BackColor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGestionDispositivo.BorderRadius = 0;
+            this.btnGestionDispositivo.ButtonText = "Gestion Dispositivo";
+            this.btnGestionDispositivo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGestionDispositivo.DisabledColor = System.Drawing.Color.Gray;
+            this.btnGestionDispositivo.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnGestionDispositivo.Iconimage")));
+            this.btnGestionDispositivo.Iconimage_right = null;
+            this.btnGestionDispositivo.Iconimage_right_Selected = null;
+            this.btnGestionDispositivo.Iconimage_Selected = null;
+            this.btnGestionDispositivo.IconMarginLeft = 0;
+            this.btnGestionDispositivo.IconMarginRight = 0;
+            this.btnGestionDispositivo.IconRightVisible = true;
+            this.btnGestionDispositivo.IconRightZoom = 0D;
+            this.btnGestionDispositivo.IconVisible = true;
+            this.btnGestionDispositivo.IconZoom = 60D;
+            this.btnGestionDispositivo.IsTab = false;
+            this.btnGestionDispositivo.Location = new System.Drawing.Point(12, 274);
+            this.btnGestionDispositivo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGestionDispositivo.Name = "btnGestionDispositivo";
+            this.btnGestionDispositivo.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnGestionDispositivo.OnHovercolor = System.Drawing.Color.LimeGreen;
+            this.btnGestionDispositivo.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnGestionDispositivo.selected = false;
+            this.btnGestionDispositivo.Size = new System.Drawing.Size(313, 41);
+            this.btnGestionDispositivo.TabIndex = 9;
+            this.btnGestionDispositivo.Text = "Gestion Dispositivo";
+            this.btnGestionDispositivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGestionDispositivo.Textcolor = System.Drawing.Color.White;
+            this.btnGestionDispositivo.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // panelSuperior
             // 
             this.panelSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelSuperior.BackgroundImage")));
             this.panelSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelSuperior.Controls.Add(this.button1);
             this.panelSuperior.Controls.Add(this.imagenUsuario);
             this.panelSuperior.Controls.Add(this.labelUsuario);
             this.panelSuperior.Controls.Add(this.bunifuFlatButton1);
@@ -543,7 +612,7 @@
             // imagenUsuario
             // 
             this.imagenUsuario.Image = ((System.Drawing.Image)(resources.GetObject("imagenUsuario.Image")));
-            this.imagenUsuario.Location = new System.Drawing.Point(910, 0);
+            this.imagenUsuario.Location = new System.Drawing.Point(839, 0);
             this.imagenUsuario.Name = "imagenUsuario";
             this.imagenUsuario.Size = new System.Drawing.Size(60, 56);
             this.imagenUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -556,7 +625,7 @@
             this.labelUsuario.BackColor = System.Drawing.Color.Transparent;
             this.labelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsuario.ForeColor = System.Drawing.Color.Black;
-            this.labelUsuario.Location = new System.Drawing.Point(976, 34);
+            this.labelUsuario.Location = new System.Drawing.Point(905, 33);
             this.labelUsuario.Name = "labelUsuario";
             this.labelUsuario.Size = new System.Drawing.Size(113, 20);
             this.labelUsuario.TabIndex = 1;
@@ -606,77 +675,17 @@
             this.panelcontenedor.Size = new System.Drawing.Size(1055, 732);
             this.panelcontenedor.TabIndex = 24;
             // 
-            // btnGestionDispositivo
+            // button1
             // 
-            this.btnGestionDispositivo.Activecolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.BackColor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGestionDispositivo.BorderRadius = 0;
-            this.btnGestionDispositivo.ButtonText = "Gestion Dispositivo";
-            this.btnGestionDispositivo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestionDispositivo.DisabledColor = System.Drawing.Color.Gray;
-            this.btnGestionDispositivo.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnGestionDispositivo.Iconimage")));
-            this.btnGestionDispositivo.Iconimage_right = null;
-            this.btnGestionDispositivo.Iconimage_right_Selected = null;
-            this.btnGestionDispositivo.Iconimage_Selected = null;
-            this.btnGestionDispositivo.IconMarginLeft = 0;
-            this.btnGestionDispositivo.IconMarginRight = 0;
-            this.btnGestionDispositivo.IconRightVisible = true;
-            this.btnGestionDispositivo.IconRightZoom = 0D;
-            this.btnGestionDispositivo.IconVisible = true;
-            this.btnGestionDispositivo.IconZoom = 60D;
-            this.btnGestionDispositivo.IsTab = false;
-            this.btnGestionDispositivo.Location = new System.Drawing.Point(12, 274);
-            this.btnGestionDispositivo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGestionDispositivo.Name = "btnGestionDispositivo";
-            this.btnGestionDispositivo.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnGestionDispositivo.OnHovercolor = System.Drawing.Color.LimeGreen;
-            this.btnGestionDispositivo.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnGestionDispositivo.selected = false;
-            this.btnGestionDispositivo.Size = new System.Drawing.Size(313, 41);
-            this.btnGestionDispositivo.TabIndex = 9;
-            this.btnGestionDispositivo.Text = "Gestion Dispositivo";
-            this.btnGestionDispositivo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGestionDispositivo.Textcolor = System.Drawing.Color.White;
-            this.btnGestionDispositivo.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionDispositivo.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
-            // 
-            // btnGestionEmpleado
-            // 
-            this.btnGestionEmpleado.Activecolor = System.Drawing.Color.Transparent;
-            this.btnGestionEmpleado.BackColor = System.Drawing.Color.Transparent;
-            this.btnGestionEmpleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGestionEmpleado.BorderRadius = 0;
-            this.btnGestionEmpleado.ButtonText = "Registrar Empleado";
-            this.btnGestionEmpleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestionEmpleado.DisabledColor = System.Drawing.Color.Gray;
-            this.btnGestionEmpleado.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnGestionEmpleado.Iconimage = global::Presentacion.Properties.Resources.Services_48px;
-            this.btnGestionEmpleado.Iconimage_right = null;
-            this.btnGestionEmpleado.Iconimage_right_Selected = null;
-            this.btnGestionEmpleado.Iconimage_Selected = null;
-            this.btnGestionEmpleado.IconMarginLeft = 0;
-            this.btnGestionEmpleado.IconMarginRight = 0;
-            this.btnGestionEmpleado.IconRightVisible = true;
-            this.btnGestionEmpleado.IconRightZoom = 0D;
-            this.btnGestionEmpleado.IconVisible = true;
-            this.btnGestionEmpleado.IconZoom = 60D;
-            this.btnGestionEmpleado.IsTab = false;
-            this.btnGestionEmpleado.Location = new System.Drawing.Point(12, 174);
-            this.btnGestionEmpleado.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGestionEmpleado.Name = "btnGestionEmpleado";
-            this.btnGestionEmpleado.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnGestionEmpleado.OnHovercolor = System.Drawing.Color.LimeGreen;
-            this.btnGestionEmpleado.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnGestionEmpleado.selected = false;
-            this.btnGestionEmpleado.Size = new System.Drawing.Size(313, 41);
-            this.btnGestionEmpleado.TabIndex = 21;
-            this.btnGestionEmpleado.Text = "Registrar Empleado";
-            this.btnGestionEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGestionEmpleado.Textcolor = System.Drawing.Color.White;
-            this.btnGestionEmpleado.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionEmpleado.Click += new System.EventHandler(this.btnGestionEmpleado_Click);
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1006, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Principal
             // 
@@ -735,5 +744,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton13;
         private Bunifu.Framework.UI.BunifuFlatButton btnGestionEmpleado;
         private Bunifu.Framework.UI.BunifuFlatButton btnGestionDispositivo;
+        private System.Windows.Forms.Button button1;
     }
 }

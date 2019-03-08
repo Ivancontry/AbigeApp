@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarMantenimientos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bnfFuncionando = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bnfDañados = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -236,8 +236,8 @@
             this.tablaGeneral.Location = new System.Drawing.Point(123, 401);
             this.tablaGeneral.Name = "tablaGeneral";
             this.tablaGeneral.ReadOnly = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tablaGeneral.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tablaGeneral.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaGeneral.Size = new System.Drawing.Size(622, 221);
             this.tablaGeneral.TabIndex = 30;
             // 
@@ -274,17 +274,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(15, 145);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(847, 235);
             this.chart1.TabIndex = 31;
             this.chart1.Text = "chart1";
-            title2.Name = "Top de los dispositivos con mas mantenimientos";
-            this.chart1.Titles.Add(title2);
+            title1.Name = "Top de los dispositivos con mas mantenimientos";
+            this.chart1.Titles.Add(title1);
             // 
             // txtCantidadTop
             // 
@@ -292,6 +292,7 @@
             this.txtCantidadTop.Name = "txtCantidadTop";
             this.txtCantidadTop.Size = new System.Drawing.Size(133, 20);
             this.txtCantidadTop.TabIndex = 32;
+            this.txtCantidadTop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadTop_KeyPress);
             // 
             // label2
             // 

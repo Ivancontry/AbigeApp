@@ -210,10 +210,17 @@ namespace Presentacion
             gmFinca.Overlays.Add(markerOverlay);            
         }
 
-        private void conectarPuerto() {            
-            serialPort1.Close();
-            serialPort1.PortName = "COM13";
-            serialPort1.Open();           
+        private void conectarPuerto() {
+            int cont = 0;
+            cont++;
+            if (cont == 1)
+            {
+                serialPort1.Close();
+                serialPort1.PortName = "COM13";
+                serialPort1.Open();   
+
+            }
+                        
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
