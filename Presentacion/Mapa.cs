@@ -216,7 +216,7 @@ namespace Presentacion
             if (cont == 1)
             {
                 serialPort1.Close();
-                serialPort1.PortName = "COM13";
+                serialPort1.PortName = "COM27";
                 serialPort1.Open();   
 
             }
